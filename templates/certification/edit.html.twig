@@ -1,0 +1,21 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier une Certification{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5>Modifier une Certification</h5>
+    </div>
+    <div class="card-block">
+        {{ include('certification/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+        <div class="text-end mt-3">
+            <a href="{{ path('app_certification_index') }}" class="btn btn-secondary btn-sm">
+                <i class="fa fa-arrow-left"></i> Retour
+            </a>
+            {{ include('certification/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

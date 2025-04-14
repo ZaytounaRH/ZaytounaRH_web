@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretien{% endblock %}
+
+{% block body %}
+    <h1>Entretien</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdEntretien</th>
+                <td>{{ entretien.idEntretien }}</td>
+            </tr>
+            <tr>
+                <th>DateEntretien</th>
+                <td>{{ entretien.dateEntretien ? entretien.dateEntretien|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureEntretien</th>
+                <td>{{ entretien.heureEntretien ? entretien.heureEntretien|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>TypeEntretien</th>
+                <td>{{ entretien.typeEntretien }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ entretien.statut }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ entretien.commentaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entretien_index') }}">back to list</a>
+
+    <a href="{{ path('app_entretien_edit', {'idEntretien': entretien.idEntretien}) }}">edit</a>
+
+    {{ include('entretien/_delete_form.html.twig') }}
+{% endblock %}
