@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Assurance index{% endblock %}
+
+{% block body %}
+    <h1>Assurance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdA</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>DateExpiration</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for assurance in assurances %}
+            <tr>
+                <td>{{ assurance.idA }}</td>
+                <td>{{ assurance.nom }}</td>
+                <td>{{ assurance.type }}</td>
+                <td>{{ assurance.dateExpiration ? assurance.dateExpiration|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_assurance_show', {'idA': assurance.idA}) }}">show</a>
+                    <a href="{{ path('app_assurance_edit', {'idA': assurance.idA}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_assurance_new') }}">Create new</a>
+{% endblock %}
