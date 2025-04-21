@@ -1,11 +1,9 @@
 <?php
 
-/// src/Controller/ProduitController.php
-
 namespace App\Controller;
 
 use App\Entity\Produit;
-use App\Form\ProduitType;  // Importation de ProduitType
+use App\Form\ProduitType;  
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,13 +14,12 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/produit')]
 final class ProduitController extends AbstractController
 {
-    #[Route(name: 'app_produit_index', methods: ['GET'])]
+    #[Route('/', name: 'app_produit_index', methods: ['GET'])] // Correction ici : ajout du path '/'
     public function index(ProduitRepository $produitRepository): Response
     {
-        // Charger les produits avec la relation fournisseur via une jointure
         $produits = $produitRepository->createQueryBuilder('p')
-            ->leftJoin('p.fournisseur', 'f') // Jointure avec fournisseur
-            ->addSelect('f') // Sélectionner aussi le fournisseur
+            ->leftJoin('p.fournisseur', 'f')
+            ->addSelect('f')
             ->getQuery()
             ->getResult();
 
@@ -36,11 +33,16 @@ final class ProduitController extends AbstractController
     {
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
+        dump($produit); 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($produit);
             $entityManager->flush();
+
+            $session = $request->getSession();
+            $currentNotif = $session->get('notif_count', 0);
+            $session->set('notif_count', $currentNotif + 1);
 
             return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -88,4 +90,3 @@ final class ProduitController extends AbstractController
         return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
     }
 }
-

@@ -44,7 +44,8 @@ class Fournisseur
         'BANK',
         'ELECTRONIQUE',
         'NOURRITURE',
-        'INFORMATIQUE'
+        'INFORMATIQUE',
+        'MEUBLE'
     ], message: "Veuillez choisir un type de service valide.")]
     private ?string $typeService = null;
 

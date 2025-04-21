@@ -25,7 +25,7 @@ class Commande
     private ?string $statutCommande = null;
 
     #[ORM\ManyToOne(targetEntity: Fournisseur::class)]
-    #[ORM\JoinColumn(name: 'id_fournisseur', referencedColumnName: 'id', nullable: true)]
+    #[ORM\JoinColumn(name: 'idFournisseur', referencedColumnName: 'id', nullable: false)]
     private ?Fournisseur $fournisseur = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'commandes')]
@@ -38,7 +38,6 @@ class Commande
     #[ORM\Column(name: "prixCommande", type: 'decimal', nullable: true)]
     private ?float $prixCommande = null;
 
-    // ------------------ GETTERS & SETTERS ------------------
 
     public function getId(): ?int
     {

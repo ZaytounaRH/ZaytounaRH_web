@@ -22,8 +22,10 @@ class Produit
     private ?float $prix = null;
 
     #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'produits')]
-    #[ORM\JoinColumn(name: 'idFournisseur', referencedColumnName: 'id', nullable: false)]
+    #[ORM\JoinColumn(name: 'idFournisseur', referencedColumnName: 'id', nullable: true)]
     private ?Fournisseur $fournisseur = null;
+
+    
 
     public function getId(): ?int
     {
@@ -63,7 +65,6 @@ class Produit
         return $this;
     }
 
-    // Ajout de la méthode getNomFournisseur
     public function getNomFournisseur(): ?string
     {
         return $this->fournisseur ? $this->fournisseur->getNomFournisseur() : null;
