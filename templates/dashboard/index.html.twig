@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <h1>Dashboard</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Budget</th>
+                <th>Total Dépenses</th>
+                <th>Montant Alloué</th>
+                <th>Reste à Dépenser</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in dashboardData %}
+                <tr>
+                    <td>{{ data.totalDepenses }}</td>
+                    <td>{{ data.montantAlloue }}</td>
+                    <td>{{ data.reste }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune donnée disponible.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

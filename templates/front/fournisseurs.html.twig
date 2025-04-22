@@ -1,0 +1,10 @@
+<h1>Nos fournisseurs</h1>
+<ul>
+    {% for fournisseur in fournisseurs %}
+        <li>
+            {{ fournisseur.nom }} — {{ fournisseur.email }}
+        </li>
+    {% else %}
+        <li>Aucun fournisseur trouvé.</li>
+    {% endfor %}
+</ul>
