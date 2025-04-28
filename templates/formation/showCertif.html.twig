@@ -28,6 +28,12 @@
           {% for certif in certifications %}
   <div class="col-md-6 col-lg-4 mb-4">
     <div class="card shadow-sm h-100">
+    {# ======= AJOUT DE L'IMAGE DU CERTIFICAT ======= #}
+              <img src="{{ asset('assets/img/hero-carousel/certif.png') }}"
+                   class="card-img-top" 
+                   alt="Image du certificat" 
+                   style="object-fit: cover; height: 200px;">
+              {# ============================================= #}
       <div class="card-body">
         <h5 class="card-title text-primary mb-2">{{ certif.titreCertif }}</h5>
         <p class="mb-1"><i class="fa fa-university me-2"></i><strong>Organisme :</strong> {{ certif.organismeCertif }}</p>
@@ -45,10 +51,20 @@
 
         </div>
       {% else %}
-        <div class="alert alert-warning mt-4" role="alert">
-          Aucun certificat n'est associé à cette formation.
-        </div>
-      {% endif %}
+<div class="d-flex justify-content-center">
+  <div class="card shadow-sm p-4 text-center" style="max-width: 500px; background-color: #f8f9fa; border-radius: 12px;">
+    <div class="card-body">
+      <div class="mb-3" style="font-size: 50px;">🎓</div>
+      <h5 class="card-title text-success mb-3">Bientôt votre Certificat !</h5>
+      <p class="card-text">
+        Votre certificat sera disponible à la fin de votre formation.<br>
+        Continuez votre apprentissage, votre succès est tout proche !
+      </p>
+    </div>
+  </div>
+</div>
+{% endif %}
+
     </div>
   </section>
   {% if similarFormations is not empty %}

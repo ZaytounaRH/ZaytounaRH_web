@@ -6,20 +6,7 @@
 <section class="page-title" style="background: #28c745; padding: 60px 0;">
   <div class="container">
     <h2 class="text-white fw-bold">Formations</h2>
-          <a class="btn btn-outline-light" id="viewFavoritesBtn">❤️ Mes Favoris</a>
-
-     <a class="text-white fw-bold" href="{{ path('employee_agenda') }}">🗓️agenda</a>
-
-       <div class="dropdown d-inline-block">
-  <button class="btn btn-outline-light dropdown-toggle" type="button" id="filterRatingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-    🎯 Filtrer
-  </button>
-  <button class="btn btn-outline-light" id="resetFiltersBtn">🔄 Réinitialiser</button>
-
-  <ul class="dropdown-menu" aria-labelledby="filterRatingDropdown">
-    <li><a class="dropdown-item" href="#" id="filterBest">⭐ Formations les mieux notées</a></li>
-    <li><a class="dropdown-item" href="#" id="filterWorst">⭐ Formations les moins notées</a></li>
-  </ul>
+          
 </div>
 
 
@@ -41,9 +28,26 @@
       </select>
     </form>
 
+
     {% if formations is not empty %}
       <div class="row">
+<!-- Boutons sous la sélection -->
+    <div class="d-flex gap-2 flex-wrap mb-4">
+      <a class="btn btn-outline-success" id="viewFavoritesBtn">❤️ Mes Favoris</a>
+      <a class="btn btn-outline-success" href="{{ path('employee_agenda') }}">🗓️ Agenda</a>
 
+      <div class="dropdown">
+        <button class="btn btn-outline-success dropdown-toggle" type="button" id="filterRatingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          🎯 Filtrer
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="filterRatingDropdown">
+          <li><a class="dropdown-item" href="#" id="filterBest">⭐ Formations les mieux notées</a></li>
+          <li><a class="dropdown-item" href="#" id="filterWorst">⭐ Formations les moins notées</a></li>
+        </ul>
+      </div>
+
+      <button class="btn btn-outline-success" id="resetFiltersBtn">🔄 Réinitialiser</button>
+    </div>
         {% for formation in formations %}
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100 shadow-sm border rounded p-3">
@@ -51,7 +55,7 @@
 <h5 class="card-title text-primary d-flex justify-content-between align-items-center">
     {{ formation.nomFormation }}
      <div class="d-flex align-items-center">
-        <i class="fas fa-heart favorite-icon me-2" data-id="{{ formation.idFormation }}" style="cursor: pointer;"></i>
+<i class="far fa-heart favorite-icon me-2" data-id="{{ formation.idFormation }}" style="cursor: pointer; color: red; font-size: 20px;"></i>
         <div class="rating-stars" data-id="{{ formation.idFormation }}">
             {% for i in 1..5 %}
                 <i class="fas fa-star star" data-star="{{ i }}" style="cursor: pointer; color: lightgray;"></i>
@@ -89,9 +93,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         document.querySelectorAll('.favorite-icon').forEach(icon => {
             if (favorites.includes(icon.dataset.id)) {
-                icon.classList.add('text-danger');
+               icon.classList.remove('far');
+            icon.classList.add('fas'); // Rempli
+               
             } else {
-                icon.classList.remove('text-danger');
+                 icon.classList.remove('fas');
+            icon.classList.add('far'); // Vide
             }
         });
     }
