@@ -1,0 +1,92 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}User Management{% endblock %}
+
+{% block content %}
+<!-- User Management Table start -->
+<div class="col-xl-12 col-md-12">
+    <div class="card table-card">
+        <div class="card-header">
+            <h5>List of All Users Of Zitouna RH</h5>
+            <a href="{{ path('app_user_form_elements') }}" class="btn btn-success float-right">Create New User</a>
+        </div>
+        <div class="card-block">
+            <!-- Search Bar -->
+            <div class="row mb-3">
+                <div class="col-sm-12 col-md-6 offset-md-3">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by Nom" />
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>NumTel</th>
+                            <th>Jours Ouvrables</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Date de Naissance</th>
+                            <th>User Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        {% for user in users %}
+                            <tr class="tableRow">
+                                <td>{{ user.numTel }}</td>
+                                <td>{{ user.joursOuvrables }}</td>
+                                <td>{{ user.nom }}</td>
+                                <td>{{ user.prenom }}</td>
+                                <td>{{ user.address }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.gender }}</td>
+                                <td>{{ user.dateDeNaissance ? user.dateDeNaissance|date('Y-m-d') : '' }}</td>
+                                <td>{{ user.userType }}</td>
+                                <td>
+                                    <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-sm btn-info">Show</a>
+                                    <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-sm btn-secondary">Edit</a>
+                                    <form method="post" action="{{ path('app_user_delete', {'id': user.id}) }}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="10">No records found</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- User Management Table end -->
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const rows = document.querySelectorAll('#tableBody .tableRow');
+
+        searchInput.addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+
+            rows.forEach(function(row) {
+                const name = row.querySelector('td:nth-child(3)').textContent.toLowerCase(); // Search by Nom
+                if (name.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
