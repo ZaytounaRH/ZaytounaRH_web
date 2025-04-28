@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Fournisseurs{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4">Liste des Fournisseurs</h1>
+
+    <!-- Formulaire de recherche -->
+    <form method="get" action="{{ path('front_fournisseur_index') }}" class="mb-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Rechercher par nom" name="search" value="{{ search }}">
+            <button class="btn btn-primary" type="submit">Rechercher</button>
+        </div>
+    </form>
+
+    <!-- Tableau des fournisseurs -->
+    <table id="fournisseurTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fournisseur in fournisseurs %}
+                <tr>
+                    <td>{{ fournisseur.nomFournisseur }}</td>
+                    <td>
+                        {% if fournisseur.adresse %}
+                            {{ fournisseur.adresse }}
+                        {% else %}
+                            <span class="text-muted">Adresse non disponible</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path('front_fournisseur_show', {'id': fournisseur.id}) }}" class="btn btn-sm btn-info">Voir Détails</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun fournisseur trouvé pour "{{ search }}".</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#fournisseurTable').DataTable();
+        });
+    </script>
+{% endblock %}
+{% endblock %}

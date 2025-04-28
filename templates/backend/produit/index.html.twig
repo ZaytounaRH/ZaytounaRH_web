@@ -1,19 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/gestionfournisseur.html.twig' %}
 
-{% block title %}Liste des Fournisseurs{% endblock %}
+{% block title %}Liste des Produits{% endblock %}
 
 {% block body %}
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Gestion des Fournisseurs</h1>
+    <h1 class="mt-4">Gestion des Produits</h1>
     
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div>
                 <i class="fas fa-table me-1"></i>
-                Liste des Fournisseurs
+                Liste des Produits
             </div>
-            <a href="{{ path('app_fournisseur_new') }}" class="btn btn-primary btn-sm">
-                <i class="fas fa-plus"></i> Ajouter un Fournisseur
+            <a href="{{ path('back_produit_new') }}" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Ajouter un Produit
             </a>
         </div>
         <div class="card-body">
@@ -22,45 +22,39 @@
                     <thead class="table-light">
                         <tr>
                             <th>#ID</th>
-                            <th>Nom</th>
-                            <th>Adresse</th>
-                            <th>Contact</th>
-                            <th>Type Service</th>
+                            <th>Produit Name</th>
+                            <th>Prix</th>
+                            <th>Nom Fournisseur</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                    {% for fournisseur in fournisseurs %}
+                    {% for produit in produits %}
                         <tr>
-                            <td>{{ fournisseur.id }}</td>
-                            <td>{{ fournisseur.nomFournisseur }}</td>
-                            <td>{{ fournisseur.adresse|default('N/A') }}</td>
-                            <td>{{ fournisseur.contact|default('N/A') }}</td>
+                            <td>{{ produit.id }}</td>
+                            <td>{{ produit.produitName }}</td>
+                            <td>{{ produit.prix }}</td>
                             <td>
-                                <span class="badge bg-{{ 
-                                    fournisseur.typeService == 'TRANSPORT' ? 'primary' :
-                                    fournisseur.typeService == 'BANK' ? 'success' :
-                                    fournisseur.typeService == 'ELECTRONIQUE' ? 'info' :
-                                    fournisseur.typeService == 'NOURRITURE' ? 'warning' :
-                                    fournisseur.typeService == 'INFORMATIQUE' ? 'danger' : 'secondary'
-                                }}">
-                                    {{ fournisseur.typeService|default('Non spécifié') }}
-                                </span>
+                                {% if produit.fournisseur %}
+                                    {{ produit.fournisseur.nomFournisseur }}
+                                {% else %}
+                                    Non spécifié
+                                {% endif %}
                             </td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="{{ path('app_fournisseur_show', {'id': fournisseur.id}) }}" 
+                                    <a href="{{ path('back_produit_show', {'id': produit.id}) }}" 
                                        class="btn btn-sm btn-info" title="Voir détails">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{ path('app_fournisseur_edit', {'id': fournisseur.id}) }}" 
+                                    <a href="{{ path('back_produit_edit', {'id': produit.id}) }}" 
                                        class="btn btn-sm btn-warning" title="Modifier">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form method="post" action="{{ path('app_fournisseur_delete', {'id': fournisseur.id}) }}" 
-                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce fournisseur?');"
+                                    <form method="post" action="{{ path('back_produit_delete', {'id': produit.id}) }}" 
+                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit?');"
                                           class="d-inline">
-                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ fournisseur.id) }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
                                         <button class="btn btn-sm btn-danger" title="Supprimer">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -70,7 +64,7 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="6" class="text-center">Aucun fournisseur enregistré</td>
+                            <td colspan="5" class="text-center">Aucun produit enregistré</td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -91,7 +85,7 @@
                     url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
                 },
                 columnDefs: [
-                    { orderable: false, targets: 5 } // Désactive le tri sur la colonne Actions
+                    { orderable: false, targets: 4 } // Désactive le tri sur la colonne Actions
                 ]
             });
         });

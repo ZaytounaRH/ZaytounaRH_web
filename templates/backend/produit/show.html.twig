@@ -1,0 +1,55 @@
+
+{% block title %}Détails du Produit - {{ produit.produitName }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mt-4">
+            <i class="fas fa-box"></i> Détails du Produit
+        </h1>
+        <div class="btn-group">
+            <a href="{{ path('back_produit_index') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Retour à la liste
+            </a>
+            <a href="{{ path('back_produit_edit', {'id': produit.id}) }}" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Modifier
+            </a>
+            {{ include('produit/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <i class="fas fa-info-circle"></i> Informations sur le produit
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID:</dt>
+                        <dd class="col-sm-8">{{ produit.id }}</dd>
+
+                        <dt class="col-sm-4">Nom du produit:</dt>
+                        <dd class="col-sm-8">{{ produit.produitName }}</dd>
+
+                        <dt class="col-sm-4">Prix:</dt>
+                        <dd class="col-sm-8">{{ produit.prix }} €</dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">Fournisseur:</dt>
+                        <dd class="col-sm-8">
+                            {% if produit.fournisseur %}
+                                {{ produit.fournisseur.nomFournisseur }}
+                            {% else %}
+                                <span class="text-muted">Non spécifié</span>
+                            {% endif %}
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/gestionfournisseur.html.twig' %}
 
 {% block title %}Modifier Fournisseur{% endblock %}
 
@@ -14,7 +14,7 @@
         <button class="btn btn-primary">Mettre à jour</button>
     {{ form_end(form) }}
 
-    <a href="{{ path('app_fournisseur_index') }}">Retour à la liste</a>
+    <a href="{{ path('back_fournisseur_index') }}">Retour à la liste</a>
 
-    {{ include('fournisseur/_delete_form.html.twig') }}
+    {{ include('backend/fournisseur/_delete_form.html.twig') }}
 {% endblock %}

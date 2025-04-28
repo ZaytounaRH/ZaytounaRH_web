@@ -1,0 +1,41 @@
+{% extends 'admin/gestionfournisseur.html.twig' %}
+
+{% block title %}Budget index{% endblock %}
+
+{% block body %}
+    <h1>Budget index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>MontantAlloue</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>TypeBudget</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for budget in budgets %}
+            <tr>
+                <td>{{ budget.id }}</td>
+                <td>{{ budget.montantAlloue }}</td>
+                <td>{{ budget.dateDebut ? budget.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ budget.dateFin ? budget.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ budget.typeBudget }}</td>
+                <td>
+                    <a href="{{ path('app_back_budget_show', {'id': budget.id}) }}">show</a>
+                    <a href="{{ path('app_back_budget_edit', {'id': budget.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_back_budget_new') }}">Create new</a>
+{% endblock %}
