@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Entretien{% endblock %}
+
+{% block body %}
+  <!-- Page Title Section -->
+  <section class="page-title" style="background: #007bff; padding: 60px 0;">
+    <div class="container">
+      <h2 class="text-white fw-bold">Ajouter ton Entretien</h2>
+      <nav>
+        <ol class="breadcrumb mt-3">
+          <li class="breadcrumb-item">
+            <a href="{{ path('app_front') }}" class="text-white text-decoration-none">Accueil</a>
+          </li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Entretien</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Entretien Creation Section -->
+  <div class="container mt-5">
+
+    {{ include('entretien/_form.html.twig') }}
+
+    <a href="{{ path('app_offreemploi_index') }}" class="btn btn-secondary">Back to list</a>
+  </div>
+{% endblock %}

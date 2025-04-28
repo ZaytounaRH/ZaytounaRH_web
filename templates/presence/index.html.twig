@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Présences{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+    background-image: url('/images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    filter: blur(5px) brightness(0.7);
+}
+
+
+        .fade-in {
+            animation: fadeZoomIn 0.8s ease-out both;
+        }
+
+        @keyframes fadeZoomIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .presence-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .presence-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .presence-header {
+            background: linear-gradient(135deg, #1d8cf8, #3358f4);
+            color: white;
+            font-weight: bold;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .btn-custom {
+            border-radius: 30px;
+            padding: 0.6rem 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <h1 class="text-center text-dark fw-bold mb-5">📋 Liste des Présences</h1>
+
+    {% if app.user and app.user.employee %}
+        <div class="text-center mb-5">
+            <a href="{{ path('app_presence_checkin', { id: app.user.employee.employeeId }) }}" class="btn btn-outline-success btn-custom me-3">
+                ✅ Pointer l'arrivée
+            </a>
+            <a href="{{ path('app_presence_checkout', { id: app.user.employee.employeeId }) }}" class="btn btn-outline-danger btn-custom">
+                ❌ Pointer le départ
+            </a>
+        </div>
+    {% endif %}
+
+    <div class="row g-4">
+        {% for presence in presences %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                <div class="card presence-card h-100">
+                    
+                    <div class="card-body">
+                        <p><strong>📅 Date :</strong> {{ presence.date ? presence.date|date('d/m/Y') : '-' }}</p>
+                        <p><strong>🕗 Heure d'arrivée :</strong> {{ presence.heureArrive ? presence.heureArrive|date('H:i') : '-' }}</p>
+                        <p><strong>🕔 Heure de départ :</strong> {{ presence.heureDepart ? presence.heureDepart|date('H:i') : '-' }}</p>
+                    </div>
+                    <div class="card-footer text-center bg-transparent border-0 pb-3">
+                        <a href="{{ path('app_presence_show', {'id_presence': presence.idPresence}) }}" class="btn btn-outline-primary btn-sm rounded-pill">
+                            🔍 Détails
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12 text-center text-muted mt-5">
+                Aucune présence trouvée pour l'instant.
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ path('app_presence_new') }}" class="btn btn-primary btn-lg btn-custom me-3">
+            ⏱️ Pointer l'arrivée
+        </a>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+{% endblock %}

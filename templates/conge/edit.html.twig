@@ -1,0 +1,58 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier un Congé{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="text-center mb-4">
+                <h2 class="h4 fw-bold text-primary">📝 Modifier le Congé</h2>
+                <hr class="w-25 mx-auto">
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                    <div class="form-group mb-3">
+                        {{ form_label(form.dateDebut, 'Date de début', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.dateDebut) }}
+                    </div>
+
+                    <div class="form-group mb-3">
+                        {{ form_label(form.dateFin, 'Date de fin', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.dateFin) }}
+                    </div>
+
+                    <div class="form-group mb-3">
+                        {{ form_label(form.motif, 'Motif', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.motif, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.motif) }}
+                    </div>
+
+                    <div class="form-group mb-4">
+                        {{ form_label(form.statut, 'Statut', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.statut, {'attr': {'class': 'form-select'}}) }}
+                        {{ form_errors(form.statut) }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        💾 Enregistrer les modifications
+                    </button>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="{{ path('app_conge_indexback') }}" class="btn btn-outline-dark">
+                    ← Retour à la liste des congés
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
