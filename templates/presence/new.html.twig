@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Présence{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <h2 class="text-center text-success mb-4">➕ Nouvelle Présence</h2>
+
+            {# ✅ Affichage des erreurs de validation manuelles (flash) #}
+            {% for message in app.flashes('danger') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            <div class="card border rounded-4 shadow-sm p-4 bg-white">
+                {{ form_start(form) }}
+
+                {{ form_row(form.employee) }}
+
+                <button type="submit" class="btn btn-primary w-100 mt-3">
+                    ✅ Enregistrer l'arrivée
+                </button>
+
+                {{ form_end(form) }}
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="{{ path('app_presence_index') }}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Retour à la liste
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

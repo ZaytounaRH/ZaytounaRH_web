@@ -1,0 +1,113 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier l'entretien{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- En-tête stylisé -->
+    <div class="p-4 rounded text-center shadow-lg mb-4" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
+        <h1 class="display-4 text-white">
+            <i class="bi bi-pencil-square me-2"></i>Modifier l'entretien
+        </h1>
+        <p class="text-light">Mettez à jour les informations de l'entretien ci-dessous.</p>
+    </div>
+
+    <!-- Messages flash -->
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{ label == 'success' ? 'success' : 'danger' }} alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                <p class="mb-0">{{ message }}</p>
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    <!-- Formulaire -->
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+            {{ include('entretien/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+            <!-- Boutons de navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{{ path('app_entretien_index') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2 transition-all">
+                    <i class="bi bi-arrow-left-circle me-1"></i> Retour à la liste
+                </a>
+
+                <!-- Bouton de suppression -->
+                <form method="post" action="{{ path('app_entretien_delete', { idEntretien: entretien.idEntretien }) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet entretien ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ entretien.idEntretien) }}">
+                    <button class="btn btn-outline-danger rounded-pill px-4 py-2">
+                        <i class="bi bi-trash me-1"></i> Supprimer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles personnalisés -->
+<style>
+    .display-4 {
+        font-weight: 700;
+        font-size: 2.8rem;
+    }
+
+    .btn-outline-secondary:hover,
+    .btn-outline-danger:hover {
+        background-color: #f8f9fa;
+        color: #343a40;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .btn-outline-secondary,
+    .btn-outline-danger {
+        border-width: 2px;
+        font-size: 1rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+
+    .card {
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    input, select, textarea {
+        border-radius: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #2575fc;
+        outline: none;
+        box-shadow: 0 0 5px rgba(37,117,252,0.3);
+    }
+
+    .btn-close {
+        font-size: 1.3rem;
+    }
+
+    /* Responsive pour petits écrans */
+    @media (max-width: 576px) {
+        .display-4 {
+            font-size: 2rem;
+        }
+
+        .btn {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .d-flex.justify-content-between {
+            flex-direction: column;
+        }
+    }
+</style>
+{% endblock %}

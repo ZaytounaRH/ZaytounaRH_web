@@ -1,0 +1,28 @@
+{{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.dateDebut, '📅 Date de début', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control rounded-pill shadow-sm'}}) }}
+    {{ form_errors(form.dateDebut) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.dateFin, '📅 Date de fin', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.dateFin, {'attr': {'class': 'form-control rounded-pill shadow-sm'}}) }}
+    {{ form_errors(form.dateFin) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.motif, '📝 Motif', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.motif, {'attr': {'class': 'form-control rounded-pill shadow-sm'}}) }}
+    {{ form_errors(form.motif) }}
+</div>
+
+
+<div class="text-center mt-4">
+    <button class="btn btn-success rounded-pill px-4 py-2 shadow-sm">
+        {{ button_label|default('💾 Enregistrer') }}
+    </button>
+</div>
+
+{{ form_end(form) }}

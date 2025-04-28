@@ -1,0 +1,19 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+<div class="row">
+    {% for field in form %}
+        {% if field.vars.name != '_token' %}
+            <div class="mb-3 col-md-6">
+                {{ form_label(field) }}
+                {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+                {% if field.vars.errors|length > 0 %}
+                    <div class="text-danger mt-1">{{ form_errors(field) }}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<button class="btn btn-success">
+    <i class="fa fa-save"></i> {{ button_label|default('Enregistrer') }}
+</button>
+{{ form_end(form) }}

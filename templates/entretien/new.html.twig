@@ -1,0 +1,117 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}New Entretien{% endblock %}
+
+{% block content %}
+  <!-- Google Fonts & Custom Style -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .page-title {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      padding: 60px 0;
+    }
+
+    .page-title h2 {
+      font-size: 36px;
+      color: white;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .breadcrumb-item a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .breadcrumb-item.active {
+      color: #ddd;
+    }
+
+    .card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn-primary {
+      background-color: #6a11cb;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 25px;
+    }
+
+    .btn-primary:hover {
+      background-color: #8f35ff;
+    }
+
+    .btn-secondary {
+      border-radius: 30px;
+      padding: 10px 25px;
+    }
+
+    .form-error {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+
+    .form-label {
+      font-weight: 600;
+    }
+
+  </style>
+
+  <!-- Page Title Section -->
+  <section class="page-title">
+    <div class="container">
+      <h2 class="fw-bold">Ajouter ton Entretien</h2>
+      <nav>
+        <ol class="breadcrumb mt-3">
+          <li class="breadcrumb-item">
+            <a href="{{ path('app_front') }}">Accueil</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Entretien</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Entretien Creation Section -->
+  <div class="container mt-5">
+    <div class="card shadow-lg p-4">
+      <div class="card-body">
+        <!-- Form Start with Validation -->
+        {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+        
+        {{ form_row(form) }}
+        
+        <!-- Form Submit and Reset buttons -->
+        <div class="form-group mt-4">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+
+        <!-- Form End -->
+        {{ form_end(form) }}
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <a href="{{ path('app_entretien_index') }}" class="btn btn-secondary">⬅ Retour à la liste</a>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier l'Offre d'Emploi{% endblock %}
+
+{% block content %}
+  <section class="py-5">
+    <div class="container">
+      <!-- Titre principal -->
+      <h1 class="text-center mb-5 fw-bold text-primary">Modifier l'Offre d'Emploi</h1>
+
+      <!-- Formulaire de modification -->
+      {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <!-- Card Container -->
+          <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-gradient text-white text-center py-4">
+              <h5 class="mb-0">Détails de l'Offre</h5>
+            </div>
+            <div class="card-body p-5">
+              <!-- Formulaire de modification -->
+              {{ include('offreemploi/_form_back.html.twig', {'button_label': 'Mettre à jour'}) }}
+              
+              <!-- Affichage des erreurs de formulaire -->
+              {% for field in form %}
+                {% if field.vars.errors|length > 0 %}
+                  <div class="alert alert-danger mt-2">
+                    <strong>{{ field.vars.label }}:</strong>
+                    <ul>
+                      {% for error in field.vars.errors %}
+                        <li>{{ error.message }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <!-- Retour à la liste -->
+            <a href="{{ path('app_offreemploi_back_index') }}" class="btn btn-outline-info btn-lg rounded-pill px-5 py-3 text-dark transition-all duration-300 ease-in-out hover:bg-info hover:text-white">
+              <i class="bi bi-arrow-left-circle me-2"></i> Retour à la liste
+            </a>
+
+            <!-- Suppression de l'offre -->
+            <div class="d-flex gap-3">
+              {{ include('offreemploi/_delete_form.html.twig') }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{ form_end(form) }} <!-- Fin du formulaire -->
+    </div>
+  </section>
+{% endblock %}

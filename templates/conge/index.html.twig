@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Congés{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center text-primary">Liste des Congés</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a href="{{ path('app_conge_new') }}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Nouveau congé
+        </a>
+    </div>
+
+    <table class="table table-hover table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th>ID</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>Motif</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for conge in conges %}
+            <tr class="text-center align-middle">
+                <td>{{ conge.idConge }}</td>
+                <td>{{ conge.dateDebut ? conge.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ conge.dateFin ? conge.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ conge.motif }}</td>
+                <td>
+                    {% if conge.statut == 'Accepté' %}
+                        <span class="badge bg-success">Accepté</span>
+                    {% elseif conge.statut == 'Refusé' %}
+                        <span class="badge bg-danger">Refusé</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">En attente</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path('app_conge_show', {'id_conge': conge.id_conge}) }}" class="btn btn-sm btn-primary me-1">
+                        Voir
+                    </a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6" class="text-center text-muted">Aucun congé trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
