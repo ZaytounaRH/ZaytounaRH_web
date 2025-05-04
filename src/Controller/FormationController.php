@@ -281,9 +281,22 @@ public function exportExcel(FormationRepository $formationRepo): Response
 }
 
 #[Route('/employee/agenda-data', name: 'employee_agenda_data')]
-public function agendaData(FormationRepository $formationRepo): JsonResponse
+public function agendaData(Request $request, FormationRepository $formationRepo, EmployeeRepository $employeeRepo): JsonResponse
 {
-    $formations = $formationRepo->findAll();
+    $employeeId = $request->query->get('employee_id');
+
+    if ($employeeId) {
+        $employee = $employeeRepo->find($employeeId);
+
+        if (!$employee) {
+            return $this->json([]);
+        }
+
+        $formations = $employee->getFormations();
+    } else {
+        $formations = $formationRepo->findAll(); // fallback si pas d'ID
+    }
+
     $events = [];
 
     foreach ($formations as $formation) {
@@ -296,6 +309,7 @@ public function agendaData(FormationRepository $formationRepo): JsonResponse
 
     return $this->json($events);
 }
+
 #[Route('/employee/agenda', name: 'employee_agenda')]
 public function agenda(): Response
 {

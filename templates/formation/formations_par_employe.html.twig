@@ -34,7 +34,7 @@
 <!-- Boutons sous la sélection -->
     <div class="d-flex gap-2 flex-wrap mb-4">
       <a class="btn btn-outline-success" id="viewFavoritesBtn">❤️ Mes Favoris</a>
-      <a class="btn btn-outline-success" href="{{ path('employee_agenda') }}">🗓️ Agenda</a>
+<a class="btn btn-outline-success" href="{{ path('employee_agenda', {'employee_id': selectedEmployeeId}) }}">🗓️ Agenda</a>
 
       <div class="dropdown">
         <button class="btn btn-outline-success dropdown-toggle" type="button" id="filterRatingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
