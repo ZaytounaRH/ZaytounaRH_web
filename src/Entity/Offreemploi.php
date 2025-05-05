@@ -8,6 +8,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use App\Enum\StatutOffreemploi;
 use App\Repository\OffreemploiRepository;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Validator\Constraints as Assert;
+>>>>>>> origin/ons_gestion_recrutement
 
 #[ORM\Entity(repositoryClass: OffreemploiRepository::class)]
 #[ORM\Table(name: 'offreemploi')]
@@ -31,9 +35,22 @@ class Offreemploi
         $this->idOffre = $idOffre;
         return $this;
     }
+<<<<<<< HEAD
 
     #[ORM\Column(name:"titreOffre",type: 'string', nullable: false)]
     private ?string $titreOffre = null;
+=======
+    #[ORM\Column(name:"titreOffre", type: 'string', nullable: false)]
+    #[Assert\NotBlank(message: "Le titre de l'offre est requis.")]
+    #[Assert\Length(
+        min: 5,
+        max: 100,
+        minMessage: "Le titre doit contenir au moins {{ limit }} caractères.",
+        maxMessage: "Le titre ne peut pas dépasser {{ limit }} caractères."
+    )]
+    private ?string $titreOffre = null;
+    
+>>>>>>> origin/ons_gestion_recrutement
 
     public function getTitreOffre(): ?string
     {
@@ -45,10 +62,25 @@ class Offreemploi
         $this->titreOffre = $titreOffre;
         return $this;
     }
+<<<<<<< HEAD
 
     #[ORM\Column(type: 'text', nullable: false)]
     private ?string $description = null;
 
+=======
+    #[ORM\Column(type: 'text', nullable: false)]
+    #[Assert\NotBlank(message: "La description est requise.")]
+    #[Assert\Length(
+        min: 10,
+        minMessage: "La description doit contenir au moins {{ limit }} caractères."
+    )]
+    private ?string $description = null;
+
+    
+
+
+
+>>>>>>> origin/ons_gestion_recrutement
     public function getDescription(): ?string
     {
         return $this->description;
@@ -60,8 +92,22 @@ class Offreemploi
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\Column(name:"datePublication",type: 'date', nullable: false)]
     private ?\DateTimeInterface $datePublication = null;
+=======
+
+
+   
+    #[ORM\Column(name:"datePublication", type: 'date', nullable: false)]
+    #[Assert\NotNull(message: "La date de l'offre est requise.")]
+    #[Assert\GreaterThanOrEqual(
+        value: "today",
+        message: "La date de l'offre doit être aujourd'hui ou dans le futur."
+    )]
+    private ?\DateTimeInterface $datePublication = null;
+    
+>>>>>>> origin/ons_gestion_recrutement
 
     public function getDatePublication(): ?\DateTimeInterface
     {
@@ -74,8 +120,18 @@ class Offreemploi
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\Column(type: 'float', nullable: false)]
     private ?float $salaire = null;
+=======
+#[ORM\Column(type: 'float', nullable: false)]
+#[Assert\NotNull(message: "Le salaire est requis.")]
+#[Assert\Positive(message: "Le salaire doit être un nombre positif.")]
+private ?float $salaire = null;
+
+
+
+>>>>>>> origin/ons_gestion_recrutement
 
     public function getSalaire(): ?float
     {
@@ -89,7 +145,18 @@ class Offreemploi
     }
 
     #[ORM\Column(type: 'string', nullable: false)]
+<<<<<<< HEAD
     private ?string $statut = null;
+=======
+    #[Assert\NotBlank(message: "Le statut de l'offre est requis.")]
+    #[Assert\Choice(
+        choices: ['OUVERTE', 'FERMEE', 'POURVUE', 'ANNULEE', 'ENCOURS'],
+        message: "Le statut doit être l'une des valeurs suivantes : {{ choices }}."
+    )]
+    private ?string $statut = null;
+    
+    
+>>>>>>> origin/ons_gestion_recrutement
 
     public function getStatut(): ?string
     {
@@ -102,6 +169,27 @@ class Offreemploi
         return $this;
     }
 
+<<<<<<< HEAD
+=======
+
+    
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $image = null;
+    
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+    
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+        return $this;
+    }
+    
+ 
+
+>>>>>>> origin/ons_gestion_recrutement
     #[ORM\ManyToOne(targetEntity: Rh::class, inversedBy: 'offreemplois')]
     #[ORM\JoinColumn(name: 'idRH', referencedColumnName: 'rh_id')]
     private ?Rh $rh = null;

@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+<<<<<<< HEAD
 {% block title %}Formations{% endblock %}
 
 {% block body %}
@@ -203,4 +204,61 @@ document.getElementById('resetFiltersBtn').addEventListener('click', function() 
 </script>
 
 
+=======
+{% block title %}Formations {% endblock %}
+
+{% block body %}
+  <section class="page-title" style="background: #28c745; padding: 60px 0;">
+    <div class="container">
+      <h2 class="text-white fw-bold">Formations </h2>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <form method="get" action="{{ path('app_formation_par_employe') }}" class="mb-4">
+        <label for="employeeSelect">Sélectionner un employé :</label>
+        <select id="employeeSelect" name="employee_id" class="form-select" onchange="this.form.submit()">
+          <option value="">-- Choisir --</option>
+          {% for emp in employees %}
+            <option value="{{ emp.employeeId }}" {{ emp.employeeId == selectedEmployeeId ? 'selected' : '' }}>
+              {{ emp.user.nom }} {{ emp.user.prenom }}
+            </option>
+          {% endfor %}
+        </select>
+      </form>
+
+      {% if formations is not empty %}
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for formation in formations %}
+                <tr>
+                  <td>{{ formation.nomFormation }}</td>
+                  <td>{{ formation.descriptionFormation }}</td>
+                  <td>{{ formation.dateDebutFormation|date('Y-m-d') }}</td>
+                  <td>
+                    <a href="{{ path('app_formation_certif_show', {'idFormation': formation.idFormation}) }}" class="btn btn-sm btn-outline-info">Voir Certificat</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% elseif selectedEmployeeId %}
+        <div class="alert alert-info">Aucune formation trouvée pour cet employé.</div>
+      {% endif %}
+
+    </div>
+  </section>
+>>>>>>> origin/ons_gestion_recrutement
 {% endblock %}

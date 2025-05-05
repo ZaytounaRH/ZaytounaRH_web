@@ -43,29 +43,51 @@ class Presence
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\Column(name:"heureArrive",type: 'time', nullable: false)]
     private ?string $heureArrive = null;
 
     public function getHeureArrive(): ?string
+=======
+    #[ORM\Column(name: "heureArrive", type: 'time', nullable: false)]
+    private ?\DateTimeInterface $heureArrive = null;
+
+    public function getHeureArrive(): ?\DateTimeInterface
+>>>>>>> origin/ons_gestion_recrutement
     {
         return $this->heureArrive;
     }
 
+<<<<<<< HEAD
     public function setHeureArrive(string $heureArrive): self
+=======
+    public function setHeureArrive(\DateTimeInterface $heureArrive): self
+>>>>>>> origin/ons_gestion_recrutement
     {
         $this->heureArrive = $heureArrive;
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\Column(name:"heureDepart",type: 'time', nullable: false)]
     private ?string $heureDepart = null;
 
     public function getHeureDepart(): ?string
+=======
+    #[ORM\Column(name: "heureDepart", type: 'time', nullable: false)]
+    private ?\DateTimeInterface $heureDepart = null;
+
+    public function getHeureDepart(): ?\DateTimeInterface
+>>>>>>> origin/ons_gestion_recrutement
     {
         return $this->heureDepart;
     }
 
+<<<<<<< HEAD
     public function setHeureDepart(string $heureDepart): self
+=======
+    public function setHeureDepart(\DateTimeInterface $heureDepart): self
+>>>>>>> origin/ons_gestion_recrutement
     {
         $this->heureDepart = $heureDepart;
         return $this;
@@ -105,5 +127,14 @@ class Presence
     {
         return $this->id_presence;
     }
+<<<<<<< HEAD
+=======
+    public function __construct()
+{
+    $this->date = new \DateTime(); // date du jour
+    $this->heureArrive = new \DateTime(); // heure d’arrivée automatique
+    $this->heureDepart = new \DateTime(); // tu peux laisser vide si départ = + tard
+}
+>>>>>>> origin/ons_gestion_recrutement
 
 }

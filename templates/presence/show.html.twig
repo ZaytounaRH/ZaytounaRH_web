@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+<<<<<<< HEAD
 {% block title %}Presence{% endblock %}
 
 {% block body %}
@@ -9,6 +10,18 @@
         <tbody>
             <tr>
                 <th>Id_presence</th>
+=======
+{% block title %}Détail de la Présence{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">📋 Détails de la Présence</h1>
+
+    <table class="table table-bordered shadow-sm">
+        <tbody>
+            <tr>
+                <th>ID</th>
+>>>>>>> origin/ons_gestion_recrutement
                 <td>{{ presence.idPresence }}</td>
             </tr>
             <tr>
@@ -16,19 +29,57 @@
                 <td>{{ presence.date ? presence.date|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
+<<<<<<< HEAD
                 <th>HeureArrive</th>
                 <td>{{ presence.heureArrive ? presence.heureArrive|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>HeureDepart</th>
                 <td>{{ presence.heureDepart ? presence.heureDepart|date('H:i:s') : '' }}</td>
+=======
+                <th>Heure d'arrivée</th>
+                <td>{{ presence.heureArrive ? presence.heureArrive|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure de départ</th>
+                <td>
+                    {% if presence.heureDepart %}
+                        {{ presence.heureDepart|date('H:i:s') }}
+                        <span class="badge bg-success ms-2">✔️ enregistré</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">⏳ En attente</span>
+                    {% endif %}
+                </td>
+>>>>>>> origin/ons_gestion_recrutement
             </tr>
         </tbody>
     </table>
 
+<<<<<<< HEAD
     <a href="{{ path('app_presence_index') }}">back to list</a>
 
     <a href="{{ path('app_presence_edit', {'id_presence': presence.id_presence}) }}">edit</a>
 
     {{ include('presence/_delete_form.html.twig') }}
 {% endblock %}
+=======
+    <div class="d-flex gap-2 my-4">
+        <a href="{{ path('app_presence_checkin', { id: employee_id }) }}" class="btn btn-success">
+            ✅ Enregistrer l'arrivée
+        </a>
+
+        <a href="{{ path('app_presence_checkout', { id: employee_id }) }}" class="btn btn-danger">
+            ❌ Enregistrer le départ
+        </a>
+
+
+
+        <a href="{{ path('app_presence_index') }}" class="btn btn-outline-secondary">
+            🔙 Retour à la liste
+        </a>
+    </div>
+
+    {{ include('presence/_delete_form.html.twig') }}
+</div>
+{% endblock %}
+>>>>>>> origin/ons_gestion_recrutement

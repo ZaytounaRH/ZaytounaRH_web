@@ -83,6 +83,7 @@ final class CertificationController extends AbstractController
         return $this->redirectToRoute('app_certification_index', [], Response::HTTP_SEE_OTHER);
     }
     #[Route('/certification/{idCertif}/pdf', name: 'app_certification_download_pdf')]
+<<<<<<< HEAD
     public function downloadPdf(Certification $certification): Response
     {
         $options = new Options();
@@ -120,4 +121,29 @@ final class CertificationController extends AbstractController
             ]
         );
     }
+=======
+public function downloadPdf(Certification $certification): Response
+{
+    $options = new Options();
+    $options->set('defaultFont', 'Arial');
+    $dompdf = new Dompdf($options);
+
+    $html = $this->renderView('certification/pdf.html.twig', [
+        'certification' => $certification,
+    ]);
+
+    $dompdf->loadHtml($html);
+    $dompdf->setPaper('A4', 'portrait');
+    $dompdf->render();
+
+    return new Response(
+        $dompdf->output(),
+        200,
+        [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="certification_'. $certification->getIdCertif() .'.pdf"',
+        ]
+    );
+}
+>>>>>>> origin/ons_gestion_recrutement
 }

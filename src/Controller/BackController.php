@@ -4,6 +4,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+<<<<<<< HEAD
 use App\Repository\FormationRepository;
 use App\Repository\OffreemploiRepository;
 use App\Repository\EntretienRepository;
@@ -38,5 +39,15 @@ class BackController extends AbstractController
         ]);
 
     }
+=======
+
+class BackController extends AbstractController
+{
+    #[Route('/back', name: 'admin_dashboard')]
+public function index(): Response
+{
+    return $this->render('back/index.html.twig');
+}
+>>>>>>> origin/ons_gestion_recrutement
 
 }

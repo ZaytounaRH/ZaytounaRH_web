@@ -17,7 +17,17 @@
     <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
     <meta name="author" content="Codedthemes" />
     <!-- Favicon icon -->
+<<<<<<< HEAD
 <link rel="icon" href="{{ asset('back/images/logo.png') }}" type="image/x-icon">
+=======
+<link rel="icon" href="{{ asset('back/images/favicon.ico') }}" type="image/x-icon">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+
+>>>>>>> origin/ons_gestion_recrutement
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <!-- Waves CSS -->
@@ -263,15 +273,21 @@
 
     <li class="{{ app.request.attributes.get('_route') starts with 'app_formation' ? 'active' : '' }}">
         <a href="{{ path('app_formation_index') }}" class="waves-effect waves-dark">
+<<<<<<< HEAD
         
+=======
+>>>>>>> origin/ons_gestion_recrutement
             <span class="pcoded-micon"><i class="ti-book"></i><b>F</b></span>
             <span class="pcoded-mtext">Formations</span>
             <span class="pcoded-mcaret"></span>
         </a>
     </li>
+<<<<<<< HEAD
          
            
            
+=======
+>>>>>>> origin/ons_gestion_recrutement
 
     <li class="{{ app.request.attributes.get('_route') starts with 'app_certification' ? 'active' : '' }}">
         <a href="{{ path('app_certification_index') }}" class="waves-effect waves-dark">
@@ -279,7 +295,48 @@
             <span class="pcoded-mtext">Certifications</span>
             <span class="pcoded-mcaret"></span>
         </a>
+<<<<<<< HEAD
     </li>
+=======
+
+        
+   <li class="{{ app.request.attributes.get('_route') starts with 'app_offreemploi_back_' ? 'active' : '' }}">
+    <a href="{{ path('app_offreemploi_back_index') }}" class="waves-effect waves-dark">
+        <span class="pcoded-micon"><i class="ti-book"></i><b>F</b></span>
+        <span class="pcoded-mtext">Offres d'emploi</span>
+        <span class="pcoded-mcaret"></span>
+    </a>
+</li>
+
+
+
+    
+    <li class="{{ app.request.attributes.get('_route') starts with 'app_entretien' ? 'active' : '' }}">
+        <a href="{{ path('app_entretien_index') }}" class="waves-effect waves-dark">
+            <span class="pcoded-micon"><i class="ti-book"></i><b>C</b></span>
+            <span class="pcoded-mtext">Entretiens</span>
+            <span class="pcoded-mcaret"></span>
+        </a>
+    </li>
+
+
+    </li>
+    <li class="{{ app.request.attributes.get('_route') starts with 'app_presence_admin' ? 'active' : '' }}">
+    <a href="{{ path('app_presence_admin_index') }}" class="waves-effect waves-dark">
+        <span class="pcoded-micon"><i class="ti-calendar"></i><b>P</b></span>
+        <span class="pcoded-mtext">Présences</span>
+        <span class="pcoded-mcaret"></span>
+    </a>
+</li>
+
+    <li class="{{ app.request.attributes.get('_route') starts with 'app_conge' ? 'active' : '' }}">
+    <a href="{{ path('app_conge_indexback') }}" class="waves-effect waves-dark">
+        <span class="pcoded-micon"><i class="ti-calendar"></i><b>G</b></span>
+        <span class="pcoded-mtext">Congés</span>
+        <span class="pcoded-mcaret"></span>
+    </a>
+</li>
+>>>>>>> origin/ons_gestion_recrutement
 </ul>
 
                             <div class="pcoded-navigation-label">UI Element</div>
@@ -461,11 +518,14 @@
 <!-- Main Script -->
 <script type="text/javascript" src="{{ asset('back/js/script.js') }}"></script>
 
+<<<<<<< HEAD
 <!-- Multi select employee formation  -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
 </body>
 
 </html>

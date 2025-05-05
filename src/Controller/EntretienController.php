@@ -9,7 +9,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+<<<<<<< HEAD
 use Symfony\Component\Routing\Attribute\Route;
+=======
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+>>>>>>> origin/ons_gestion_recrutement
 
 #[Route('/entretien')]
 final class EntretienController extends AbstractController
@@ -17,11 +22,48 @@ final class EntretienController extends AbstractController
     #[Route(name: 'app_entretien_index', methods: ['GET'])]
     public function index(EntretienRepository $entretienRepository): Response
     {
+<<<<<<< HEAD
         return $this->render('entretien/index.html.twig', [
             'entretiens' => $entretienRepository->findAll(),
         ]);
     }
 
+=======
+       // Vous pouvez trier les entretiens par l'offre d'emploi
+    $entretiens = $entretienRepository->findBy(
+        [],
+        ['offreemploi' => 'ASC'] // Tri par offreEmploi et dateEntretien
+    );
+
+    return $this->render('entretien/index.html.twig', [
+        'entretiens' => $entretiens,
+    ]);
+
+
+    }
+
+
+
+    #[Route('/entretien/trier-date', name: 'entretien_trier_date', methods: ['GET'])]
+public function trierParDate(EntretienRepository $entretienRepository, Request $request): Response
+{
+    // Lire le paramètre 'order' dans l'URL (par défaut 'ASC')
+    $order = $request->query->get('order', 'ASC');
+ 
+    // Chercher les entretiens triés par date selon l'ordre
+    $entretiens = $entretienRepository->findBy([], ['dateEntretien' => $order]);
+
+    // Retourner la vue avec les entretiens triés
+    return $this->render('entretien/index.html.twig', [
+        'entretiens' => $entretiens,
+        'order' => $order, // Pour afficher l'ordre actuel dans le template Twig
+    ]);
+}
+
+    
+
+
+>>>>>>> origin/ons_gestion_recrutement
     #[Route('/new', name: 'app_entretien_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -30,6 +72,26 @@ final class EntretienController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+<<<<<<< HEAD
+=======
+            /** @var UploadedFile $cvFile */
+            $cvFile = $form->get('cv')->getData(); // Récupère le fichier uploadé
+
+            if ($cvFile) {
+                // Définir un nom unique pour le fichier (par exemple, avec un identifiant unique)
+                $newFilename = uniqid() . '.' . $cvFile->guessExtension();
+
+                // Déplacer le fichier vers le répertoire souhaité
+                $cvFile->move(
+                    $this->getParameter('upload_directory'), // Définir ce paramètre dans config/services.yaml
+                    $newFilename
+                );
+                // Optionnel : Enregistrer le nom du fichier en session si nécessaire
+                $request->getSession()->set('cv_filename', $newFilename);
+            }
+
+            // Pas besoin de persister d'informations sur le fichier dans la base de données
+>>>>>>> origin/ons_gestion_recrutement
             $entityManager->persist($entretien);
             $entityManager->flush();
 
@@ -71,11 +133,33 @@ final class EntretienController extends AbstractController
     #[Route('/{idEntretien}', name: 'app_entretien_delete', methods: ['POST'])]
     public function delete(Request $request, Entretien $entretien, EntityManagerInterface $entityManager): Response
     {
+<<<<<<< HEAD
         if ($this->isCsrfTokenValid('delete'.$entretien->getIdEntretien(), $request->getPayload()->getString('_token'))) {
+=======
+        if ($this->isCsrfTokenValid('delete' . $entretien->getIdEntretien(), $request->get('_token'))) {
+>>>>>>> origin/ons_gestion_recrutement
             $entityManager->remove($entretien);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('app_entretien_index', [], Response::HTTP_SEE_OTHER);
     }
+<<<<<<< HEAD
+=======
+
+    #[Route('/entretien/{id}/changer-statut/{statut}', name: 'changer_statut_entretien')]
+    public function changerStatut(EntretienRepository $repository, EntityManagerInterface $em, int $id, string $statut): Response
+    {
+        $entretien = $repository->find($id);
+
+        if (!$entretien) {
+            throw $this->createNotFoundException('Entretien non trouvé.');
+        }
+
+        $entretien->setStatut($statut);
+        $em->flush();
+
+        return $this->redirectToRoute('app_entretien_index'); // Ou autre route selon ton système
+    }
+>>>>>>> origin/ons_gestion_recrutement
 }

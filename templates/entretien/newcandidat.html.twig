@@ -1,0 +1,110 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}✨ Planifier un Entretien ✨{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center text-gradient mb-5 fw-bold display-4 animate__animated animate__fadeInDown">
+            🚀 Planifiez votre Entretien comme un Pro
+        </h1>
+
+        <div class="card shadow-lg border-0 rounded-5 p-5 bg-light animate__animated animate__fadeInUp">
+            <div class="card-body">
+                {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">{{ form_label(form.dateEntretien) }}</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                            {{ form_widget(form.dateEntretien, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        {% for error in form.dateEntretien.vars.errors %}
+                            <div class="form-error">{{ error.message }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">{{ form_label(form.heureEntretien) }}</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-clock-history"></i></span>
+                            {{ form_widget(form.heureEntretien, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        {% for error in form.heureEntretien.vars.errors %}
+                            <div class="form-error">{{ error.message }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">{{ form_label(form.typeEntretien) }}</label>
+                        {{ form_widget(form.typeEntretien, {'attr': {'class': 'form-select'}}) }}
+                        {% for error in form.typeEntretien.vars.errors %}
+                            <div class="form-error">{{ error.message }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">{{ form_label(form.commentaire) }}</label>
+                        {{ form_widget(form.commentaire, {'attr': {'class': 'form-control', 'rows': 4}}) }}
+                        {% for error in form.commentaire.vars.errors %}
+                            <div class="form-error">{{ error.message }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold">{{ form_label(form.candidat) }}</label>
+                        {{ form_widget(form.candidat, {'attr': {'class': 'form-select'}}) }}
+                        {% for error in form.candidat.vars.errors %}
+                            <div class="form-error">{{ error.message }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-gradient px-5 py-2 fs-5 rounded-pill animate__animated animate__pulse animate__delay-1s">
+                        ✨ Valider l'entretien ✨
+                    </button>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ path('app_offreemploi_index') }}" class="btn btn-outline-dark btn-sm rounded-pill animate__animated animate__fadeInUp">
+                ← Retour à la liste des Offres
+            </a>
+        </div>
+    </div>
+
+    <style>
+        .text-gradient {
+            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            border: none;
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(to right, #11998e 0%, #38ef7d 100%);
+        }
+        .form-error {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+{% endblock %}
