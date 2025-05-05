@@ -26,6 +26,7 @@ class FormationType extends AbstractType
             ])
             ->add('employees', EntityType::class, [
                 'class' => Employee::class,
+<<<<<<< HEAD
                 'label' => 'Employés concernés',
                 'choice_label' => function (Employee $employee) {
                     return $employee->getUser()->getNom() . ' ' . $employee->getUser()->getPrenom();
@@ -35,6 +36,13 @@ class FormationType extends AbstractType
                 'attr' => ['class' => 'form-select', 'size' => 6] 
             ])
             
+=======
+                'choice_label' => function (Employee $employee) {
+                        return $employee->getUser()->getNom() . ' ' . $employee->getUser()->getPrenom();
+                },
+                        'multiple' => true,
+            ])
+>>>>>>> origin/ons_gestion_recrutement
         ;
     }
 

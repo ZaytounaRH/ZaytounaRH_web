@@ -1,4 +1,16 @@
 {{ form_start(form) }}
+<<<<<<< HEAD
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+=======
+
+    {{ form_row(form.heureDepart) }}
+    {{ form_row(form.employee) }}
+
+    <button class="btn btn-primary">
+        {{ button_label|default('Enregistrer') }}
+    </button>
+
+{{ form_end(form) }}
+>>>>>>> origin/ons_gestion_recrutement

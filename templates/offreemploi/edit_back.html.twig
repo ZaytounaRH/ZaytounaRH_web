@@ -1,0 +1,13 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Edit Offreemploi{% endblock %}
+
+{% block body %}
+    <h1>Edit Offreemploi</h1>
+
+    {{ include('offreemploi/_form_back.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_offreemploi_index_back') }}">back to list</a>
+
+    {{ include('offreemploi/_delete_form.html.twig') }}
+{% endblock %}

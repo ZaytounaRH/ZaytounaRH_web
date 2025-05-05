@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}✨ Sélectionner un Candidat ✨{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center text-gradient mb-5 fw-bold display-4 animate__animated animate__fadeInDown">
+            🚀 Sélectionnez un Candidat pour l'Entretien
+        </h1>
+
+        <div class="card shadow-lg border-0 rounded-5 p-5 bg-light animate__animated animate__fadeInUp">
+            <div class="card-body">
+                <h3 class="text-center mb-4">📋 Liste des Candidats</h3>
+                <form method="GET" action="{{ path('app_candidat_entretien_new', {'idOffre': idOffre}) }}">
+                    <div class="mb-4">
+                        <label class="form-label">Sélectionner un Candidat</label>
+                        <select class="form-select" name="candidat_id" required>
+                            <option value="">Choisissez un Candidat</option>
+                            {% for candidat in candidats %}
+                                <option value="{{ candidat.id }}">{{ candidat.nom }} {{ candidat.prenom }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-gradient px-5 py-2 fs-5 rounded-pill">
+                            ✨ Planifier l'entretien pour ce candidat ✨
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ path('app_offreemploi_index') }}" class="btn btn-outline-dark btn-sm rounded-pill">
+                ← Retour à la liste des Offres
+            </a>
+        </div>
+    </div>
+{% endblock %}

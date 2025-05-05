@@ -2,6 +2,13 @@
 
 namespace App\Entity;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\Constraints\Callback;
+
+>>>>>>> origin/ons_gestion_recrutement
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -18,6 +25,51 @@ class Conge
     #[ORM\Column(type: 'integer')]
     private ?int $id_conge = null;
 
+<<<<<<< HEAD
+=======
+    #[ORM\Column(name: "dateDebut", type: 'date', nullable: false)]
+#[Assert\NotBlank(message: "La date de début est requise.")]
+private ?\DateTimeInterface $dateDebut = null;
+
+#[ORM\Column(name: "dateFin", type: 'date', nullable: false)]
+#[Assert\NotBlank(message: "La date de fin est requise.")]
+private ?\DateTimeInterface $dateFin = null;
+
+
+    #[ORM\Column(type: 'string', nullable: false)]
+    #[Assert\NotBlank(message: "Le motif est requis.")]
+    #[Assert\Length(min: 3, minMessage: "Le motif doit contenir au moins 3 caractères.")]
+    private ?string $motif = null;
+
+    #[ORM\Column(type: 'string', nullable: false)]
+    private ?string $statut = null;
+
+    #[ORM\ManyToOne(targetEntity: Employee::class, inversedBy: 'conges')]
+    #[ORM\JoinColumn(name: 'employee_id', referencedColumnName: 'employee_id')]
+    private ?Employee $employee = null;
+
+    #[ORM\ManyToOne(targetEntity: Rh::class, inversedBy: 'conges')]
+    #[ORM\JoinColumn(name: 'rh_id', referencedColumnName: 'rh_id', nullable: false)]
+    private ?Rh $rh = null;
+
+    public function __construct()
+    {
+        $this->statut = 'ENATTENTE'; // valeur par défaut
+    }
+
+    #[Callback]
+    public function validateDates(ExecutionContextInterface $context): void
+    {
+        if ($this->dateDebut && $this->dateFin && $this->dateFin < $this->dateDebut) {
+            $context->buildViolation('La date de fin doit être après la date de début.')
+                ->atPath('dateFin')
+                ->addViolation();
+        }
+    }
+
+    // Getters / Setters
+
+>>>>>>> origin/ons_gestion_recrutement
     public function getId_conge(): ?int
     {
         return $this->id_conge;
@@ -29,9 +81,12 @@ class Conge
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\Column(name:"dateDebut" ,type: 'date', nullable: false)]
     private ?\DateTimeInterface $dateDebut = null;
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
     public function getDateDebut(): ?\DateTimeInterface
     {
         return $this->dateDebut;
@@ -43,9 +98,12 @@ class Conge
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\Column(name :"dateFin" ,type: 'date', nullable: false)]
     private ?\DateTimeInterface $dateFin = null;
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
     public function getDateFin(): ?\DateTimeInterface
     {
         return $this->dateFin;
@@ -57,9 +115,12 @@ class Conge
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\Column(type: 'string', nullable: false)]
     private ?string $motif = null;
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
     public function getMotif(): ?string
     {
         return $this->motif;
@@ -71,9 +132,12 @@ class Conge
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\Column(type: 'string', nullable: false)]
     private ?string $statut = null;
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
     public function getStatut(): ?string
     {
         return $this->statut;
@@ -85,10 +149,13 @@ class Conge
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\ManyToOne(targetEntity: Employee::class, inversedBy: 'conges')]
     #[ORM\JoinColumn(name: 'employee_id', referencedColumnName: 'employee_id')]
     private ?Employee $employee = null;
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
     public function getEmployee(): ?Employee
     {
         return $this->employee;
@@ -100,10 +167,13 @@ class Conge
         return $this;
     }
 
+<<<<<<< HEAD
     #[ORM\ManyToOne(targetEntity: Rh::class, inversedBy: 'conges')]
     #[ORM\JoinColumn(name: 'rh_id', referencedColumnName: 'rh_id')]
     private ?Rh $rh = null;
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
     public function getRh(): ?Rh
     {
         return $this->rh;
@@ -119,5 +189,8 @@ class Conge
     {
         return $this->id_conge;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
 }

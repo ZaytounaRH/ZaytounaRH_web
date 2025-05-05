@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Merci{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card rounded-lg shadow-lg border-0 p-5 bg-light">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-check-circle fa-6x text-success animate__animated animate__fadeIn"></i>
+                    </div>
+                    <h1 class="text-center mb-4 animate__animated animate__fadeIn animate__delay-1s">Merci !</h1>
+                    <p class="lead text-center mb-5 animate__animated animate__fadeIn animate__delay-2s">
+                        Votre demande d’entretien a bien été envoyée. Nous vous contacterons très prochainement.
+                    </p>
+                    <div class="text-center">
+                        <a href="{{ path('app_offreemploi_index') }}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill text-white shadow-sm animate__animated animate__fadeIn animate__delay-3s">
+                            Retour à la liste des offres
+                        </a>
+                    </div>
+
+                    <a href="{{ path('app_candidats', {'id': candidat.id}) }}" class="btn btn-info">Voir mes entretiens</a>
+
+                </div>
+            </div>
+        </div>
+
+
+ <!-- Intégration du Messenger -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Chatchouta"
+      agent-id="e3807af8-52a3-450d-86b1-381553c710b2"
+      language-code="fr"
+    ></df-messenger>
+
+    </div>
+{% endblock %}

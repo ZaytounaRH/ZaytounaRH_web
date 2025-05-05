@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+<<<<<<< HEAD
 {% block title %}Edit Conge{% endblock %}
 
 {% block body %}
@@ -11,3 +12,58 @@
 
     {{ include('conge/_delete_form.html.twig') }}
 {% endblock %}
+=======
+{% block title %}Modifier un Congé{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center text-info mb-4">📝 Modifier le Congé</h2>
+
+            <div class="card border rounded-4 shadow-sm p-4 bg-white">
+                <form method="post">
+                    {{ form_start(form) }}
+                    
+                    <div class="mb-3">
+                        {{ form_label(form.dateDebut, 'Date de début', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.dateDebut) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.dateFin, 'Date de fin', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.dateFin) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.motif, 'Motif', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.motif, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.motif) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.statut, 'Statut', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.statut, {'attr': {'class': 'form-select'}}) }}
+                        {{ form_errors(form.statut) }}
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100 mt-3">
+                        ✅ Mettre à jour
+                    </button>
+
+                    {{ form_end(form) }}
+                </form>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="{{ path('app_conge_index') }}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Retour à la liste
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+>>>>>>> origin/ons_gestion_recrutement

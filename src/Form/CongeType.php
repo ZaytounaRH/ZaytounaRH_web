@@ -10,11 +10,19 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> origin/ons_gestion_recrutement
 class CongeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+<<<<<<< HEAD
+=======
+        // Champs de base
+>>>>>>> origin/ons_gestion_recrutement
         $builder
             ->add('dateDebut', null, [
                 'widget' => 'single_text',
@@ -22,6 +30,7 @@ class CongeType extends AbstractType
             ->add('dateFin', null, [
                 'widget' => 'single_text',
             ])
+<<<<<<< HEAD
             ->add('motif')
             ->add('statut', ChoiceType::class,[
                 'choices' =>[
@@ -41,12 +50,50 @@ class CongeType extends AbstractType
                 'choice_label' => 'id',
             ])
         ;
+=======
+            ->add('motif');
+
+        // ✅ Champ "statut" uniquement en mode édition
+        if ($options['is_edit']) {
+            $builder->add('statut', ChoiceType::class, [
+                'choices' => [
+                    'En attente' => 'ENATTENTE',
+                    'Accepté' => 'ACCEPTE',
+                    'Refusé' => 'REFUSE'
+                ],
+                'label' => 'Statut'
+            ]);
+        }
+
+        // ✅ Champ employé
+        $builder->add('employee', EntityType::class, [
+            'class' => Employee::class,
+            'choice_label' => 'id',
+        ]);
+
+        // ✅ Champ RH (lié à l'entité Rh)
+        $builder->add('rh', EntityType::class, [
+            'class' => Rh::class,
+            'choice_label' => function (Rh $rh) {
+                $user = $rh->getUser();
+                return $user ? $user->getPrenom() . ' ' . $user->getNom() : 'RH inconnu';
+            },
+            'label' => 'Responsable RH'
+        ]);
+>>>>>>> origin/ons_gestion_recrutement
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Conge::class,
+<<<<<<< HEAD
         ]);
     }
 }
+=======
+            'is_edit' => false,
+        ]);
+    }
+}
+>>>>>>> origin/ons_gestion_recrutement

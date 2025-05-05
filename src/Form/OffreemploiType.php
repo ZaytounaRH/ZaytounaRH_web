@@ -9,6 +9,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+>>>>>>> origin/ons_gestion_recrutement
 
 class OffreemploiType extends AbstractType
 {
@@ -17,9 +23,25 @@ class OffreemploiType extends AbstractType
         $builder
             ->add('titreOffre')
             ->add('description')
+<<<<<<< HEAD
             ->add('datePublication', null, [
                 'widget' => 'single_text',
             ])
+=======
+            
+
+
+            ->add('datePublication', DateType::class, [
+                'widget' => 'single_text',
+                'label' => 'Date de l\'offre',
+                'required' => true,
+                'empty_data' => (new \DateTime())->format('Y-m-d'),
+            ])
+            
+
+
+
+>>>>>>> origin/ons_gestion_recrutement
             ->add('salaire')
             ->add('statut', ChoiceType::class,[
                 'choices' =>[
@@ -34,10 +56,31 @@ class OffreemploiType extends AbstractType
                 ],
                 'label' => 'Type'
             ])
+<<<<<<< HEAD
             ->add('rh', EntityType::class, [
                 'class' => Rh::class,
                 'choice_label' => 'id',
             ])
+=======
+           
+
+            ->add('rh', EntityType::class, [
+                'class' => RH::class,
+                'choice_label' => function (Rh $candidat) {
+                    $user = $candidat->getUser();
+                    return $user ? $user->getPrenom() . ' ' . $user->getNom() : 'RH inconnu';
+                },
+                'placeholder' => 'un seul RH',
+                'label' => 'RH',
+                'required' => true,
+            ])
+            
+            ->add('image', TextType::class, [
+              'required' => false,
+              'label' => 'Image (URL ou nom du fichier)'
+                 ]);
+
+>>>>>>> origin/ons_gestion_recrutement
         ;
     }
 

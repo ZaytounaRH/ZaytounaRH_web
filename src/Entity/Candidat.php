@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -16,10 +19,16 @@ class Candidat
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private ?int $candidat_id = null;
+<<<<<<< HEAD
+=======
+
+    // Utilise getId() pour récupérer l'ID
+>>>>>>> origin/ons_gestion_recrutement
     public function getId(): ?int
     {
         return $this->candidat_id;
     }
+<<<<<<< HEAD
     public function getCandidat_id(): ?int
     {
         return $this->candidat_id;
@@ -30,6 +39,8 @@ class Candidat
         $this->candidat_id = $candidat_id;
         return $this;
     }
+=======
+>>>>>>> origin/ons_gestion_recrutement
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'candidats')]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id')]
@@ -73,9 +84,12 @@ class Candidat
      */
     public function getEntretiens(): Collection
     {
+<<<<<<< HEAD
         if (!$this->entretiens instanceof Collection) {
             $this->entretiens = new ArrayCollection();
         }
+=======
+>>>>>>> origin/ons_gestion_recrutement
         return $this->entretiens;
     }
 
@@ -92,6 +106,7 @@ class Candidat
         $this->getEntretiens()->removeElement($entretien);
         return $this;
     }
+<<<<<<< HEAD
 
     public function getCandidatId(): ?int
     {
@@ -99,3 +114,6 @@ class Candidat
     }
 
 }
+=======
+}
+>>>>>>> origin/ons_gestion_recrutement

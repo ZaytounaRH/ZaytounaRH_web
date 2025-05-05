@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Formation;
+<<<<<<< HEAD
 use App\Entity\Certification;
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
 use App\Form\FormationType;
 use App\Repository\FormationRepository;
 use App\Repository\EmployeeRepository;
@@ -15,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -27,10 +31,13 @@ use PHPMailer\PHPMailer\Exception;
 
 
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
 #[Route('/formation')]
 final class FormationController extends AbstractController
 {
     #[Route(name: 'app_formation_index', methods: ['GET'])]
+<<<<<<< HEAD
 public function index(Request $request, FormationRepository $formationRepository, EntityManagerInterface $em): Response
 {
     // Récupération du paramètre "order" depuis l'URL (asc ou desc)
@@ -109,6 +116,21 @@ public function index(Request $request, FormationRepository $formationRepository
     ]);
 }
 
+=======
+    public function index(FormationRepository $formationRepository): Response
+    {
+        return $this->render('formation/index.html.twig', [
+            'formations' => $formationRepository->findAll(),
+        ]);
+    }
+    #[Route('/certifications', name: 'app_formation_certif_index', methods: ['GET'])]
+    public function indexCertif(FormationRepository $formationRepository): Response
+    {
+        return $this->render('formation/indexCertif.html.twig', [
+            'formations' => $formationRepository->findAll(),
+        ]);
+    }
+>>>>>>> origin/ons_gestion_recrutement
 
 
     #[Route('/new', name: 'app_formation_new', methods: ['GET', 'POST'])]
@@ -140,6 +162,7 @@ public function index(Request $request, FormationRepository $formationRepository
         ]);
     }
     #[Route('/{idFormation}/certificat', name: 'app_formation_certif_show', methods: ['GET'])]
+<<<<<<< HEAD
 public function showCertif(Formation $formation, FormationRepository $formationRepository): Response
 {
     $certifications = $formation->getCertifications();
@@ -161,6 +184,15 @@ public function showCertif(Formation $formation, FormationRepository $formationR
     ]);
 }
 
+=======
+    public function showCertif(Formation $formation): Response
+    {
+        return $this->render('formation/showCertif.html.twig', [
+            'formation' => $formation,
+            'certifications' => $formation->getCertifications(),
+        ]);
+    }
+>>>>>>> origin/ons_gestion_recrutement
     #[Route('/{idFormation}/edit', name: 'app_formation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Formation $formation, EntityManagerInterface $entityManager): Response
     {
@@ -212,6 +244,7 @@ public function showCertif(Formation $formation, FormationRepository $formationR
         ]);
     }
     
+<<<<<<< HEAD
     #[Route('/stats/formations', name: 'app_formation_stats', methods: ['GET'])]
 public function stats(FormationRepository $formationRepository): JsonResponse
 {
@@ -367,4 +400,6 @@ public function sendSatisfactionEmails(FormationRepository $formationRepo): Resp
     }
 }
 
+=======
+>>>>>>> origin/ons_gestion_recrutement
 }

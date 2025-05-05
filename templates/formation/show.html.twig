@@ -25,10 +25,15 @@
 <div class="card">
     <div class="card-header">
         <h5 class="mb-0">{{ formation.nomFormation }}</h5>
+<<<<<<< HEAD
+=======
+        <span class="text-muted">#{{ formation.idFormation }}</span>
+>>>>>>> origin/ons_gestion_recrutement
     </div>
     <div class="card-block">
         <div class="row mb-3">
             <div class="col-md-4">
+<<<<<<< HEAD
                 <strong>🗒️Description :</strong><br>
                 <p>{{ formation.descriptionFormation }}</p>
             </div>
@@ -59,6 +64,19 @@
     </div>
 </div>
 
+=======
+                <strong>Description :</strong><br>
+                <p>{{ formation.descriptionFormation }}</p>
+            </div>
+            <div class="col-md-4">
+                <strong>Date de début :</strong><br>
+                <p>{{ formation.dateDebutFormation ? formation.dateDebutFormation|date('d/m/Y') : '—' }}</p>
+            </div>
+            <div class="col-md-4">
+                <strong>Date de fin :</strong><br>
+                <p>{{ formation.dateFinFormation ? formation.dateFinFormation|date('d/m/Y') : '—' }}</p>
+            </div>
+>>>>>>> origin/ons_gestion_recrutement
         </div>
 
         <div class="text-end">
