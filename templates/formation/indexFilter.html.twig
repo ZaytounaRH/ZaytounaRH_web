@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formations {% endblock %}
+
+{% block body %}
+  <section class="section">
+    <div class="container">
+      <h2>Filtrer les formations par employé</h2>
+
+      <form method="get" action="{{ path('app_formation_filtrer') }}" class="mb-4">
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <label for="employee_id" class="col-form-label">Employé :</label>
+          </div>
+          <div class="col-auto">
+            <select name="employee_id" id="employee_id" class="form-select" onchange="this.form.submit()">
+              <option value="">-- Choisir un employé --</option>
+              {% for employee in employees %}
+                <option value="{{ employee.employeeId }}" {% if employee.employeeId == selectedEmployee %}selected{% endif %}>
+                  {{ employee.nom }} {{ employee.prenom }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </form>
+
+      {% if formations is not empty %}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for formation in formations %}
+              <tr>
+                <td>{{ formation.nomFormation }}</td>
+                <td>{{ formation.descriptionFormation }}</td>
+                <td>{{ formation.dateDebutFormation ? formation.dateDebutFormation|date('Y-m-d') : '—' }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% elseif selectedEmployee %}
+        <p class="text-muted">Aucune formation pour cet employé.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

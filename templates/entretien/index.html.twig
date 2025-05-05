@@ -1,0 +1,238 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretien index{% endblock %}
+
+{% block body %}
+    <h1>Entretien index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdEntretien</th>
+                <th>DateEntretien</th>
+                <th>HeureEntretien</th>
+                <th>TypeEntretien</th>
+                <th>Statut</th>
+                <th>Commentaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entretien in entretiens %}
+            <tr>
+                <td>{{ entretien.idEntretien }}</td>
+                <td>{{ entretien.dateEntretien ? entretien.dateEntretien|date('Y-m-d') : '' }}</td>
+                <td>{{ entretien.heureEntretien ? entretien.heureEntretien|date('H:i:s') : '' }}</td>
+                <td>{{ entretien.typeEntretien }}</td>
+                <td>{{ entretien.statut }}</td>
+                <td>{{ entretien.commentaire }}</td>
+                <td>
+                    <a href="{{ path('app_entretien_show', {'idEntretien': entretien.idEntretien}) }}">show</a>
+                    <a href="{{ path('app_entretien_edit', {'idEntretien': entretien.idEntretien}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entretien_new') }}">Create new</a>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+{% extends 'back.html.twig' %}
+
+{% block title %}Liste des Entretiens{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- En-tête avec un fond élégant -->
+    <div class="p-5 rounded-4 shadow-lg bg-gradient text-white text-center mb-4">
+        <h1 class="display-4 fw-bold">
+            <i class="bi bi-chat-dots-fill me-2"></i> Gestion des Entretiens
+        </h1>
+        <p class="lead">Visualisez, modifiez et gérez efficacement vos entretiens programmés.</p>
+    </div>
+
+    <a href="{{ path('app_calendar') }}" class="btn btn-primary btn-lg rounded-pill">
+        <i class="bi bi-calendar-event me-2"></i> Voir le calendrier
+    </a>
+
+
+
+<div class="d-flex justify-content-end mb-3">
+ <a href="{{ path('entretien_trier_date', {'order': (order is defined and order == 'ASC') ? 'DESC' : 'ASC'}) }}" class="btn btn-primary">
+    <i class="bi bi-sort-alpha-down me-2"></i> Trier par Date {{ (order is defined and order == 'ASC') ? '🔽' : '🔼' }}
+</a>
+
+
+
+    
+</div>
+ 
+
+
+
+    <!-- Tableau amélioré avec des effets modernes -->
+    <div class="card shadow-lg border-0 rounded-4 mb-5">
+        <div class="card-body">
+            <table class="table table-hover table-borderless align-middle">
+                <thead class="table-dark text-uppercase">
+                    <tr>
+                        <th>Date</th>
+                        <th>Heure</th>
+                        <th>Type</th>
+                        <th>Statut</th>
+                        <th>Commentaire</th>
+                        <th>Offre d'emploi</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entretien in entretiens %}
+                    <tr class="table-light shadow-sm rounded">
+                        <td>{{ entretien.dateEntretien ? entretien.dateEntretien|date('d/m/Y') : '—' }}</td>
+                        <td>{{ entretien.heureEntretien ? entretien.heureEntretien|date('H:i') : '—' }}</td>
+                        <td>{{ entretien.typeEntretien }}</td>
+                        <td>
+                            {% set statut = entretien.statut %}
+                            <span class="badge 
+                                {% if statut == 'Réalisé' %} bg-success 
+                                {% elseif statut == 'Prévu' %} bg-warning text-dark
+                                {% elseif statut == 'Annulé' %} bg-danger
+                                {% else %} bg-secondary
+                                {% endif %} 
+                                rounded-pill px-3 py-2">
+                                {{ statut }}
+                            </span>
+                        </td>
+                        <td>{{ entretien.commentaire ?: '—' }}</td>
+                        <td>{{ entretien.offreEmploi ? entretien.offreEmploi.titreOffre : 'Aucune' }}</td>  <!-- Affichage de l'offre d'emploi -->
+                        <td>
+                            <div class="d-flex flex-column gap-2">
+                                <a href="{{ path('app_entretien_show', {'idEntretien': entretien.idEntretien}) }}"
+                                   class="btn btn-outline-primary btn-lg rounded-pill">
+                                   <i class="bi bi-eye"></i> Voir
+                                </a>
+                                <a href="{{ path('app_entretien_edit', {'idEntretien': entretien.idEntretien}) }}"
+                                   class="btn btn-outline-warning btn-lg rounded-pill">
+                                   <i class="bi bi-pencil-square"></i> Modifier
+                                </a>
+                                <div class="btn-group mt-2" role="group">
+                                    <a href="{{ path('changer_statut_entretien', {'id': entretien.idEntretien, 'statut': 'Planifié'}) }}"
+                                       class="btn btn-statut-planifie btn-sm rounded-pill">Planifié</a>
+                                    <a href="{{ path('changer_statut_entretien', {'id': entretien.idEntretien, 'statut': 'Terminé'}) }}"
+                                       class="btn btn-statut-termine btn-sm rounded-pill">Terminé</a>
+                                    <a href="{{ path('changer_statut_entretien', {'id': entretien.idEntretien, 'statut': 'Annulé'}) }}"
+                                       class="btn btn-statut-annule btn-sm rounded-pill">Annulé</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">
+                            <i class="bi bi-emoji-frown fs-3"></i> Aucune donnée disponible
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Style personnalisé pour un look plus dynamique -->
+<style>
+    /* Dégradé de fond de l'en-tête */
+    .bg-gradient {
+        background: linear-gradient(135deg, #4e73df, #1cc88a);
+    }
+
+    /* Effet de survol pour le tableau */
+    tr:hover {
+        background-color: #f8f9fa !important;
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Stabilité des entêtes du tableau */
+    .table thead th {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    /* Couleurs des badges de statut */
+    .badge {
+        font-size: 0.9rem;
+    }
+
+    .btn-outline-primary, .btn-outline-warning {
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+
+    .btn-outline-primary:hover, .btn-outline-warning:hover {
+        color: #fff;
+        background-color: #1cc88a;
+        border-color: #1cc88a;
+    }
+
+    .btn-lg {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        border-radius: 50px;
+    }
+
+    /* Boutons des statuts */
+    .btn-statut-planifie {
+        background: none;
+        border: none;
+        color: #ff8c00;
+    }
+
+    .btn-statut-termine {
+        background: none;
+        border: none;
+        color: #28a745;
+    }
+
+    .btn-statut-annule {
+        background: none;
+        border: none;
+        color: #dc3545;
+    }
+
+    .btn-statut-planifie:hover { color: #d2691e; }
+    .btn-statut-termine:hover { color: #1e7e34; }
+    .btn-statut-annule:hover { color: #a71d2a; }
+
+    /* Bordures subtiles pour les cellules de tableau */
+    .table td, .table th {
+        border: 1px solid #ddd;
+    }
+
+    .table-responsive {
+        border-radius: 10px;
+    }
+</style>
+
+>>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
+{% endblock %}

@@ -1,0 +1,11 @@
+<form method="post" action="{{ path('back_fournisseur_delete', {'id': fournisseur.id}) }}" onsubmit="return confirmDeletion();">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ fournisseur.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
+
+<script>
+    function confirmDeletion() {
+        console.log("La fonction confirmDeletion a été appelée."); // Ajout d'un log pour vérifier si le script est exécuté
+        return confirm('Êtes-vous sûr de vouloir supprimer ce fournisseur ? Cette action est irréversible.');
+    }
+</script>

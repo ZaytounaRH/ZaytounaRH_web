@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pointer le Départ{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm fade-in">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">🛑 Pointer le Départ</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="employee" class="form-label">Employé</label>
+                            <select id="employee" name="employee" class="form-select">
+                                {% for employee in employees %}
+                                    <option value="{{ employee.employeeId }}">{{ employee.user.username }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="text-end mt-4">
+                            <button type="submit" class="btn btn-danger rounded-pill">
+                                ✅ Pointer Départ
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

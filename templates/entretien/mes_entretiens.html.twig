@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes entretiens{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Mes Entretiens</h1>
+
+        {% if entretiens is not empty %}
+            <div class="list-group">
+                {% for entretien in entretiens %}
+                    <div class="list-group-item mb-3 p-4 border rounded shadow-sm">
+                        <h5 class="mb-3"><strong>Offre d'emploi :</strong> {{ entretien.offreemploi.titreOffre }}</h5>
+                        <p><strong>Date :</strong> {{ entretien.dateEntretien|date('d/m/Y H:i') }}</p>
+                        <p><strong>Statut :</strong> <span class="badge 
+                            {% if entretien.statut == 'Confirmé' %}bg-success{% elseif entretien.statut == 'En attente' %}bg-warning{% else %}bg-danger{% endif %}
+                        ">{{ entretien.statut }}</span></p>
+                        <p><strong>Type :</strong> {{ entretien.typeEntretien }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center">
+                Aucun entretien trouvé.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

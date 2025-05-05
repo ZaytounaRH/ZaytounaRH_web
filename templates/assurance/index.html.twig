@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+<<<<<<< HEAD
+{% block title %}Liste des Assurances{% endblock %}
+
+{% block body %}
+<section class="section">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Assurances</h2>
+      <p>Liste des contrats d'assurance enregistrés</p>
+    </div>
+
+    <div class="mb-4 text-end">
+      <a href="{{ path('app_assurance_new') }}" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Créer une nouvelle assurance
+      </a>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle shadow-sm">
+        <thead class="table-light">
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Type</th>
+            <th>Expiration</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for assurance in assurances %}
+          <tr>
+            <td>{{ assurance.idA }}</td>
+            <td>{{ assurance.nom }}</td>
+            <td>{{ assurance.type }}</td>
+            <td>{{ assurance.dateExpiration ? assurance.dateExpiration|date('Y-m-d') : '—' }}</td>
+            <td class="text-center">
+              <a href="{{ path('app_assurance_show', {'idA': assurance.idA}) }}" class="btn btn-outline-info btn-sm">
+                <i class="bi bi-eye"></i>
+              </a>
+              <a href="{{ path('app_assurance_edit', {'idA': assurance.idA}) }}" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-pencil"></i>
+              </a>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="5" class="text-center text-muted">Aucune assurance trouvée.</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+=======
+{% block title %}Assurance index{% endblock %}
+
+{% block body %}
+    <h1>Assurance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdA</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>DateExpiration</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for assurance in assurances %}
+            <tr>
+                <td>{{ assurance.idA }}</td>
+                <td>{{ assurance.nom }}</td>
+                <td>{{ assurance.type }}</td>
+                <td>{{ assurance.dateExpiration ? assurance.dateExpiration|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_assurance_show', {'idA': assurance.idA}) }}">show</a>
+                    <a href="{{ path('app_assurance_edit', {'idA': assurance.idA}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_assurance_new') }}">Create new</a>
+>>>>>>> origin/manel_gestion_financiere
+{% endblock %}

@@ -1,0 +1,52 @@
+{# templates/base.html.twig #}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Application Symfony</title>
+</head>
+<body>
+
+    <header>
+        <!-- Menu de navigation -->
+    </header>
+
+    <div class="container">
+        <!-- Affichage du Dashboard -->
+        <div id="dashboard">
+            <h3>Dashboard des Dépenses par Budget</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom du Budget</th>
+                        <th>Montant Alloué</th>
+                        <th>Montant Total des Dépenses</th>
+                        <th>Reste à Dépenser</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in dashboardData %}
+                        <tr>
+                            <td>{{ data.budget.typeBudget }}</td> <!-- Affiche le type du budget ou autre attribut -->
+                            <td>{{ data.montantAlloue }} €</td>
+                            <td>{{ data.totalDepenses }} €</td>
+                            <td>{{ data.reste }} €</td> <!-- Affiche la différence -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% block body %}
+            <!-- Le contenu spécifique à chaque page sera affiché ici -->
+        {% endblock %}
+    </div>
+
+    <footer>
+        <!-- Footer de l'application -->
+    </footer>
+    
+</body>
+</html>

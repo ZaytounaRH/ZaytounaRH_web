@@ -1,0 +1,12 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}🔗 QR Code Présences Aujourd'hui{% endblock %}
+
+{% block content %}
+<div class="container my-5 text-center animate__animated animate__fadeIn">
+    <h1 class="mb-4 text-primary">📅 Présences Aujourd'hui</h1>
+    <p class="mb-4">Scannez ce QR Code pour voir la liste des présences du jour :</p>
+    <img src="{{ qrImage }}" alt="QR Code" class="img-fluid shadow-sm rounded p-3 bg-white" style="width: 300px; height: 300px;">
+    
+</div>
+{% endblock %}

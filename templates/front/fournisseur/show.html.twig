@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Fournisseur - {{ fournisseur.nomFournisseur }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Détails du Fournisseur</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ fournisseur.nomFournisseur }}</h5>
+            <p class="card-text">
+                {% if fournisseur.adresse %}
+                    <strong>Adresse :</strong> {{ fournisseur.adresse }} <br>
+                {% else %}
+                    <strong>Adresse :</strong> Non spécifiée <br>
+                {% endif %}
+                
+                {% if fournisseur.contact %}
+                    <strong>Téléphone :</strong> {{ fournisseur.contact }} <br>
+                {% else %}
+                    <strong>Téléphone :</strong> Non spécifié <br>
+                {% endif %}
+                
+                {% if fournisseur.typeService %}
+                    <strong>Type de service :</strong> {{ fournisseur.typeService }} <br>
+                {% else %}
+                    <strong>Type de service :</strong> Non spécifié <br>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+    <a href="{{ path('front_fournisseur_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+</div>
+{% endblock %}

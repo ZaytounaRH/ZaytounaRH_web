@@ -1,0 +1,296 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretien{% endblock %}
+
+{% block body %}
+    <h1>Entretien</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdEntretien</th>
+                <td>{{ entretien.idEntretien }}</td>
+            </tr>
+            <tr>
+                <th>DateEntretien</th>
+                <td>{{ entretien.dateEntretien ? entretien.dateEntretien|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureEntretien</th>
+                <td>{{ entretien.heureEntretien ? entretien.heureEntretien|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>TypeEntretien</th>
+                <td>{{ entretien.typeEntretien }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ entretien.statut }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ entretien.commentaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entretien_index') }}">back to list</a>
+
+    <a href="{{ path('app_entretien_edit', {'idEntretien': entretien.idEntretien}) }}">edit</a>
+
+    {{ include('entretien/_delete_form.html.twig') }}
+<<<<<<< HEAD
+=======
+{% extends 'back.html.twig' %}
+
+{% block title %}Détails de l'entretien{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- En-tête avec icône -->
+    <div class="bg-gradient p-4 rounded text-center shadow-lg mb-4" style="background: linear-gradient(45deg, #6a11cb, #2575fc);">
+        <h1 class="display-5 text-white">
+            <i class="bi bi-person-lines-fill text-light me-2"></i>Détails de l'entretien
+        </h1>
+        <p class="text-light">Consultez les informations relatives à cet entretien.</p>
+    </div>
+
+    <!-- Carte des détails avec bord arrondi et ombre -->
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body">
+            <table class="table table-bordered table-hover table-striped rounded bg-white">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="fw-bold">
+                            <i class="bi bi-hash me-2 text-dark"></i>ID Entretien
+                        </th>
+                        <td>{{ entretien.idEntretien }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fw-bold">
+                            <i class="bi bi-calendar-event me-2 text-primary"></i>Date de l'entretien
+                        </th>
+                        <td>{{ entretien.dateEntretien ? entretien.dateEntretien|date('Y-m-d') : 'Non spécifiée' }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fw-bold">
+                            <i class="bi bi-clock me-2 text-success"></i>Heure de l'entretien
+                        </th>
+                        <td>{{ entretien.heureEntretien ? entretien.heureEntretien|date('H:i') : 'Non spécifiée' }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fw-bold">
+                            <i class="bi bi-person-badge-fill me-2 text-warning"></i>Type d'entretien
+                        </th>
+                        <td>{{ entretien.typeEntretien }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fw-bold">
+                            <i class="bi bi-check2-circle me-2 text-info"></i>Statut
+                        </th>
+                        <td>
+                            {% if entretien.statut == 'Prévu' %}
+                                <span class="badge bg-warning text-dark">Prévu</span>
+                            {% elseif entretien.statut == 'Réalisé' %}
+                                <span class="badge bg-success">Réalisé</span>
+                            {% elseif entretien.statut == 'Annulé' %}
+                                <span class="badge bg-danger">Annulé</span>
+                            {% else %}
+                                <span class="badge bg-secondary">{{ entretien.statut }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="fw-bold">
+                            <i class="bi bi-chat-left-text me-2 text-secondary"></i>Commentaire
+                        </th>
+                        <td>{{ entretien.commentaire ?: 'Aucun commentaire' }}</td>
+                    </tr>
+                    <!-- Suppression de la ligne du CV -->
+                </tbody>
+            </table>
+
+            <!-- Boutons d'action avec animations au survol -->
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{{ path('app_entretien_index') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2 transition-all hover-effect">
+                    <i class="bi bi-arrow-left-circle me-1"></i> Retour
+                </a>
+
+                <a href="{{ path('app_entretien_edit', {'idEntretien': entretien.idEntretien}) }}" class="btn btn-outline-warning rounded-pill px-4 py-2 transition-all hover-effect">
+                    <i class="bi bi-pencil-square me-1"></i> Modifier
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles personnalisés -->
+<style>
+    /* Fond dégradé sur l'en-tête */
+    .bg-gradient {
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+    }
+
+    /* Effet sur les boutons au survol */
+    .btn-outline-secondary:hover, .btn-outline-warning:hover {
+        background-color: #f8f9fa;
+        color: #343a40;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+
+    /* Transition de tous les éléments */
+    .transition-all {
+        transition: all 0.3s ease;
+    }
+
+    /* Effet au survol des boutons */
+    .hover-effect:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+
+    /* Apparence des badges */
+    .badge {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 12px;
+        font-weight: bold;
+    }
+
+    /* Design de la carte */
+    .card {
+        border-radius: 15px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Table améliorée */
+    .table {
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+    }
+
+    .table td {
+        padding: 1rem;
+    }
+
+    /* Réduire l'ombre au survol des éléments */
+    .card-body {
+        padding: 30px;
+    }
+
+    /* Ajuster l'apparence du titre */
+    .display-5 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    /* Personnalisation de l'icône */
+    .bi {
+        font-size: 1.5rem;
+    }
+
+    /* Animation de la transition */
+    .hover-effect {
+        transition: all 0.3s ease;
+    }
+</style>
+
+>>>>>>> origin/ons_gestion_recrutement
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'entretien{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Détails de l'entretien</h1>
+
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="fw-bold">ID Entretien</th>
+                            <td>{{ entretien.idEntretien }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="fw-bold">Date de l'entretien</th>
+                            <td>{{ entretien.dateEntretien ? entretien.dateEntretien|date('Y-m-d') : 'Non spécifiée' }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="fw-bold">Heure de l'entretien</th>
+                            <td>{{ entretien.heureEntretien ? entretien.heureEntretien|date('H:i:s') : 'Non spécifiée' }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="fw-bold">Type d'entretien</th>
+                            <td>{{ entretien.typeEntretien }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="fw-bold">Statut</th>
+                            <td>
+                                <span class="badge bg-info">{{ entretien.statut }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="fw-bold">Commentaire</th>
+                            <td>{{ entretien.commentaire ?: 'Aucun commentaire' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{{ path('app_entretien_index') }}" class="btn btn-outline-primary">
+                        <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+                    </a>
+
+                    <a href="{{ path('app_entretien_edit', {'idEntretien': entretien.idEntretien}) }}" class="btn btn-warning">
+                        <i class="bi bi-pencil-fill"></i> Modifier
+                    </a>
+
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        <i class="bi bi-trash-fill"></i> Supprimer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        {# Modal de confirmation de suppression #}
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirmer la suppression</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir supprimer cet entretien ? Cette action est irréversible.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        {{ form_start(delete_form) }}
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        {{ form_end(delete_form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
+{% endblock %}

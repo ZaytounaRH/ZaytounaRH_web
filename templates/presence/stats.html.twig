@@ -1,0 +1,78 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}📈 Statistiques de Présence{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .stat-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            margin-top: 50px;
+        }
+        #chart_div {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #343a40;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            font-size: 2.5rem;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="stat-container">
+            <h1>📊 Statistiques de Présence</h1>
+            <div id="chart_div"></div>
+        </div>
+    </div>
+
+    <!-- Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Type', 'Valeur'],
+          ['Retards', {{ totalRetards }}],
+          ['Congés', {{ totalConges }}],
+          ['Moyenne Heures/Jour', {{ averageHoursPerDay }}]
+        ]);
+
+        var options = {
+          title: 'Vue Générale des Présences',
+          titleTextStyle: {
+              fontSize: 22,
+              bold: true,
+              color: '#333',
+          },
+          pieHole: 0.5,
+          colors: ['#17a2b8', '#ffc107', '#28a745'],
+          legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 14 } },
+          pieSliceTextStyle: {
+              color: 'black',
+              fontSize: 16,
+          },
+          backgroundColor: 'transparent',
+          chartArea: {width: '90%', height: '80%'}
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+{% endblock %}

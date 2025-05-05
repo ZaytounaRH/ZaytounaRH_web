@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation index{% endblock %}
+
+{% block body %}
+  <section class="page-title" style="background: #28c745; padding: 60px 0;">
+    <div class="container">
+      <h2 class="text-white fw-bold">Formation</h2>
+      <nav>
+        <ol class="breadcrumb mt-3">
+          <li class="breadcrumb-item"><a href="{{ path('app_front') }}" class="text-white text-decoration-none">Home</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Formation</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Mes Formations</h2>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+             
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for formation in formations %}
+              <tr>
+                <td>{{ formation.nomFormation }}</td>
+                <td>{{ formation.descriptionFormation }}</td>
+                <td>{{ formation.dateDebutFormation ? formation.dateDebutFormation|date('Y-m-d') : '—' }}</td>
+                <td>
+                  <a href="{{ path('app_formation_certif_show', {'idFormation': formation.idFormation}) }}" class="btn btn-sm btn-outline-info">Voir Certificat</a>
+                </td>
+              </tr>
+            {% else %}
+              <tr>
+                <td colspan="5" class="text-center text-muted">Aucune formation trouvée</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}

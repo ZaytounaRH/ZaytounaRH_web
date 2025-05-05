@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agenda des formations{% endblock %}
+
+{% block body %}
+<section class="page-title" style="background: #28c745; padding: 60px 0;">
+    <div class="container">
+      <h2 class="text-white fw-bold">Agenda</h2>
+      <nav>
+        <ol class="breadcrumb mt-3">
+          <li class="breadcrumb-item"><a href="{{ path('app_front') }}" class="text-white text-decoration-none">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="#" onclick="history.back()" class="text-white text-decoration-none">Formations</a></li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+<section class="section">
+  <div class="container mt-4">
+    <h4 class="mb-4">📅 Agenda des formations</h4>
+    <div id="calendar"></div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      locale: 'fr',
+      events: "{{ path('employee_agenda_data') }}?employee_id={{ app.request.query.get('employee_id') }}"
+    });
+    calendar.render();
+  });
+</script>
+
+{% endblock %}

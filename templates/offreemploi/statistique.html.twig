@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques des Offres d'Emploi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            color: #34495e;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin-top: 20px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .container:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        #chart_div {
+            width: 100%;
+            height: 500px;
+            margin: 30px 0;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .back-button {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 50px;
+            text-align: center;
+            text-decoration: none;
+            width: 180px;
+            margin: 30px auto;
+            display: block;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        .back-button:active {
+            background-color: #1f6b97;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Statistiques des Offres d'Emploi</h1>
+
+    <!-- Graphique -->
+    <div id="chart_div"></div>
+
+    <!-- Bouton retour -->
+    <a class="back-button" href="{{ path('app_offreemploi_back_index') }}">Retour à la liste</a>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Statut', 'Nombre'],
+            {% for stat in statistiques %}
+                ['{{ stat.statut }}', {{ stat.nombre }}],
+            {% endfor %}
+        ]);
+
+        var options = {
+            title: 'Nombre d\'offres par statut',
+            titleTextStyle: {
+                fontSize: 24,
+                bold: true,
+                color: '#2c3e50'
+            },
+            chartArea: {
+                width: '70%',
+                height: '80%'
+            },
+            hAxis: {
+                title: 'Nombre d\'offres',
+                minValue: 0,
+                textStyle: {
+                    fontSize: 14,
+                    color: '#34495e'
+                },
+                gridlines: {
+                    color: '#ecf0f1'
+                },
+                baselineColor: '#ecf0f1'
+            },
+            vAxis: {
+                title: 'Statut',
+                textStyle: {
+                    fontSize: 14,
+                    color: '#34495e'
+                },
+                gridlines: {
+                    color: '#ecf0f1'
+                },
+                baselineColor: '#ecf0f1'
+            },
+            legend: {
+                position: 'none',
+            },
+            bars: 'horizontal',
+            backgroundColor: '#ecf0f1',
+            colors: ['#3498db']
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+
+</body>
+</html>

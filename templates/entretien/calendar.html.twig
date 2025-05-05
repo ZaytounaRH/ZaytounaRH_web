@@ -1,0 +1,153 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Calendrier des Entretiens{% endblock %}
+
+{% block content %}
+  <div class="container py-5">
+    <h1 class="text-center mb-4 text-primary">Calendrier des Entretiens</h1>
+
+    <!-- Conteneur du calendrier -->
+    <div id="calendar" class="shadow-lg rounded-lg"></div>
+  </div>
+
+  <!-- Modale des détails d'entretien -->
+  <div class="modal fade" id="entretienModal" tabindex="-1" aria-labelledby="entretienModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-3">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title" id="entretienModalLabel">Détails de l'entretien</h5>
+        </div>
+        <div class="modal-body">
+          <p><strong>Titre :</strong> <span id="entretienTitle"></span></p>
+          <p><strong>Type :</strong> <span id="entretienType"></span></p>
+          <p><strong>Statut :</strong> <span id="entretienStatut"></span></p>
+          <p><strong>Date et Heure :</strong> <span id="entretienDate"></span></p>
+          <p><strong>Candidat :</strong> <span id="entretienCandidat"></span></p>
+          <p><strong>Offre :</strong> <span id="entretienOffre"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #calendar {
+      background-color: #f8f9fa;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-content {
+      border-radius: 15px;
+      border: none;
+    }
+
+    .modal-header {
+      border-bottom: 2px solid #f0f0f0;
+      padding: 1.5rem 1.75rem;
+      background-color: #007bff;
+    }
+
+    .modal-body {
+      font-size: 1rem;
+    }
+
+    h1 {
+      font-family: 'Arial', sans-serif;
+      font-weight: 700;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarEl = document.getElementById('calendar');
+
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay'
+        },
+        themeSystem: 'bootstrap5',
+        eventTextColor: '#fff',
+        editable: true, // Permet de déplacer les événements
+
+        events: function(info, successCallback, failureCallback) {
+          fetch("{{ path('api_entretiens') }}")
+            .then(response => response.json())
+            .then(data => {
+              const events = data.map(event => ({
+                title: event.title,
+                start: event.start,
+                end: event.end,
+                color: event.color,
+                id: event.id,
+                extendedProps: {
+                  type: event.type,
+                  statut: event.statut,
+                  candidat: event.candidat,
+                  offre: event.offre
+                }
+              }));
+              successCallback(events);
+            })
+            .catch(error => {
+              console.error("Erreur lors du chargement des événements :", error);
+              failureCallback(error);
+            });
+        },
+
+        eventDrop: function(info) {
+          const event = info.event;
+          const updatedDate = event.start; // La nouvelle date du début de l'événement
+
+          // Mettre à jour la date de l'entretien dans la base de données
+          fetch("{{ path('update_entretien_date') }}", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': '{{ csrf_token('update_entretien_date') }}'
+            },
+            body: JSON.stringify({
+              id: event.id,
+              start: updatedDate.toISOString(),
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              console.log("Date mise à jour avec succès !");
+            } else {
+              console.error("Erreur lors de la mise à jour de la date.");
+            }
+          })
+          .catch(error => {
+            console.error("Erreur lors de l'envoi de la requête :", error);
+          });
+        },
+
+        eventClick: function(info) {
+          const event = info.event;
+
+          document.getElementById('entretienTitle').textContent = event.title;
+          document.getElementById('entretienType').textContent = event.extendedProps.type || 'Non spécifié';
+          document.getElementById('entretienStatut').textContent = event.extendedProps.statut || 'Inconnu';
+          document.getElementById('entretienDate').textContent = event.start.toLocaleString();
+          document.getElementById('entretienCandidat').textContent =
+            event.extendedProps.candidat ? `${event.extendedProps.candidat.user_prenom} ${event.extendedProps.candidat.user_nom}` : 'Non spécifié';
+          document.getElementById('entretienOffre').textContent =
+            event.extendedProps.offre ? event.extendedProps.offre.titre : 'Non spécifiée';
+
+          const modal = new bootstrap.Modal(document.getElementById('entretienModal'));
+          modal.show();
+        }
+      });
+
+      calendar.render();
+    });
+  </script>
+{% endblock %}
