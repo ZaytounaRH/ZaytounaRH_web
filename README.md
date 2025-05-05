@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 # ZaytounaRH Système de Gestion des Ressources Humaines🌿
 
@@ -105,4 +105,3 @@ Les enseignants et encadrants qui nous ont guidés
 =======
 # ZaytounaRH_web
 This is the initial commit for the project.
->>>>>>> origin/mariem_gestion_assurance
