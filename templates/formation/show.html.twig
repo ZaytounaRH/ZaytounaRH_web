@@ -25,22 +25,40 @@
 <div class="card">
     <div class="card-header">
         <h5 class="mb-0">{{ formation.nomFormation }}</h5>
-        <span class="text-muted">#{{ formation.idFormation }}</span>
     </div>
     <div class="card-block">
         <div class="row mb-3">
             <div class="col-md-4">
-                <strong>Description :</strong><br>
+                <strong>🗒️Description :</strong><br>
                 <p>{{ formation.descriptionFormation }}</p>
             </div>
             <div class="col-md-4">
-                <strong>Date de début :</strong><br>
+                <strong>📆 Date de début :</strong><br>
                 <p>{{ formation.dateDebutFormation ? formation.dateDebutFormation|date('d/m/Y') : '—' }}</p>
             </div>
             <div class="col-md-4">
-                <strong>Date de fin :</strong><br>
+                <strong>📆 Date de fin :</strong><br>
                 <p>{{ formation.dateFinFormation ? formation.dateFinFormation|date('d/m/Y') : '—' }}</p>
             </div>
+            <div class="row">
+    <div class="col-md-12">
+        <h6 class="mt-4">👥 Employés inscrits :</h6>
+        {% if formation.employees|length > 0 %}
+            <ul class="list-group list-group-flush">
+                {% for employee in formation.employees %}
+                    <li class="list-group-item">
+                        {{ employee.user.nom }} {{ employee.user.prenom }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="alert alert-info mt-2">
+                Aucun employé n'est encore inscrit à cette formation.
+            </div>
+        {% endif %}
+    </div>
+</div>
+
         </div>
 
         <div class="text-end">

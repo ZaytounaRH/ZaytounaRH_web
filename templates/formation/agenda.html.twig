@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Agenda des formations{% endblock %}
+
+{% block body %}
+<div id="calendar"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'fr',
+            events: "{{ path('employee_agenda_data') }}"
+        });
+
+        calendar.render();
+    });
+</script>
+{% endblock %}

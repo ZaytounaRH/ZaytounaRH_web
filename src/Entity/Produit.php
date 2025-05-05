@@ -42,6 +42,18 @@ class Produit
         $this->produitName = $produitName;
         return $this;
     }
+    private ?string $nomFournisseur = null;
+
+    public function getNomFournisseur(): ?string
+    {
+        return $this->nomFournisseur;
+    }
+
+    public function setNomFournisseur(string $nomFournisseur): self
+    {
+        $this->nomFournisseur = $nomFournisseur;
+        return $this;
+    }
 
     #[ORM\Column(type: 'decimal', nullable: false)]
     private ?float $prix = null;
@@ -57,19 +69,7 @@ class Produit
         return $this;
     }
 
-    #[ORM\Column(name:"produitName",type: 'string', nullable: false)]
-    private ?string $nomFournisseur = null;
-
-    public function getNomFournisseur(): ?string
-    {
-        return $this->nomFournisseur;
-    }
-
-    public function setNomFournisseur(string $nomFournisseur): self
-    {
-        $this->nomFournisseur = $nomFournisseur;
-        return $this;
-    }
+    
 
     #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'produits')]
     #[ORM\JoinColumn(name: 'idFournisseur', referencedColumnName: 'id')]
