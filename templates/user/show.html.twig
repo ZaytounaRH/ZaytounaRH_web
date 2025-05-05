@@ -1,62 +1,91 @@
-{% extends 'base.html.twig' %}
+{% extends 'back.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}User Details{% endblock %}
 
-{% block body %}
-    <h1>User</h1>
+{% block content %}
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>NumTel</th>
-                <td>{{ user.numTel }}</td>
-            </tr>
-            <tr>
-                <th>JoursOuvrables</th>
-                <td>{{ user.joursOuvrables }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ user.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ user.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ user.address }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td>{{ user.gender }}</td>
-            </tr>
-            <tr>
-                <th>DateDeNaissance</th>
-                <td>{{ user.dateDeNaissance ? user.dateDeNaissance|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>User_type</th>
-                <td>{{ user.userType }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
 
-    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                                <!-- Page body start -->
+                                <div class="page-body">
 
-    {{ include('user/_delete_form.html.twig') }}
+                                    <div class="card-header" style="background-color:rgb(46, 147, 205); color: white;">
+                                        <h5>User Details</h5>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Email</th>
+                                                        <td>{{ user.email }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Nom</th>
+                                                        <td>{{ user.nom }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Prénom</th>
+                                                        <td>{{ user.prenom }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Numéro de téléphone</th>
+                                                        <td>{{ user.numTel }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Adresse</th>
+                                                        <td>{{ user.address }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Genre</th>
+                                                        <td>{{ user.gender }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Date de naissance</th>
+                                                        <td>{{ user.dateDeNaissance ? user.dateDeNaissance|date('Y-m-d') : '' }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Type d'utilisateur</th>
+                                                        <td>{{ user.userType }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Jours ouvrables</th>
+                                                        <td>{{ user.joursOuvrables }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="text-right mt-3">
+                                                <a href="{{ path('admin_dashboard') }}" class="btn btn-secondary">Retour</a>
+                                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary">Modifier</a>
+                                                {{ include('user/_delete_form.html.twig') }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- Page body end -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

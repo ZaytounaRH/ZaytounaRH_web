@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ZaytounaRH - Register</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <meta name="keywords" content="bootstrap, admin template, dashboard"/>
+    <meta name="author" content="Codedthemes"/>
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="{{ asset('back/images/favicon.ico') }}" type="image/x-icon">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+
+    <!-- Waves CSS -->
+    <link rel="stylesheet" href="{{ asset('back/pages/waves/css/waves.min.css') }}" type="text/css" media="all">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/bootstrap/css/bootstrap.min.css') }}">
+
+    <!-- Themify Icons -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('back/icon/themify-icons/themify-icons.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/font-awesome-n.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/font-awesome.min.css') }}">
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/style.css') }}">
+</head>
+
+<body themebg-pattern="theme1">
+
+<section class="login-block">
+    <form method="post" action="{{ path('app_register') }}" class="md-float-material form-material">
+
+        {% block body %}
+        <div class="text-center">
+            <img class="img-fluid" src="back/images/Zaytouna.png" alt="Theme-Logo" style="width: 280px; height: auto;"/>
+        </div>
+
+        <div class="auth-box card">
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-12 text-center">
+                        <h3>Sign Up</h3>
+                    </div>
+                </div>
+
+                <!-- Flash Errors -->
+                {% for flash_error in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
+
+                <!-- CSRF token -->
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <!-- Form Fields -->
+                <div class="form-group mb-3">
+                    <label for="prenom" class="form-label">First Name</label>
+                    <input type="text" name="prenom" class="form-control" value="{{ registrationForm.prenom.vars.value }}" required id="prenom">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="nom" class="form-label">Last Name</label>
+                    <input type="text" name="nom" class="form-control" value="{{ registrationForm.nom.vars.value }}" required id="nom">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" value="{{ registrationForm.email.vars.value }}" required id="email">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" name="address" class="form-control" value="{{ registrationForm.address.vars.value }}" required id="address">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="numTel" class="form-label">Phone Number</label>
+                    <input type="text" name="numTel" class="form-control" value="{{ registrationForm.numTel.vars.value }}" required id="numTel">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="plainPassword[first]" class="form-control" required id="password">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" name="plainPassword[second]" class="form-control" required id="confirmPassword">
+                </div>
+
+                <!-- Terms Agreement -->
+                <div class="form-group mb-3">
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                    {{ form_label(registrationForm.agreeTerms) }}
+                    {{ form_errors(registrationForm.agreeTerms) }}
+                </div>
+
+                <!-- reCAPTCHA -->
+                <div class="g-recaptcha mb-3 d-flex justify-content-center" data-sitekey="6LdJBSMrAAAAAFElcdzuDDZsopQKS5Kjxzk-vPgw"></div>
+
+                <!-- Submit Button -->
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Register</button>
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="row">
+                    <div class="col-md-10">
+                        <p class="text-inverse text-left">
+                            <a href="{{ path('app_login') }}">
+                                <b>Already have an account? Login now</b>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <img src="{{ asset('admin-template/assets/images/auth/Logo-small-bottom.png') }}" alt="small-logo.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </form>
+</section>
+
+<!-- JS Files -->
+<script type="text/javascript" src="{{ asset('back/js/jquery/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/js/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('back/pages/waves/js/waves.min.js') }}"></script>
+<script src="{{ asset('back/js/pcoded.min.js') }}"></script>
+<script src="{{ asset('back/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script src="{{ asset('back/js/script.js') }}"></script>
+
+<!-- reCAPTCHA Script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</body>
+</html>
