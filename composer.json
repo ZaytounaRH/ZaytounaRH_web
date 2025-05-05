@@ -11,9 +11,12 @@
         "doctrine/doctrine-bundle": "2.10",
         "doctrine/doctrine-migrations-bundle": "^3.4",
         "doctrine/orm": "2.16",
+<<<<<<< HEAD
         "dompdf/dompdf": "^3.1",
 <<<<<<< HEAD
 
+=======
+>>>>>>> origin/manel_gestion_financiere
         "phpdocumentor/reflection-docblock": "^5.6",
         "phpmailer/phpmailer": "^6.10",
         "phpoffice/phpspreadsheet": "^4.2",

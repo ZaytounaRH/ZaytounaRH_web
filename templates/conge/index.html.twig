@@ -2,6 +2,9 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
 {% block title %}Conge index{% endblock %}
 
 {% block body %}
@@ -16,6 +19,7 @@
                 <th>Motif</th>
                 <th>Statut</th>
                 <th>actions</th>
+<<<<<<< HEAD
 =======
 {% block title %}Liste des Congés{% endblock %}
 
@@ -39,24 +43,34 @@
                 <th>Statut</th>
                 <th>Actions</th>
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/manel_gestion_financiere
             </tr>
         </thead>
         <tbody>
         {% for conge in conges %}
 <<<<<<< HEAD
+<<<<<<< HEAD
             <tr>
 =======
             <tr class="text-center align-middle">
 >>>>>>> origin/ons_gestion_recrutement
+=======
+            <tr>
+>>>>>>> origin/manel_gestion_financiere
                 <td>{{ conge.idConge }}</td>
                 <td>{{ conge.dateDebut ? conge.dateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ conge.dateFin ? conge.dateFin|date('Y-m-d') : '' }}</td>
                 <td>{{ conge.motif }}</td>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
                 <td>{{ conge.statut }}</td>
                 <td>
                     <a href="{{ path('app_conge_show', {'id_conge': conge.id_conge}) }}">show</a>
                     <a href="{{ path('app_conge_edit', {'id_conge': conge.id_conge}) }}">edit</a>
+<<<<<<< HEAD
 =======
                 <td>
                     {% if conge.statut == 'Accepté' %}
@@ -73,19 +87,26 @@
                     </a>
                     
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/manel_gestion_financiere
                 </td>
             </tr>
         {% else %}
             <tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <td colspan="6">no records found</td>
 =======
                 <td colspan="6" class="text-center text-muted">Aucun congé trouvé</td>
 >>>>>>> origin/ons_gestion_recrutement
+=======
+                <td colspan="6">no records found</td>
+>>>>>>> origin/manel_gestion_financiere
             </tr>
         {% endfor %}
         </tbody>
     </table>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     <a href="{{ path('app_conge_new') }}">Create new</a>
@@ -172,3 +193,8 @@
     </script>
 {% endblock %}
 >>>>>>> origin/asma_gestion_presence
+=======
+
+    <a href="{{ path('app_conge_new') }}">Create new</a>
+{% endblock %}
+>>>>>>> origin/manel_gestion_financiere

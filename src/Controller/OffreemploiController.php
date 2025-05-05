@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Symfony\Component\Routing\Attribute\Route;
 =======
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,12 +19,18 @@ use Symfony\Component\Routing\Annotation\Route;
 =======
 use Symfony\Component\Routing\Annotation\Route;
 >>>>>>> origin/asma_gestion_presence
+=======
+use Symfony\Component\Routing\Attribute\Route;
+>>>>>>> origin/manel_gestion_financiere
 
 #[Route('/offreemploi')]
 final class OffreemploiController extends AbstractController
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[Route(name: 'app_offreemploi_index', methods: ['GET'])]
     public function index(OffreemploiRepository $offreemploiRepository): Response
     {
@@ -32,6 +39,7 @@ final class OffreemploiController extends AbstractController
         ]);
     }
 
+<<<<<<< HEAD
 =======
     #[Route(name: 'app_offreemploi_index', methods: ['GET', 'POST'])]
     public function index(Request $request, OffreemploiRepository $offreemploiRepository): Response
@@ -153,6 +161,8 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
     
 
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[Route('/new', name: 'app_offreemploi_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -166,6 +176,7 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
 =======
             return $this->redirectToRoute('app_offreemploi_back_index', [], Response::HTTP_SEE_OTHER);
@@ -173,6 +184,9 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
 =======
             return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
 >>>>>>> origin/asma_gestion_presence
+=======
+            return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
+>>>>>>> origin/manel_gestion_financiere
         }
 
         return $this->render('offreemploi/new.html.twig', [
@@ -200,6 +214,7 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
 =======
             return $this->redirectToRoute('app_offreemploi_back_index', [], Response::HTTP_SEE_OTHER);
@@ -207,6 +222,9 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
 =======
             return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
 >>>>>>> origin/asma_gestion_presence
+=======
+            return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
+>>>>>>> origin/manel_gestion_financiere
         }
 
         return $this->render('offreemploi/edit.html.twig', [
@@ -217,10 +235,14 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[Route('/{idOffre}', name: 'app_offreemploi_delete', methods: ['POST'])]
     public function delete(Request $request, Offreemploi $offreemploi, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$offreemploi->getIdOffre(), $request->getPayload()->getString('_token'))) {
+<<<<<<< HEAD
 =======
 
 
@@ -259,10 +281,13 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
             $entityManager->remove($offreemploi);
             $entityManager->flush();
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
@@ -289,4 +314,8 @@ public function showBack(Offreemploi $offreemploi): Response
         return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
     }
 >>>>>>> origin/asma_gestion_presence
+=======
+        return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
+    }
+>>>>>>> origin/manel_gestion_financiere
 }

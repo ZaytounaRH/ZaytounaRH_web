@@ -40,8 +40,11 @@ class EmployeeType extends AbstractType
         ]);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
     
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 }

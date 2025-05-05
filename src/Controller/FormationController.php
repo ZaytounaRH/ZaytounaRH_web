@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Formation;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Entity\Certification;
 
 =======
@@ -15,12 +16,17 @@ use App\Form\FormationType;
 use App\Repository\FormationRepository;
 use App\Repository\EmployeeRepository;
 
+=======
+use App\Form\FormationType;
+use App\Repository\FormationRepository;
+>>>>>>> origin/manel_gestion_financiere
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -39,10 +45,13 @@ use PHPMailer\PHPMailer\Exception;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 #[Route('/formation')]
 final class FormationController extends AbstractController
 {
     #[Route(name: 'app_formation_index', methods: ['GET'])]
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 public function index(Request $request, FormationRepository $formationRepository, EntityManagerInterface $em): Response
@@ -126,12 +135,15 @@ public function index(Request $request, FormationRepository $formationRepository
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     public function index(FormationRepository $formationRepository): Response
     {
         return $this->render('formation/index.html.twig', [
             'formations' => $formationRepository->findAll(),
         ]);
     }
+<<<<<<< HEAD
     #[Route('/certifications', name: 'app_formation_certif_index', methods: ['GET'])]
     public function indexCertif(FormationRepository $formationRepository): Response
     {
@@ -144,6 +156,8 @@ public function index(Request $request, FormationRepository $formationRepository
 =======
 >>>>>>> origin/asma_gestion_presence
 
+=======
+>>>>>>> origin/manel_gestion_financiere
 
     #[Route('/new', name: 'app_formation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -170,6 +184,7 @@ public function index(Request $request, FormationRepository $formationRepository
     {
         return $this->render('formation/show.html.twig', [
             'formation' => $formation,
+<<<<<<< HEAD
             
         ]);
     }
@@ -211,6 +226,11 @@ public function showCertif(Formation $formation, FormationRepository $formationR
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+        ]);
+    }
+
+>>>>>>> origin/manel_gestion_financiere
     #[Route('/{idFormation}/edit', name: 'app_formation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Formation $formation, EntityManagerInterface $entityManager): Response
     {
@@ -239,6 +259,7 @@ public function showCertif(Formation $formation, FormationRepository $formationR
 
         return $this->redirectToRoute('app_formation_index', [], Response::HTTP_SEE_OTHER);
     }
+<<<<<<< HEAD
     
     #[Route('/formation/employe', name: 'app_formation_par_employe')]
     public function formationsParEmploye(Request $request, EmployeeRepository $employeeRepo): Response
@@ -423,4 +444,6 @@ public function sendSatisfactionEmails(FormationRepository $formationRepo): Resp
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 }

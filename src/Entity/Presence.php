@@ -45,10 +45,14 @@ class Presence
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[ORM\Column(name:"heureArrive",type: 'time', nullable: false)]
     private ?string $heureArrive = null;
 
     public function getHeureArrive(): ?string
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -60,10 +64,13 @@ class Presence
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     {
         return $this->heureArrive;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     public function setHeureArrive(string $heureArrive): self
@@ -73,6 +80,9 @@ class Presence
 =======
     public function setHeureArrive(\DateTimeInterface $heureArrive): self
 >>>>>>> origin/asma_gestion_presence
+=======
+    public function setHeureArrive(string $heureArrive): self
+>>>>>>> origin/manel_gestion_financiere
     {
         $this->heureArrive = $heureArrive;
         return $this;
@@ -80,10 +90,14 @@ class Presence
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[ORM\Column(name:"heureDepart",type: 'time', nullable: false)]
     private ?string $heureDepart = null;
 
     public function getHeureDepart(): ?string
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -95,10 +109,13 @@ class Presence
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     {
         return $this->heureDepart;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     public function setHeureDepart(string $heureDepart): self
@@ -108,6 +125,9 @@ class Presence
 =======
     public function setHeureDepart(\DateTimeInterface $heureDepart): self
 >>>>>>> origin/asma_gestion_presence
+=======
+    public function setHeureDepart(string $heureDepart): self
+>>>>>>> origin/manel_gestion_financiere
     {
         $this->heureDepart = $heureDepart;
         return $this;
@@ -149,6 +169,7 @@ class Presence
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -162,5 +183,7 @@ class Presence
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 
 }

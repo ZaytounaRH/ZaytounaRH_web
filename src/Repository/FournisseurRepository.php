@@ -16,6 +16,7 @@ class FournisseurRepository extends ServiceEntityRepository
         parent::__construct($registry, Fournisseur::class);
     }
 
+<<<<<<< HEAD
     //    /**
     //     * @return Fournisseur[] Returns an array of Fournisseur objects
     //     */
@@ -40,4 +41,28 @@ class FournisseurRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+=======
+    /**
+     * Rechercher des fournisseurs par leur nom.
+     *
+     * @param string $search Le terme de recherche.
+     * @return Fournisseur[] Liste des fournisseurs correspondants.
+     */
+    public function findBySearch(string $search)
+    {
+        $qb = $this->createQueryBuilder('f');
+    
+        // Si un terme de recherche est donné, on ajoute une condition LIKE pour filtrer par nomFournisseur
+        if (!empty($search)) {
+            $qb->andWhere('f.nomFournisseur LIKE :search')
+               ->setParameter('search', '%' . $search . '%');
+        }
+    
+        // Optionnel : Tri des résultats par nom (à ajuster selon ton besoin)
+        $qb->orderBy('f.nomFournisseur', 'ASC');
+    
+        return $qb->getQuery()->getResult();
+    }
+    
+>>>>>>> origin/manel_gestion_financiere
 }

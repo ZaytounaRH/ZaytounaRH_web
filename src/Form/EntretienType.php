@@ -1,11 +1,15 @@
 <?php
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+
+>>>>>>> origin/manel_gestion_financiere
 namespace App\Form;
 
 use App\Entity\Candidat;
@@ -18,6 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -27,6 +32,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 
 class EntretienType extends AbstractType
 {
@@ -35,8 +42,11 @@ class EntretienType extends AbstractType
         $builder
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
             ->add('dateEntretien', null, [
                 'widget' => 'single_text',
             ])
@@ -44,6 +54,9 @@ class EntretienType extends AbstractType
                 'widget' => 'single_text',
             ])
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
             ->add('typeEntretien', ChoiceType::class,[
                 'choices' =>[
                     'Presentiel' =>'PRESENTIEL',
@@ -76,6 +89,7 @@ class EntretienType extends AbstractType
             ])
         ;
     }
+<<<<<<< HEAD
 =======
         ->add('dateEntretien', DateType::class, [
             'widget' => 'single_text',
@@ -166,6 +180,8 @@ class EntretienType extends AbstractType
         ;
     }
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 
     public function configureOptions(OptionsResolver $resolver): void
     {

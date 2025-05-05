@@ -2,6 +2,9 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
 {% block title %}Presence{% endblock %}
 
 {% block body %}
@@ -11,6 +14,7 @@
         <tbody>
             <tr>
                 <th>Id_presence</th>
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -28,6 +32,8 @@
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
                 <td>{{ presence.idPresence }}</td>
             </tr>
             <tr>
@@ -37,12 +43,16 @@
             <tr>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
                 <th>HeureArrive</th>
                 <td>{{ presence.heureArrive ? presence.heureArrive|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>HeureDepart</th>
                 <td>{{ presence.heureDepart ? presence.heureDepart|date('H:i:s') : '' }}</td>
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -63,18 +73,24 @@
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
             </tr>
         </tbody>
     </table>
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     <a href="{{ path('app_presence_index') }}">back to list</a>
 
     <a href="{{ path('app_presence_edit', {'id_presence': presence.id_presence}) }}">edit</a>
 
     {{ include('presence/_delete_form.html.twig') }}
 {% endblock %}
+<<<<<<< HEAD
 =======
     <div class="d-flex gap-2 my-4">
         <a href="{{ path('app_presence_checkin', { id: employee_id }) }}" class="btn btn-success">
@@ -106,3 +122,5 @@
 </div>
 {% endblock %}
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere

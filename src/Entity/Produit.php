@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 namespace App\Entity;
 
@@ -8,6 +9,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 use App\Repository\ProduitRepository;
+=======
+// src/Entity/Produit.php
+
+namespace App\Entity;
+
+use App\Repository\ProduitRepository;
+use Doctrine\ORM\Mapping as ORM;
+>>>>>>> origin/manel_gestion_financiere
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 #[ORM\Table(name: 'produit')]
@@ -18,11 +27,27 @@ class Produit
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
+<<<<<<< HEAD
+=======
+    #[ORM\Column(name: "produitName", type: 'string', nullable: false)]
+    private ?string $produitName = null;
+
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: false)]
+    private ?float $prix = null;
+
+    #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'produits')]
+    #[ORM\JoinColumn(name: 'idFournisseur', referencedColumnName: 'id', nullable: true)]
+    private ?Fournisseur $fournisseur = null;
+
+    
+
+>>>>>>> origin/manel_gestion_financiere
     public function getId(): ?int
     {
         return $this->id;
     }
 
+<<<<<<< HEAD
     public function setId(int $id): self
     {
         $this->id = $id;
@@ -32,6 +57,8 @@ class Produit
     #[ORM\Column(name:"produitName",type: 'string', nullable: false)]
     private ?string $produitName = null;
 
+=======
+>>>>>>> origin/manel_gestion_financiere
     public function getProduitName(): ?string
     {
         return $this->produitName;
@@ -42,6 +69,7 @@ class Produit
         $this->produitName = $produitName;
         return $this;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     private ?string $nomFournisseur = null;
@@ -63,6 +91,8 @@ class Produit
 
     #[ORM\Column(type: 'decimal', nullable: false)]
     private ?float $prix = null;
+=======
+>>>>>>> origin/manel_gestion_financiere
 
     public function getPrix(): ?float
     {
@@ -75,6 +105,7 @@ class Produit
         return $this;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     
@@ -103,6 +134,8 @@ class Produit
     #[ORM\JoinColumn(name: 'idFournisseur', referencedColumnName: 'id')]
     private ?Fournisseur $fournisseur = null;
 
+=======
+>>>>>>> origin/manel_gestion_financiere
     public function getFournisseur(): ?Fournisseur
     {
         return $this->fournisseur;
@@ -114,4 +147,12 @@ class Produit
         return $this;
     }
 
+<<<<<<< HEAD
 }
+=======
+    public function getNomFournisseur(): ?string
+    {
+        return $this->fournisseur ? $this->fournisseur->getNomFournisseur() : null;
+    }
+}
+>>>>>>> origin/manel_gestion_financiere

@@ -11,10 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+=======
+>>>>>>> origin/manel_gestion_financiere
 #[Route('/certification')]
 final class CertificationController extends AbstractController
 {
@@ -82,6 +85,7 @@ final class CertificationController extends AbstractController
 
         return $this->redirectToRoute('app_certification_index', [], Response::HTTP_SEE_OTHER);
     }
+<<<<<<< HEAD
     #[Route('/certification/{idCertif}/pdf', name: 'app_certification_download_pdf')]
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -152,4 +156,6 @@ public function downloadPdf(Certification $certification): Response
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 }

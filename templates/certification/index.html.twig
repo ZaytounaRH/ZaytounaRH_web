@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'back.html.twig' %}
 
 {% block title %}Liste des Certifications{% endblock %}
@@ -66,4 +67,42 @@
     </div>
 </div>
 <!-- Table Card End -->
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}Certification index{% endblock %}
+
+{% block body %}
+    <h1>Certification index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdCertif</th>
+                <th>TitreCertif</th>
+                <th>OrganismeCertif</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for certification in certifications %}
+            <tr>
+                <td>{{ certification.idCertif }}</td>
+                <td>{{ certification.titreCertif }}</td>
+                <td>{{ certification.organismeCertif }}</td>
+                <td>
+                    <a href="{{ path('app_certification_show', {'idCertif': certification.idCertif}) }}">show</a>
+                    <a href="{{ path('app_certification_edit', {'idCertif': certification.idCertif}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_certification_new') }}">Create new</a>
+>>>>>>> origin/manel_gestion_financiere
 {% endblock %}

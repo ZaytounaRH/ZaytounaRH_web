@@ -1,13 +1,25 @@
+<<<<<<< HEAD
 {% extends 'back.html.twig' %}
 
 {% block title %}New Certification{% endblock %}
 
 {% block content %}
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}New Certification{% endblock %}
+
+{% block body %}
+>>>>>>> origin/manel_gestion_financiere
     <h1>Create new Certification</h1>
 
     {{ include('certification/_form.html.twig') }}
 
+<<<<<<< HEAD
     <a href="{{ path('app_certification_index') }}" class="btn btn-secondary btn-sm">
                 <i class="fa fa-arrow-left"></i> Retour
             </a>
+=======
+    <a href="{{ path('app_certification_index') }}">back to list</a>
+>>>>>>> origin/manel_gestion_financiere
 {% endblock %}

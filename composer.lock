@@ -5,7 +5,11 @@
         "This file is @generated automatically"
     ],
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "3d17d17943b42baa6a2bead534cf6b92",
+=======
+    "content-hash": "c1e7eb78ea56a34ef98c5168a73bf09c",
+>>>>>>> origin/manel_gestion_financiere
     "packages": [
         {
             "name": "composer/pcre",

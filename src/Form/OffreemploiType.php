@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -18,6 +19,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 
 class OffreemploiType extends AbstractType
 {
@@ -26,6 +29,7 @@ class OffreemploiType extends AbstractType
         $builder
             ->add('titreOffre')
             ->add('description')
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             ->add('datePublication', null, [
@@ -51,6 +55,11 @@ class OffreemploiType extends AbstractType
                 'widget' => 'single_text',
             ])
 >>>>>>> origin/asma_gestion_presence
+=======
+            ->add('datePublication', null, [
+                'widget' => 'single_text',
+            ])
+>>>>>>> origin/manel_gestion_financiere
             ->add('salaire')
             ->add('statut', ChoiceType::class,[
                 'choices' =>[
@@ -67,12 +76,16 @@ class OffreemploiType extends AbstractType
             ])
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
             ->add('rh', EntityType::class, [
                 'class' => Rh::class,
                 'choice_label' => 'id',
             ])
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
            
@@ -96,6 +109,8 @@ class OffreemploiType extends AbstractType
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
         ;
     }
 

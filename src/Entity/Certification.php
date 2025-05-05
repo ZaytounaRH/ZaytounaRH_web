@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
+<<<<<<< HEAD
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
+=======
+>>>>>>> origin/manel_gestion_financiere
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -32,8 +35,11 @@ class Certification
     }
 
     #[ORM\Column(name:"titreCertif",type: 'string', nullable: false)]
+<<<<<<< HEAD
     #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide.')]
 
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?string $titreCertif = null;
 
     public function getTitreCertif(): ?string
@@ -48,8 +54,11 @@ class Certification
     }
 
     #[ORM\Column(name:"organismeCertif",type: 'string', nullable: false)]
+<<<<<<< HEAD
     #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide.')]
 
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?string $organismeCertif = null;
 
     public function getOrganismeCertif(): ?string
@@ -65,8 +74,11 @@ class Certification
 
     #[ORM\ManyToOne(targetEntity: Formation::class, inversedBy: 'certifications')]
     #[ORM\JoinColumn(name: 'idFormation', referencedColumnName: 'idFormation')]
+<<<<<<< HEAD
     #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide.')]
 
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?Formation $formation = null;
 
     public function getFormation(): ?Formation

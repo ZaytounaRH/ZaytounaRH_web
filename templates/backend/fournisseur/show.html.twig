@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="{{ asset('assets/backend/images/favicon.ico') }}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/pages/waves/css/waves.min.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/style.css') }}">
+    <title>Gestion des Fournisseurs</title>
+</head>
+
+<body>
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-container navbar-wrapper">
+            <nav class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
+                    <a href="index.html">
+                        <img class="img-fluid" src="{{ asset('assets/backend/images/logo.png') }}" alt="Logo" />
+                    </a>
+                    <div class="navbar-container container-fluid">
+                        <ul class="nav-left">
+                            <li>
+                                <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <nav class="pcoded-navbar">
+                        <div class="pcoded-inner-navbar main-menu">
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="active">
+                                    <a href="{{ path('admin_dashboard') }}" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-home"></i></span>
+                                        <span class="pcoded-mtext">Dashboard</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigation-label">Gestion Fournisseur</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                        <span class="pcoded-mtext">Fournisseurs</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li><a href="{{ path('back_fournisseur_index') }}">Liste Fournisseurs</a></li>
+                                        <li><a href="{{ path('back_fournisseur_new') }}">Ajouter Fournisseur</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="pcoded-content">
+                        <div class="page-body">
+                            <h4 class="mb-4">Liste des fournisseurs</h4>
+                            <a href="{{ path('back_fournisseur_new') }}" class="btn btn-primary mb-3">Ajouter un fournisseur</a>
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nom du Fournisseur</th>
+                                        <th>Adresse</th>
+                                        <th>Contact</th>
+                                        <th>Type de Service</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                        <tr>
+                                            <td>{{ fournisseur.id }}</td>
+                                            <td>{{ fournisseur.nomFournisseur }}</td>
+                                            <td>{{ fournisseur.adresse }}</td>
+                                            <td>{{ fournisseur.contact }}</td>
+                                            <td>{{ fournisseur.typeService }}</td>
+                                          
+                                        </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('assets/backend/js/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/backend/pages/waves/js/waves.min.js') }}"></script>
+</body>
+
+</html>

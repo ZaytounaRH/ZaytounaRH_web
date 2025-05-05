@@ -4,6 +4,7 @@ namespace App\Entity;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -15,6 +16,8 @@ use Symfony\Component\Validator\Constraints\Callback;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -31,6 +34,7 @@ class Conge
     #[ORM\Column(type: 'integer')]
     private ?int $id_conge = null;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -82,6 +86,8 @@ private ?\DateTimeInterface $dateFin = null;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     public function getId_conge(): ?int
     {
         return $this->id_conge;
@@ -95,6 +101,7 @@ private ?\DateTimeInterface $dateFin = null;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     #[ORM\Column(name:"dateDebut" ,type: 'date', nullable: false)]
     private ?\DateTimeInterface $dateDebut = null;
 
@@ -102,6 +109,11 @@ private ?\DateTimeInterface $dateFin = null;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+    #[ORM\Column(name:"dateDebut" ,type: 'date', nullable: false)]
+    private ?\DateTimeInterface $dateDebut = null;
+
+>>>>>>> origin/manel_gestion_financiere
     public function getDateDebut(): ?\DateTimeInterface
     {
         return $this->dateDebut;
@@ -115,6 +127,7 @@ private ?\DateTimeInterface $dateFin = null;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     #[ORM\Column(name :"dateFin" ,type: 'date', nullable: false)]
     private ?\DateTimeInterface $dateFin = null;
 
@@ -122,6 +135,11 @@ private ?\DateTimeInterface $dateFin = null;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+    #[ORM\Column(name :"dateFin" ,type: 'date', nullable: false)]
+    private ?\DateTimeInterface $dateFin = null;
+
+>>>>>>> origin/manel_gestion_financiere
     public function getDateFin(): ?\DateTimeInterface
     {
         return $this->dateFin;
@@ -135,6 +153,7 @@ private ?\DateTimeInterface $dateFin = null;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     #[ORM\Column(type: 'string', nullable: false)]
     private ?string $motif = null;
 
@@ -142,6 +161,11 @@ private ?\DateTimeInterface $dateFin = null;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+    #[ORM\Column(type: 'string', nullable: false)]
+    private ?string $motif = null;
+
+>>>>>>> origin/manel_gestion_financiere
     public function getMotif(): ?string
     {
         return $this->motif;
@@ -155,6 +179,7 @@ private ?\DateTimeInterface $dateFin = null;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     #[ORM\Column(type: 'string', nullable: false)]
     private ?string $statut = null;
 
@@ -162,6 +187,11 @@ private ?\DateTimeInterface $dateFin = null;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+    #[ORM\Column(type: 'string', nullable: false)]
+    private ?string $statut = null;
+
+>>>>>>> origin/manel_gestion_financiere
     public function getStatut(): ?string
     {
         return $this->statut;
@@ -175,14 +205,20 @@ private ?\DateTimeInterface $dateFin = null;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[ORM\ManyToOne(targetEntity: Employee::class, inversedBy: 'conges')]
     #[ORM\JoinColumn(name: 'employee_id', referencedColumnName: 'employee_id')]
     private ?Employee $employee = null;
 
+<<<<<<< HEAD
 =======
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     public function getEmployee(): ?Employee
     {
         return $this->employee;
@@ -196,14 +232,20 @@ private ?\DateTimeInterface $dateFin = null;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[ORM\ManyToOne(targetEntity: Rh::class, inversedBy: 'conges')]
     #[ORM\JoinColumn(name: 'rh_id', referencedColumnName: 'rh_id')]
     private ?Rh $rh = null;
 
+<<<<<<< HEAD
 =======
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     public function getRh(): ?Rh
     {
         return $this->rh;
@@ -221,9 +263,13 @@ private ?\DateTimeInterface $dateFin = null;
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+
+>>>>>>> origin/manel_gestion_financiere
 }

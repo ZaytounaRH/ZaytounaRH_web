@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'back.html.twig' %}
 
 {% block title %}New Formation{% endblock %}
@@ -40,4 +41,16 @@
 <a href="{{ path('app_formation_index') }}" class="btn btn-secondary btn-sm">
                 <i class="fa fa-arrow-left"></i> Retour
             </a>
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}New Formation{% endblock %}
+
+{% block body %}
+    <h1>Create new Formation</h1>
+
+    {{ include('formation/_form.html.twig') }}
+
+    <a href="{{ path('app_formation_index') }}">back to list</a>
+>>>>>>> origin/manel_gestion_financiere
 {% endblock %}

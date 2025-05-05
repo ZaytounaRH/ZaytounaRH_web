@@ -4,11 +4,15 @@ namespace App\Form;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
 use App\Entity\Employee;
 use App\Entity\Presence;
 use App\Entity\Rh;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+<<<<<<< HEAD
 =======
 use App\Entity\Presence;
 use Symfony\Component\Form\AbstractType;
@@ -21,6 +25,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -29,6 +35,9 @@ class PresenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     {
         $builder
             ->add('date', null, [
@@ -49,6 +58,7 @@ class PresenceType extends AbstractType
                 'choice_label' => 'id',
             ])
         ;
+<<<<<<< HEAD
 =======
     {
         $builder
@@ -68,12 +78,15 @@ class PresenceType extends AbstractType
             ]);
         }
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Presence::class,
+<<<<<<< HEAD
 <<<<<<< HEAD
         ]);
     }
@@ -110,3 +123,8 @@ public function configureOptions(OptionsResolver $resolver): void
     }
 }
 >>>>>>> origin/asma_gestion_presence
+=======
+        ]);
+    }
+}
+>>>>>>> origin/manel_gestion_financiere

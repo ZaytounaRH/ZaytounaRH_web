@@ -6,6 +6,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -15,6 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 =======
 use Symfony\Component\Validator\Constraints as Assert;
 >>>>>>> origin/asma_gestion_presence
+=======
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
+>>>>>>> origin/manel_gestion_financiere
 use App\Repository\EntretienRepository;
 
 #[ORM\Entity(repositoryClass: EntretienRepository::class)]
@@ -25,6 +31,7 @@ class Entretien
     #[ORM\GeneratedValue]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     #[ORM\Column(name :"idEntretien",type: 'integer')]
 =======
     #[ORM\Column(name: "idEntretien", type: 'integer')]
@@ -32,6 +39,9 @@ class Entretien
 =======
     #[ORM\Column(name: "idEntretien", type: 'integer')]
 >>>>>>> origin/asma_gestion_presence
+=======
+    #[ORM\Column(name :"idEntretien",type: 'integer')]
+>>>>>>> origin/manel_gestion_financiere
     private ?int $idEntretien = null;
 
     public function getIdEntretien(): ?int
@@ -45,6 +55,7 @@ class Entretien
         return $this;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     #[ORM\Column(name:"dateEntretien" ,type: 'date', nullable: false)]
@@ -68,11 +79,17 @@ class Entretien
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+    #[ORM\Column(name:"dateEntretien" ,type: 'date', nullable: false)]
+    private ?\DateTimeInterface $dateEntretien = null;
+
+>>>>>>> origin/manel_gestion_financiere
     public function getDateEntretien(): ?\DateTimeInterface
     {
         return $this->dateEntretien;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     public function setDateEntretien(\DateTimeInterface $dateEntretien): self
@@ -82,16 +99,23 @@ class Entretien
 =======
     public function setDateEntretien(?\DateTimeInterface $dateEntretien): self
 >>>>>>> origin/asma_gestion_presence
+=======
+    public function setDateEntretien(\DateTimeInterface $dateEntretien): self
+>>>>>>> origin/manel_gestion_financiere
     {
         $this->dateEntretien = $dateEntretien;
         return $this;
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[ORM\Column(name: "heureEntretien", type: 'datetime', nullable: false)]
     private ?\DateTime $heureEntretien = null;
     
     public function getHeureEntretien(): ?\DateTime
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -105,10 +129,13 @@ class Entretien
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     {
         return $this->heureEntretien;
     }
     
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     public function setHeureEntretien(\DateTime $heureEntretien): self
@@ -118,11 +145,15 @@ class Entretien
 =======
     public function setHeureEntretien(?\DateTimeInterface $heureEntretien): self
 >>>>>>> origin/asma_gestion_presence
+=======
+    public function setHeureEntretien(\DateTime $heureEntretien): self
+>>>>>>> origin/manel_gestion_financiere
     {
         $this->heureEntretien = $heureEntretien;
         return $this;
     }
     
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -135,6 +166,10 @@ class Entretien
     #[ORM\Column(name:"typeEntretien", type: 'string', nullable: false)]
     #[Assert\NotBlank(message: "Le type d'entretien est requis.")]
 >>>>>>> origin/asma_gestion_presence
+=======
+
+    #[ORM\Column(name:"typeEntretien" ,type: 'string', nullable: false)]
+>>>>>>> origin/manel_gestion_financiere
     private ?string $typeEntretien = null;
 
     public function getTypeEntretien(): ?string
@@ -149,6 +184,7 @@ class Entretien
     }
 
     #[ORM\Column(type: 'string', nullable: false)]
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     private ?string $statut = null;
@@ -166,6 +202,9 @@ class Entretien
     )]
     private ?string $statut = 'EN_COURS';
 >>>>>>> origin/asma_gestion_presence
+=======
+    private ?string $statut = null;
+>>>>>>> origin/manel_gestion_financiere
 
     public function getStatut(): ?string
     {
@@ -181,6 +220,7 @@ class Entretien
     #[ORM\Column(type: 'text', nullable: true)]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -192,6 +232,8 @@ class Entretien
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?string $commentaire = null;
 
     public function getCommentaire(): ?string
@@ -209,12 +251,15 @@ class Entretien
     #[ORM\JoinColumn(name: 'candidat_id', referencedColumnName: 'candidat_id')]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     #[Assert\NotNull(message: "Le candidat est requis pour cet entretien.")]
 >>>>>>> origin/ons_gestion_recrutement
 =======
     #[Assert\NotNull(message: "Le candidat est requis pour cet entretien.")]
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?Candidat $candidat = null;
 
     public function getCandidat(): ?Candidat
@@ -232,12 +277,15 @@ class Entretien
     #[ORM\JoinColumn(name: 'idOffre', referencedColumnName: 'idOffre')]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     #[Assert\NotNull(message: "L'offre d'emploi est requise.")]
 >>>>>>> origin/ons_gestion_recrutement
 =======
     #[Assert\NotNull(message: "L'offre d'emploi est requise.")]
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?Offreemploi $offreemploi = null;
 
     public function getOffreemploi(): ?Offreemploi
@@ -252,9 +300,13 @@ class Entretien
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+
+>>>>>>> origin/manel_gestion_financiere
 }

@@ -10,11 +10,14 @@ use App\Enum\StatutOffreemploi;
 use App\Repository\OffreemploiRepository;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Symfony\Component\Validator\Constraints as Assert;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 
 #[ORM\Entity(repositoryClass: OffreemploiRepository::class)]
 #[ORM\Table(name: 'offreemploi')]
@@ -40,6 +43,7 @@ class Offreemploi
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     #[ORM\Column(name:"titreOffre",type: 'string', nullable: false)]
     private ?string $titreOffre = null;
@@ -60,6 +64,11 @@ class Offreemploi
     #[ORM\Column(name:"titreOffre",type: 'string', nullable: false)]
     private ?string $titreOffre = null;
 >>>>>>> origin/asma_gestion_presence
+=======
+
+    #[ORM\Column(name:"titreOffre",type: 'string', nullable: false)]
+    private ?string $titreOffre = null;
+>>>>>>> origin/manel_gestion_financiere
 
     public function getTitreOffre(): ?string
     {
@@ -73,12 +82,16 @@ class Offreemploi
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 
     #[ORM\Column(type: 'text', nullable: false)]
     private ?string $description = null;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     #[ORM\Column(type: 'text', nullable: false)]
@@ -96,6 +109,8 @@ class Offreemploi
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     public function getDescription(): ?string
     {
         return $this->description;
@@ -107,6 +122,7 @@ class Offreemploi
         return $this;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     #[ORM\Column(name:"datePublication",type: 'date', nullable: false)]
@@ -128,6 +144,10 @@ class Offreemploi
     #[ORM\Column(name:"datePublication",type: 'date', nullable: false)]
     private ?\DateTimeInterface $datePublication = null;
 >>>>>>> origin/asma_gestion_presence
+=======
+    #[ORM\Column(name:"datePublication",type: 'date', nullable: false)]
+    private ?\DateTimeInterface $datePublication = null;
+>>>>>>> origin/manel_gestion_financiere
 
     public function getDatePublication(): ?\DateTimeInterface
     {
@@ -140,6 +160,7 @@ class Offreemploi
         return $this;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     #[ORM\Column(type: 'float', nullable: false)]
@@ -157,6 +178,10 @@ private ?float $salaire = null;
     #[ORM\Column(type: 'float', nullable: false)]
     private ?float $salaire = null;
 >>>>>>> origin/asma_gestion_presence
+=======
+    #[ORM\Column(type: 'float', nullable: false)]
+    private ?float $salaire = null;
+>>>>>>> origin/manel_gestion_financiere
 
     public function getSalaire(): ?float
     {
@@ -170,6 +195,7 @@ private ?float $salaire = null;
     }
 
     #[ORM\Column(type: 'string', nullable: false)]
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     private ?string $statut = null;
@@ -186,6 +212,9 @@ private ?float $salaire = null;
 =======
     private ?string $statut = null;
 >>>>>>> origin/asma_gestion_presence
+=======
+    private ?string $statut = null;
+>>>>>>> origin/manel_gestion_financiere
 
     public function getStatut(): ?string
     {
@@ -198,6 +227,7 @@ private ?float $salaire = null;
         return $this;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -222,6 +252,8 @@ private ?float $salaire = null;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[ORM\ManyToOne(targetEntity: Rh::class, inversedBy: 'offreemplois')]
     #[ORM\JoinColumn(name: 'idRH', referencedColumnName: 'rh_id')]
     private ?Rh $rh = null;
