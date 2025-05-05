@@ -1,7 +1,6 @@
-# Étape 1 : Utiliser l'image officielle PHP avec Apache
 FROM php:8.2-apache
 
-# Étape 2 : Installer les dépendances système et extensions PHP nécessaires à Symfony
+# Installer les paquets système nécessaires
 RUN apt-get update && apt-get install -y \
     unzip \
     git \
@@ -9,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libzip-dev \
     libonig-dev \
+    zip \
+    curl \
     && docker-php-ext-install \
     intl \
     pdo \
@@ -18,29 +19,30 @@ RUN apt-get update && apt-get install -y \
     xml \
     opcache
 
-# Étape 3 : Activer le module Apache rewrite (utile pour Symfony routes)
+# Activer mod_rewrite Apache
 RUN a2enmod rewrite
 
-# Étape 4 : Installer Composer
+# Installer Composer via image officielle
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-# Étape 5 : Définir le répertoire de travail
+# Définir le dossier de travail
 WORKDIR /var/www/html
 
-# Étape 6 : Copier les fichiers nécessaires pour installer les dépendances
+# Copier les fichiers composer
 COPY composer.json composer.lock ./
 
-# Étape 7 : Installer les dépendances PHP (en production)
-RUN composer install --no-dev --optimize-autoloader
+# Debug : Lister le contenu avant installation
+RUN ls -la && composer validate
 
-# Étape 8 : Copier tout le reste du code de l'application
+# Installer les dépendances PHP
+RUN composer install --no-dev --optimize-autoloader || (cat /var/www/html/composer.json && false)
+
+# Copier tout le projet
 COPY . .
 
-# Étape 9 : Définir les permissions pour les dossiers nécessaires
+# Créer et autoriser les bons droits
 RUN mkdir -p var && chown -R www-data:www-data var
 
-# Étape 10 : Exposer le port utilisé par Apache
 EXPOSE 80
 
-# Étape 11 : Lancer Apache au démarrage du conteneur
 CMD ["apache2-foreground"]
