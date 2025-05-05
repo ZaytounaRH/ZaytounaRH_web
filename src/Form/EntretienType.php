@@ -1,8 +1,11 @@
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 namespace App\Form;
 
 use App\Entity\Candidat;
@@ -14,6 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -21,6 +25,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 
 class EntretienType extends AbstractType
 {
@@ -28,12 +34,16 @@ class EntretienType extends AbstractType
     {
         $builder
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/asma_gestion_presence
             ->add('dateEntretien', null, [
                 'widget' => 'single_text',
             ])
             ->add('heureEntretien', null, [
                 'widget' => 'single_text',
             ])
+<<<<<<< HEAD
             ->add('typeEntretien', ChoiceType::class,[
                 'choices' =>[
                     'Presentiel' =>'PRESENTIEL',
@@ -122,13 +132,40 @@ class EntretienType extends AbstractType
                 'required' => true,
             ])
 
+=======
+            ->add('typeEntretien', ChoiceType::class, [
+                'choices' => [
+                    'Presentiel' => 'PRESENTIEL',
+                    'Distanciel' => 'DISTANCIEL',
+                    'Telephonique' => 'TELEPHONIQUE'
+                ],
+                'label' => 'Type'
+            ])
+            ->add('statut', ChoiceType::class, [
+                'choices' => [
+                    'En cours' => 'En cours', // Fixer le statut à "En cours"
+                ],
+                'data' => 'En cours', // Définir "En cours" par défaut
+                'label' => 'Statut',
+            ])
+            ->add('commentaire')
+            ->add('candidat', EntityType::class, [
+                'class' => Candidat::class,
+                'choice_label' => 'id',
+            ])
+>>>>>>> origin/asma_gestion_presence
             ->add('offreemploi', EntityType::class, [
                 'class' => Offreemploi::class,
                 'choice_label' => 'titreOffre', // Afficher le titre de l'offre d'emploi
                 'label' => 'Offre d\'emploi', // Optionnel, mais utile pour la lisibilité
             ])
+<<<<<<< HEAD
             ;    }
 >>>>>>> origin/ons_gestion_recrutement
+=======
+        ;
+    }
+>>>>>>> origin/asma_gestion_presence
 
     public function configureOptions(OptionsResolver $resolver): void
     {

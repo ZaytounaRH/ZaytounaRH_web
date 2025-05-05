@@ -10,11 +10,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Symfony\Component\Routing\Attribute\Route;
 =======
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 >>>>>>> origin/ons_gestion_recrutement
+=======
+use Symfony\Component\Routing\Attribute\Route;
+>>>>>>> origin/asma_gestion_presence
 
 #[Route('/entretien')]
 final class EntretienController extends AbstractController
@@ -23,11 +27,15 @@ final class EntretienController extends AbstractController
     public function index(EntretienRepository $entretienRepository): Response
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/asma_gestion_presence
         return $this->render('entretien/index.html.twig', [
             'entretiens' => $entretienRepository->findAll(),
         ]);
     }
 
+<<<<<<< HEAD
 =======
        // Vous pouvez trier les entretiens par l'offre d'emploi
     $entretiens = $entretienRepository->findBy(
@@ -64,6 +72,8 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
 
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
     #[Route('/new', name: 'app_entretien_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -72,6 +82,7 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             /** @var UploadedFile $cvFile */
@@ -96,6 +107,13 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
             $entityManager->flush();
 
             return $this->redirectToRoute('app_entretien_index', [], Response::HTTP_SEE_OTHER);
+=======
+            $entityManager->persist($entretien);
+            $entityManager->flush();
+
+            // ✅ Redirige vers la page de remerciement après la soumission
+            return $this->redirectToRoute('app_entretien_merci', [], Response::HTTP_SEE_OTHER);
+>>>>>>> origin/asma_gestion_presence
         }
 
         return $this->render('entretien/new.html.twig', [
@@ -134,16 +152,21 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
     public function delete(Request $request, Entretien $entretien, EntityManagerInterface $entityManager): Response
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if ($this->isCsrfTokenValid('delete'.$entretien->getIdEntretien(), $request->getPayload()->getString('_token'))) {
 =======
         if ($this->isCsrfTokenValid('delete' . $entretien->getIdEntretien(), $request->get('_token'))) {
 >>>>>>> origin/ons_gestion_recrutement
+=======
+        if ($this->isCsrfTokenValid('delete' . $entretien->getIdEntretien(), $request->getPayload()->getString('_token'))) {
+>>>>>>> origin/asma_gestion_presence
             $entityManager->remove($entretien);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('app_entretien_index', [], Response::HTTP_SEE_OTHER);
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -162,4 +185,12 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
         return $this->redirectToRoute('app_entretien_index'); // Ou autre route selon ton système
     }
 >>>>>>> origin/ons_gestion_recrutement
+=======
+
+    #[Route('/entretien/merci', name: 'app_entretien_merci', methods: ['GET'])]
+    public function merci(): Response
+    {
+        return $this->render('entretien/merci.html.twig');
+    }
+>>>>>>> origin/asma_gestion_presence
 }

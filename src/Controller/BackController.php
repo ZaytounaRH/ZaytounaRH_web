@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Repository\FormationRepository;
 use App\Repository\OffreemploiRepository;
 use App\Repository\EntretienRepository;
@@ -40,6 +41,8 @@ class BackController extends AbstractController
 
     }
 =======
+=======
+>>>>>>> origin/asma_gestion_presence
 
 class BackController extends AbstractController
 {
@@ -48,6 +51,9 @@ public function index(): Response
 {
     return $this->render('back/index.html.twig');
 }
+<<<<<<< HEAD
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 
 }

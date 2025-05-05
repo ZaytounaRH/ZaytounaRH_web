@@ -39,4 +39,9 @@ class EmployeeType extends AbstractType
             'data_class' => Employee::class,
         ]);
     }
+<<<<<<< HEAD
+=======
+
+    
+>>>>>>> origin/asma_gestion_presence
 }

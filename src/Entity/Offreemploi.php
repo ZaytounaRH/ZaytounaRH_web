@@ -9,9 +9,12 @@ use Doctrine\Common\Collections\Collection;
 use App\Enum\StatutOffreemploi;
 use App\Repository\OffreemploiRepository;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Symfony\Component\Validator\Constraints as Assert;
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 
 #[ORM\Entity(repositoryClass: OffreemploiRepository::class)]
 #[ORM\Table(name: 'offreemploi')]
@@ -36,6 +39,7 @@ class Offreemploi
         return $this;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     #[ORM\Column(name:"titreOffre",type: 'string', nullable: false)]
     private ?string $titreOffre = null;
@@ -51,6 +55,11 @@ class Offreemploi
     private ?string $titreOffre = null;
     
 >>>>>>> origin/ons_gestion_recrutement
+=======
+
+    #[ORM\Column(name:"titreOffre",type: 'string', nullable: false)]
+    private ?string $titreOffre = null;
+>>>>>>> origin/asma_gestion_presence
 
     public function getTitreOffre(): ?string
     {
@@ -63,10 +72,14 @@ class Offreemploi
         return $this;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/asma_gestion_presence
 
     #[ORM\Column(type: 'text', nullable: false)]
     private ?string $description = null;
 
+<<<<<<< HEAD
 =======
     #[ORM\Column(type: 'text', nullable: false)]
     #[Assert\NotBlank(message: "La description est requise.")]
@@ -81,6 +94,8 @@ class Offreemploi
 
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
     public function getDescription(): ?string
     {
         return $this->description;
@@ -92,6 +107,7 @@ class Offreemploi
         return $this;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     #[ORM\Column(name:"datePublication",type: 'date', nullable: false)]
     private ?\DateTimeInterface $datePublication = null;
@@ -108,6 +124,10 @@ class Offreemploi
     private ?\DateTimeInterface $datePublication = null;
     
 >>>>>>> origin/ons_gestion_recrutement
+=======
+    #[ORM\Column(name:"datePublication",type: 'date', nullable: false)]
+    private ?\DateTimeInterface $datePublication = null;
+>>>>>>> origin/asma_gestion_presence
 
     public function getDatePublication(): ?\DateTimeInterface
     {
@@ -121,6 +141,7 @@ class Offreemploi
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     #[ORM\Column(type: 'float', nullable: false)]
     private ?float $salaire = null;
 =======
@@ -132,6 +153,10 @@ private ?float $salaire = null;
 
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+    #[ORM\Column(type: 'float', nullable: false)]
+    private ?float $salaire = null;
+>>>>>>> origin/asma_gestion_presence
 
     public function getSalaire(): ?float
     {
@@ -146,6 +171,7 @@ private ?float $salaire = null;
 
     #[ORM\Column(type: 'string', nullable: false)]
 <<<<<<< HEAD
+<<<<<<< HEAD
     private ?string $statut = null;
 =======
     #[Assert\NotBlank(message: "Le statut de l'offre est requis.")]
@@ -157,6 +183,9 @@ private ?float $salaire = null;
     
     
 >>>>>>> origin/ons_gestion_recrutement
+=======
+    private ?string $statut = null;
+>>>>>>> origin/asma_gestion_presence
 
     public function getStatut(): ?string
     {
@@ -169,6 +198,7 @@ private ?float $salaire = null;
         return $this;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -190,6 +220,8 @@ private ?float $salaire = null;
  
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
     #[ORM\ManyToOne(targetEntity: Rh::class, inversedBy: 'offreemplois')]
     #[ORM\JoinColumn(name: 'idRH', referencedColumnName: 'rh_id')]
     private ?Rh $rh = null;

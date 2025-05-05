@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 {% block title %}Presence{% endblock %}
 
 {% block body %}
@@ -11,6 +12,8 @@
             <tr>
                 <th>Id_presence</th>
 =======
+=======
+>>>>>>> origin/asma_gestion_presence
 {% block title %}Détail de la Présence{% endblock %}
 
 {% block body %}
@@ -21,7 +24,10 @@
         <tbody>
             <tr>
                 <th>ID</th>
+<<<<<<< HEAD
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
                 <td>{{ presence.idPresence }}</td>
             </tr>
             <tr>
@@ -30,6 +36,7 @@
             </tr>
             <tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <th>HeureArrive</th>
                 <td>{{ presence.heureArrive ? presence.heureArrive|date('H:i:s') : '' }}</td>
             </tr>
@@ -37,6 +44,8 @@
                 <th>HeureDepart</th>
                 <td>{{ presence.heureDepart ? presence.heureDepart|date('H:i:s') : '' }}</td>
 =======
+=======
+>>>>>>> origin/asma_gestion_presence
                 <th>Heure d'arrivée</th>
                 <td>{{ presence.heureArrive ? presence.heureArrive|date('H:i:s') : '' }}</td>
             </tr>
@@ -50,11 +59,15 @@
                         <span class="badge bg-warning text-dark">⏳ En attente</span>
                     {% endif %}
                 </td>
+<<<<<<< HEAD
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
             </tr>
         </tbody>
     </table>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     <a href="{{ path('app_presence_index') }}">back to list</a>
 
@@ -74,12 +87,22 @@
 
 
 
+=======
+    <div class="d-flex gap-2 my-4">
+        
+>>>>>>> origin/asma_gestion_presence
         <a href="{{ path('app_presence_index') }}" class="btn btn-outline-secondary">
             🔙 Retour à la liste
         </a>
     </div>
 
     {{ include('presence/_delete_form.html.twig') }}
+<<<<<<< HEAD
 </div>
 {% endblock %}
 >>>>>>> origin/ons_gestion_recrutement
+=======
+
+</div>
+{% endblock %}
+>>>>>>> origin/asma_gestion_presence

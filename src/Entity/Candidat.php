@@ -1,8 +1,11 @@
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -20,14 +23,20 @@ class Candidat
     #[ORM\Column(type: 'integer')]
     private ?int $candidat_id = null;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
     // Utilise getId() pour récupérer l'ID
 >>>>>>> origin/ons_gestion_recrutement
+=======
+
+    // Utilise getId() pour récupérer l'ID
+>>>>>>> origin/asma_gestion_presence
     public function getId(): ?int
     {
         return $this->candidat_id;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     public function getCandidat_id(): ?int
     {
@@ -41,6 +50,8 @@ class Candidat
     }
 =======
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'candidats')]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id')]
@@ -85,11 +96,14 @@ class Candidat
     public function getEntretiens(): Collection
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (!$this->entretiens instanceof Collection) {
             $this->entretiens = new ArrayCollection();
         }
 =======
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
         return $this->entretiens;
     }
 
@@ -107,6 +121,7 @@ class Candidat
         return $this;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public function getCandidatId(): ?int
     {
@@ -117,3 +132,6 @@ class Candidat
 =======
 }
 >>>>>>> origin/ons_gestion_recrutement
+=======
+}
+>>>>>>> origin/asma_gestion_presence
