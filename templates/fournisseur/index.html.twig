@@ -1,0 +1,44 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h4 class="mb-4">Liste des fournisseurs</h4>
+    
+    <a href="{{ path('back_fournisseur_new') }}" class="btn btn-primary mb-3">Ajouter un fournisseur</a>
+    <a href="{{ path('back_fournisseur_index') }}?download=pdf" class="btn btn-secondary mb-3">Télécharger la liste en PDF</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom du Fournisseur</th>
+                <th>Adresse</th>
+                <th>Contact</th>
+                <th>Type de Service</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fournisseur in fournisseurs %}
+                <tr>
+                    <td>{{ fournisseur.id }}</td>
+                    <td>{{ fournisseur.nomFournisseur }}</td>
+                    <td>{{ fournisseur.adresse }}</td>
+                    <td>{{ fournisseur.contact }}</td>
+                    <td>{{ fournisseur.typeService }}</td>
+                    <td>
+                        <a href="{{ path('back_fournisseur_show', {'id': fournisseur.id}) }}" class="btn btn-info btn-sm">Voir</a>
+                        <a href="{{ path('back_fournisseur_edit', {'id': fournisseur.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                        <form action="{{ path('back_fournisseur_delete', {'id': fournisseur.id}) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce fournisseur ?')">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ fournisseur.id) }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">Aucun fournisseur trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

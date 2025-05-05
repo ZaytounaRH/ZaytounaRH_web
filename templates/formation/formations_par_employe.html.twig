@@ -1,0 +1,202 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formations{% endblock %}
+
+{% block body %}
+
+<section class="page-title" style="background: #28c745; padding: 60px 0;">
+  <div class="container">
+    <h2 class="text-white fw-bold">Formations</h2>
+       
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <form method="get" action="{{ path('app_formation_par_employe') }}" class="mb-5">
+      <label for="employeeSelect" class="form-label">Sélectionner un employé :</label>
+      <select id="employeeSelect" name="employee_id" class="form-select" onchange="this.form.submit()">
+        <option value="">-- Choisir --</option>
+        {% for emp in employees %}
+          <option value="{{ emp.employeeId }}" {{ emp.employeeId == selectedEmployeeId ? 'selected' : '' }}>
+            {{ emp.user.nom }} {{ emp.user.prenom }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
+
+
+    {% if formations is not empty %}
+      <div class="row">
+<!-- Boutons sous la sélection -->
+    <div class="d-flex gap-2 flex-wrap mb-4">
+      <a class="btn btn-outline-success" id="viewFavoritesBtn">❤ Mes Favoris</a>
+<a class="btn btn-outline-success" href="{{ path('employee_agenda', {'employee_id': selectedEmployeeId}) }}">🗓 Agenda</a>
+
+      <div class="dropdown">
+        <button class="btn btn-outline-success dropdown-toggle" type="button" id="filterRatingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          🎯 Filtrer
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="filterRatingDropdown">
+          <li><a class="dropdown-item" href="#" id="filterBest">⭐ Formations les mieux notées</a></li>
+          <li><a class="dropdown-item" href="#" id="filterWorst">⭐ Formations les moins notées</a></li>
+        </ul>
+      </div>
+
+      <button class="btn btn-outline-success" id="resetFiltersBtn">🔄 Réinitialiser</button>
+    </div>
+        {% for formation in formations %}
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm border rounded p-3">
+            
+<h5 class="card-title text-primary d-flex justify-content-between align-items-center">
+    {{ formation.nomFormation }}
+     <div class="d-flex align-items-center">
+<i class="far fa-heart favorite-icon me-2" data-id="{{ formation.idFormation }}" style="cursor: pointer; color: red; font-size: 20px;"></i>
+        <div class="rating-stars" data-id="{{ formation.idFormation }}">
+            {% for i in 1..5 %}
+                <i class="fas fa-star star" data-star="{{ i }}" style="cursor: pointer; color: lightgray;"></i>
+            {% endfor %}
+        </div>
+    </div>
+</h5>
+              
+              <p class="card-text">
+                <strong>Description :</strong> {{ formation.descriptionFormation }}<br>
+                <strong>Date :</strong> {{ formation.dateDebutFormation|date('Y-m-d') }}
+              </p>
+              <a href="{{ path('app_formation_certif_show', {'idFormation': formation.idFormation}) }}" class="btn btn-outline-success mt-auto">
+                Voir Certificat
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% elseif selectedEmployeeId %}
+      <div class="alert alert-info">Aucune formation trouvée pour cet employé.</div>
+    {% endif %}
+
+  </div>
+</section>
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Favoris (existant) ---
+    function updateHearts() {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        document.querySelectorAll('.favorite-icon').forEach(icon => {
+            if (favorites.includes(icon.dataset.id)) {
+               icon.classList.remove('far');
+            icon.classList.add('fas'); // Rempli
+               
+            } else {
+                 icon.classList.remove('fas');
+            icon.classList.add('far'); // Vide
+            }
+        });
+    }
+
+    document.querySelectorAll('.favorite-icon').forEach(icon => {
+        icon.addEventListener('click', function() {
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const id = this.dataset.id;
+            if (favorites.includes(id)) {
+                favorites = favorites.filter(favId => favId !== id);
+            } else {
+                favorites.push(id);
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateHearts();
+        });
+    });
+
+   document.getElementById('viewFavoritesBtn').addEventListener('click', function() {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    document.querySelectorAll('.card').forEach(card => {
+        const id = card.querySelector('.favorite-icon').dataset.id;
+        const col = card.closest('.col-md-6.col-lg-4');
+        if (!favorites.includes(id)) {
+            col.style.display = 'none';
+        } else {
+            col.style.display = 'block';
+        }
+    });
+});
+
+    updateHearts();
+
+    // --- Nouveau : Gestion du Rating ---
+    function updateStars() {
+        const ratings = JSON.parse(localStorage.getItem('ratings')) || {};
+        document.querySelectorAll('.rating-stars').forEach(ratingDiv => {
+            const id = ratingDiv.dataset.id;
+            const rating = ratings[id] || 0;
+            ratingDiv.querySelectorAll('.star').forEach(star => {
+                const starValue = parseInt(star.dataset.star);
+                if (starValue <= rating) {
+                    star.style.color = 'gold'; // Remplir étoiles dorées
+                } else {
+                    star.style.color = 'lightgray'; // Étoiles vides
+                }
+            });
+        });
+    }
+
+    document.querySelectorAll('.rating-stars .star').forEach(star => {
+        star.addEventListener('click', function() {
+            const parent = this.closest('.rating-stars');
+            const id = parent.dataset.id;
+            const rating = parseInt(this.dataset.star);
+
+            let ratings = JSON.parse(localStorage.getItem('ratings')) || {};
+            ratings[id] = rating;
+
+            localStorage.setItem('ratings', JSON.stringify(ratings));
+            updateStars();
+        });
+    });
+
+    updateStars();
+});
+
+// --- Gestion du filtre formations notées ---
+ document.getElementById('filterBest').addEventListener('click', function() {
+        let ratings = JSON.parse(localStorage.getItem('ratings')) || {};
+        document.querySelectorAll('.card').forEach(card => {
+            const id = card.querySelector('.favorite-icon').dataset.id;
+            const rating = ratings[id] || 0;
+            const col = card.closest('.col-md-6.col-lg-4');
+            col.style.display = (rating >= 4) ? 'block' : 'none';
+        });
+    });
+
+document.getElementById('filterWorst').addEventListener('click', function() {
+        let ratings = JSON.parse(localStorage.getItem('ratings')) || {};
+        document.querySelectorAll('.card').forEach(card => {
+            const id = card.querySelector('.favorite-icon').dataset.id;
+            const rating = ratings[id] || 0;
+            const col = card.closest('.col-md-6.col-lg-4');
+            col.style.display = (rating <= 3) ? 'block' : 'none';
+        });
+    });
+    
+// --- Bouton Reset Filtres ---
+document.getElementById('resetFiltersBtn').addEventListener('click', function() {
+    document.querySelectorAll('.card').forEach(card => {
+        const col = card.closest('.col-md-6.col-lg-4');
+        if (col) {
+            col.style.display = 'block'; // Réafficher toutes les colonnes
+        }
+    });
+});
+
+</script>
+
+
+{%endblock%}

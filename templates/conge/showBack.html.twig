@@ -1,0 +1,63 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Détails du Congé{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center text-info mb-4">Détails du Congé</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th scope="row">ID</th>
+                        <td>{{ conge.idConge }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Date Début</th>
+                        <td>{{ conge.dateDebut ? conge.dateDebut|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Date Fin</th>
+                        <td>{{ conge.dateFin ? conge.dateFin|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Motif</th>
+                        <td>{{ conge.motif }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Statut</th>
+                        <td>
+                            {% if conge.statut == 'Accepté' %}
+                                <span class="badge bg-success">Accepté</span>
+                            {% elseif conge.statut == 'Refusé' %}
+                                <span class="badge bg-danger">Refusé</span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark">En attente</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="mt-4 d-flex justify-content-between">
+                <a href="{{ path('app_conge_indexback') }}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Retour à la liste
+                </a>
+                <a href="{{ path('app_conge_edit', { id_conge: conge.idConge }) }}" class="btn btn-outline-primary me-2">
+                <i class="bi bi-pencil-square"></i> Modifier
+                </a>
+
+
+
+                <div>
+                    
+                    {{ include('conge/_delete_form.html.twig') }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

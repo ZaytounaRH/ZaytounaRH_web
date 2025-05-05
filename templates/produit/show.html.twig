@@ -1,0 +1,70 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Détail du Produit{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Détail du Produit</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="{{ path('back_produit_index') }}">Produits</a></li>
+                    <li class="breadcrumb-item active">Détail</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">{{ produit.produitName }}</h5>
+    </div>
+    <div class="card-block">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>🆔 ID :</strong><br>
+                <p>{{ produit.id }}</p>
+            </div>
+            <div class="col-md-4">
+                <strong>📦 Nom du Produit :</strong><br>
+                <p>{{ produit.produitName }}</p>
+            </div>
+            <div class="col-md-4">
+                <strong>💰 Prix :</strong><br>
+                <p>{{ produit.prix }} €</p>
+            </div>
+            <div class="col-md-4">
+                <strong>🏢 Fournisseur :</strong><br>
+                <p>
+                    {% if produit.fournisseur %}
+                        {{ produit.fournisseur.nomFournisseur }}
+                    {% else %}
+                        <span class="text-muted">Non spécifié</span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="text-end d-flex justify-content-end gap-2">
+            <a href="{{ path('back_produit_index') }}" class="btn btn-secondary btn-sm">
+                <i class="fa fa-arrow-left"></i> Retour
+            </a>
+            <a href="{{ path('back_produit_edit', {'id': produit.id}) }}" class="btn btn-primary btn-sm">
+                <i class="fa fa-edit"></i> Modifier
+            </a>
+            <form action="{{ path('back_produit_delete', {'id': produit.id}) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
+                <button type="submit" class="btn btn-danger btn-sm">
+                    <i class="fa fa-trash"></i> Supprimer
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

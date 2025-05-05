@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Commande #{{ commande.id }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .content {
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>Détail de la Commande #{{ commande.id }}</h1>
+    </div>
+
+    <div class="content">
+        <table>
+            <tr>
+                <th>Date</th>
+                <td>{{ commande.dateCommande|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Quantité</th>
+                <td>{{ commande.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ commande.statutCommande }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ commande.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ commande.prixCommande }} TND</td>
+            </tr>
+            <tr>
+                <th>Fournisseur</th>
+                <td>{{ commande.fournisseur.nomFournisseur }}</td>
+
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

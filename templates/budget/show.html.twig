@@ -1,0 +1,97 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Détails du Budget{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Détails du Budget</h5>
+                    <p class="m-b-0">Consultez les informations détaillées du budget sélectionné</p>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_back_budget_index') }}">Budgets</a>
+                    </li>
+                    <li class="breadcrumb-item active">Détails du Budget</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Informations du Budget</h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ budget.id }}</td>
+                </tr>
+                <tr>
+                    <th>Montant Alloué</th>
+                    <td>{{ budget.montantAlloue }} DT</td>
+                </tr>
+                <tr>
+                    <th>Date Début</th>
+                    <td>{{ budget.dateDebut ? budget.dateDebut|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Date Fin</th>
+                    <td>{{ budget.dateFin ? budget.dateFin|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Type de Budget</th>
+                    <td>{{ budget.typeBudget }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="mt-4 d-flex gap-2">
+    <a href="{{ path('app_back_budget_index') }}" class="btn btn-secondary">
+        <i class="fa fa-arrow-left"></i> Retour à la liste
+    </a>
+    <a href="{{ path('app_back_budget_edit', {'id': budget.id}) }}" class="btn btn-primary">
+        <i class="fa fa-edit"></i> Modifier
+    </a>
+
+    <!-- Bouton de suppression qui ouvre le modal -->
+    <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+        <i class="fa fa-trash"></i> Supprimer
+    </a>
+
+    <!-- Modal de confirmation de suppression -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer ce budget ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <form method="post" action="{{ path('app_back_budget_delete', {'id': budget.id}) }}">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i> Supprimer
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

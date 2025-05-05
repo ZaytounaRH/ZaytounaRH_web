@@ -1,0 +1,123 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Liste des Réponses{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/images/background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        .reponse-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .reponse-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .reponse-header {
+            background: linear-gradient(135deg, #6c5ce7, #341f97);
+            color: white;
+            font-weight: bold;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .btn-custom {
+            border-radius: 30px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+        }
+
+        .pagination {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .pagination a {
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #341f97;
+        }
+
+        .pagination span {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center text-dark fw-bold mb-4">🗣️ Liste des Réponses</h1>
+
+    <div class="row g-4">
+        {% for reponse in reponses %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                <div class="card reponse-card h-100">
+                    <div class="reponse-header">
+                        📨 À : {{ reponse.reclamation ? reponse.reclamation.titre : 'Réclamation inconnue' }}
+                    </div>
+                    <div class="card-body">
+                        <p><strong>📝 Contenu :</strong><br> {{ reponse.contenu }}</p>
+                        <p><strong>📅 Date de réponse :</strong> {{ reponse.dateRep ? reponse.dateRep|date('d/m/Y') : '-' }}</p>
+                    </div>
+                    <div class="card-footer text-center bg-transparent border-0 pb-3">
+                        <a href="{{ path('app_reponse_show', {'idRep': reponse.idRep}) }}" class="btn btn-outline-primary btn-sm rounded-pill me-2">🔍 Détails</a>
+                        <a href="{{ path('app_reponse_edit', {'idRep': reponse.idRep}) }}" class="btn btn-outline-success btn-sm rounded-pill">✏️ Modifier</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12 text-center text-muted mt-5">
+                Aucune réponse trouvée.
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ path('app_reponse_new') }}" class="btn btn-primary btn-lg btn-custom">➕ Ajouter une réponse</a>
+    </div>
+
+    {# Pagination #}
+    <div class="pagination mt-4">
+        {% if current_page > 1 %}
+            <a href="{{ path('app_reponse_index', {'page': current_page - 1}) }}">← Précédent</a>
+        {% endif %}
+        <span>Page {{ current_page }}</span>
+        <a href="{{ path('app_reponse_index', {'page': current_page + 1}) }}">Suivant →</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+{% endblock %}

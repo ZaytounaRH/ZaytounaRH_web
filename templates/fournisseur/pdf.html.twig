@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Fournisseurs</title>
+</head>
+<body>
+    <h1>Liste des Fournisseurs</h1>
+
+    <table border="1" cellspacing="0" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Contact</th>
+                <th>Type de Service</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fournisseur in fournisseurs %}
+                <tr>
+                    <td>{{ fournisseur.id }}</td>
+                    <td>{{ fournisseur.nomFournisseur }}</td>
+                    <td>{{ fournisseur.adresse }}</td>
+                    <td>{{ fournisseur.contact }}</td>
+                    <td>{{ fournisseur.typeService }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun fournisseur trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

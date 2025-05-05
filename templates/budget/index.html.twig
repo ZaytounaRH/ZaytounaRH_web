@@ -1,0 +1,81 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Liste des Budgets{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Gestion des Budgets</h5>
+                    <p class="m-b-0">Consultez, modifiez ou créez des budgets</p>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active">Budgets</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Liste des Budgets</h5>
+        <a href="{{ path('app_back_budget_new') }}" class="btn btn-success btn-sm">
+            <i class="fa fa-plus"></i> Nouveau Budget
+        </a>
+    </div>
+
+    <div class="card-block table-responsive">
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Montant Alloué (DT)</th>
+                    <th>Date Début</th>
+                    <th>Date Fin</th>
+                    <th>Type Budget</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for budget in budgets %}
+                    <tr>
+                        <td>{{ budget.id }}</td>
+                        <td>{{ budget.montantAlloue }}</td>
+                        <td>{{ budget.dateDebut ? budget.dateDebut|date('Y-m-d') : '' }}</td>
+                        <td>{{ budget.dateFin ? budget.dateFin|date('Y-m-d') : '' }}</td>
+                        <td>{{ budget.typeBudget }}</td>
+                        <td class="text-center">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <!-- Voir le budget -->
+                                <a href="{{ path('app_back_budget_show', {'id': budget.id}) }}" class="btn btn-outline-info" title="Voir">
+                                    <i class="fa fa-eye"></i> Voir
+                                </a>
+
+                                <!-- Modifier le budget -->
+                                <a href="{{ path('app_back_budget_edit', {'id': budget.id}) }}" class="btn btn-outline-warning" title="Modifier">
+                                    <i class="fa fa-edit"></i> Modifier
+                                </a>
+
+                                <!-- Supprimer le budget (avec confirmation) -->
+                                <a href="{{ path('app_back_budget_delete', {'id': budget.id}) }}" class="btn btn-outline-danger" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce budget ?')">
+                                    <i class="fa fa-trash"></i> Supprimer
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">Aucun budget trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

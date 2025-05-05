@@ -1,0 +1,31 @@
+{{ form_start(form) }}
+
+<div class="mb-3">
+    {{ form_label(form.montantAlloue, 'Montant Alloué', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.montantAlloue, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.montantAlloue) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.dateDebut, 'Date Début', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.dateDebut) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.dateFin, 'Date Fin', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.dateFin) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.typeBudget, 'Type de Budget', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.typeBudget, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.typeBudget) }}
+</div>
+
+<button class="btn btn-success">
+    <i class="fa fa-save"></i> {{ button_label|default('Enregistrer') }}
+</button>
+
+{{ form_end(form) }}

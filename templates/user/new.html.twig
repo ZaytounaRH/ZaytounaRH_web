@@ -1,0 +1,56 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+<div class="pcoded-inner-content">
+    <div class="main-body">
+        <div class="page-wrapper">
+
+            <!-- Page body start -->
+            <div class="page-body">
+
+                <div class="card-header" style="background-color:rgb(46, 141, 205); color: white;">
+                    <h5>Add User</h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        {{ form_start(form, {'attr': {'class': 'form-material'}}) }}
+
+                        {# Loop over each form field #}
+                        {% for field in form %}
+                            <div class="form-group form-default">
+                                {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+                                <span class="form-bar"></span>
+                                {{ form_label(field, null, {'label_attr': {'class': 'float-label'}}) }}
+
+                                {% if field.vars.errors|length > 0 %}
+                                    <div class="invalid-feedback">
+                                        {% for error in field.vars.errors %}
+                                            <p>{{ error.message }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
+                        <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+                        <a href="{{ path('admin_dashboard') }}" class="btn btn-secondary mt-2">Return to Admin</a>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+            </div>
+            <!-- Page body end -->
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

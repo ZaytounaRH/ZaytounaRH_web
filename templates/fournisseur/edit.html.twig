@@ -1,0 +1,59 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier Fournisseur{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Modifier un Fournisseur</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="{{ path('back_fournisseur_index') }}">Fournisseurs</a></li>
+                    <li class="breadcrumb-item active">Modifier</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Éditer le fournisseur : {{ fournisseur.nomFournisseur }}</h5>
+    </div>
+    <div class="card-body">
+        {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form_row(form.nomFournisseur) }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form_row(form.adresse) }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form_row(form.contact) }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form_row(form.typeService) }}
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <a href="{{ path('back_fournisseur_index') }}" class="btn btn-secondary">
+                    <i class="fa fa-arrow-left"></i> Retour
+                </a>
+                <div>
+                    <button type="submit" class="btn btn-primary me-2">
+                        <i class="fa fa-save"></i> Mettre à jour
+                    </button>
+                    {{ include('fournisseur/_delete_form.html.twig') }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

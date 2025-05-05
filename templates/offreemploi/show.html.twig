@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'offre d'emploi{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center text-primary mb-5 font-weight-bold display-4 animate__animated animate__fadeIn">Détails de l'offre d'emploi</h1>
+
+        <div class="card shadow-lg border-0 rounded-4 animate__animated animate__fadeInUp">
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-12 text-center">
+                        <h5 class="card-title text-dark font-weight-bold display-5">{{ offreemploi.titreOffre }}</h5>
+                        <p class="text-muted">{{ offreemploi.datePublication ? offreemploi.datePublication|date('d/m/Y') : 'Non spécifiée' }}</p>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <p class="h5 font-weight-bold">Description:</p>
+                        <p class="card-text">{{ offreemploi.description ?: 'Non spécifiée' }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="h5 font-weight-bold">Salaire:</p>
+                        <p class="h4 text-success">{{ offreemploi.salaire }} TND</p>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <p class="h5 font-weight-bold">Date de publication:</p>
+                        <p>{{ offreemploi.datePublication ? offreemploi.datePublication|date('d/m/Y') : 'Non spécifiée' }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="h5 font-weight-bold">Statut:</p>
+                        {% set statut = offreemploi.statut|lower %}
+                        {% if statut == 'ouverte' %}
+                            <span class="badge bg-success text-white px-4 py-2 rounded-pill animate__animated animate__pulse">OUVERTE</span>
+                        {% elseif statut == 'fermee' %}
+                            <span class="badge bg-danger text-white px-4 py-2 rounded-pill animate__animated animate__pulse">FERMEE</span>
+                        {% elseif statut == 'en attente' %}
+                            <span class="badge bg-warning text-dark px-4 py-2 rounded-pill animate__animated animate__pulse">EN ATTENTE</span>
+                        {% elseif statut == 'pourvue' %}
+                            <span class="badge bg-secondary text-white px-4 py-2 rounded-pill animate__animated animate__pulse">POURVUE</span>
+                        {% elseif statut == 'annulee' %}
+                            <span class="badge bg-dark text-white px-4 py-2 rounded-pill animate__animated animate__pulse">ANNULEE</span>
+                        {% elseif statut == 'encours' %}
+                            <span class="badge bg-info text-dark px-4 py-2 rounded-pill animate__animated animate__pulse">EN COURS</span>
+                        {% else %}
+                            <span class="badge bg-dark text-white px-4 py-2 rounded-pill animate__animated animate__pulse">Statut non spécifié</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-12 text-center">
+                        <a href="{{ path('app_offreemploi_index') }}" class="btn btn-outline-primary btn-lg mb-3 mr-3 animate__animated animate__fadeIn animate__delay-1s" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                            <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+                        </a>
+                        <a href="{{ path('app_candidat_entretien_new', {'idOffre': offreemploi.idOffre}) }}" class="btn btn-success btn-lg mb-3 animate__animated animate__fadeIn animate__delay-1s" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                            <i class="bi bi-calendar-plus"></i> Ajouter un entretien
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <p class="text-muted">L'offre d'emploi est publiée par notre équipe RH. Pour plus d'informations, n'hésitez pas à nous contacter.</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+        }
+
+        .badge {
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .card-body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #0056b3;
+            font-weight: 700;
+        }
+    </style>
+{% endblock %}

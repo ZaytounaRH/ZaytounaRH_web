@@ -1,0 +1,45 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Nouvelle Commande{% endblock %}
+
+{% block content %}
+<!-- Page Header Start -->
+<div class="page-header">
+  <div class="page-block">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <div class="page-header-title">
+          <h5 class="m-b-10">Ajouter une Commande</h5>
+          <p class="m-b-0">Remplissez les champs ci-dessous pour créer une nouvelle commande.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+          </li>
+          <li class="breadcrumb-item"><a href="{{ path('back_commande_index') }}">Commandes</a></li>
+          <li class="breadcrumb-item active">Ajout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Form Start -->
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">Nouvelle Commande</h5>
+  </div>
+  <div class="card-block">
+    {{ include('commande/_form.html.twig', {'button_label': 'Créer'}) }}
+    <div class="text-end mt-3">
+      <a href="{{ path('back_commande_index') }}" class="btn btn-secondary btn-sm">
+        <i class="fa fa-arrow-left"></i> Retour
+      </a>
+    </div>
+  </div>
+</div>
+<!-- Form End -->
+{% endblock %}

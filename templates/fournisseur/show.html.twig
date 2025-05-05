@@ -1,0 +1,64 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Détail du Fournisseur{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Détail du Fournisseur</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="{{ path('back_fournisseur_index') }}">Fournisseurs</a></li>
+                    <li class="breadcrumb-item active">Détail</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">{{ fournisseur.nomFournisseur }}</h5>
+    </div>
+    <div class="card-block">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>🗒️ Nom :</strong><br>
+                <p>{{ fournisseur.nomFournisseur }}</p>
+            </div>
+            <div class="col-md-4">
+                <strong>📍 Adresse :</strong><br>
+                <p>{{ fournisseur.adresse }}</p>
+            </div>
+            <div class="col-md-4">
+                <strong>📞 Contact :</strong><br>
+                <p>{{ fournisseur.contact }}</p>
+            </div>
+            <div class="col-md-4">
+                <strong>🔧 Type de Service :</strong><br>
+                <p>{{ fournisseur.typeService }}</p>
+            </div>
+        </div>
+        <div class="text-end d-flex justify-content-end gap-2">
+            <a href="{{ path('back_fournisseur_index') }}" class="btn btn-secondary btn-sm">
+                <i class="fa fa-arrow-left"></i> Retour
+            </a>
+            <a href="{{ path('back_fournisseur_edit', {'id': fournisseur.id}) }}" class="btn btn-primary btn-sm">
+                <i class="fa fa-edit"></i> Modifier
+            </a>
+            <form action="{{ path('back_fournisseur_delete', {'id': fournisseur.id}) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce fournisseur ?')">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ fournisseur.id) }}">
+                <button type="submit" class="btn btn-danger btn-sm">
+                    <i class="fa fa-trash"></i> Supprimer
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

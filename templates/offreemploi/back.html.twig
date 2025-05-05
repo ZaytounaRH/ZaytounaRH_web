@@ -1,0 +1,184 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Offres d'emploi{% endblock %}
+
+{% block content %}
+  <style>
+    /* Titres */
+    .page-title {
+      background: linear-gradient(90deg, #0069d9, #004085);
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+    .page-title h2 {
+      margin-bottom: 10px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-item a, .breadcrumb-item.active {
+      color: white;
+      text-decoration: none;
+    }
+    .breadcrumb-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* Boutons */
+    .btn {
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+    .btn-outline-light { border: 1px solid #ffffff; color: #ffffff; background: transparent; }
+    .btn-outline-light:hover { background: #ffffff; color: #004085; }
+    .btn-outline-warning { border: 1px solid #ffc107; color: #ffc107; background: transparent; }
+    .btn-outline-warning:hover { background: #ffc107; color: white; }
+    .btn-primary { background: #0069d9; border-color: #0069d9; }
+    .btn-primary:hover { background: #004085; border-color: #004085; }
+    .btn-success { background: #28a745; border-color: #28a745; }
+    .btn-success:hover { background: #218838; border-color: #1e7e34; }
+
+    /* Badge */
+    .badge {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 50px;
+    }
+
+    /* Table */
+    .table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .table-bordered th, .table-bordered td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+    }
+    .table-striped tbody tr:nth-child(odd) { background-color: #f9f9f9; }
+    .table-hover tbody tr:hover { background-color: #f1f1f1; }
+    .table-light { background-color: #f8f9fa; }
+
+    /* Transition */
+    .transition-effect {
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .transition-effect:hover {
+      background-color: #004085;
+      color: white;
+    }
+
+    /* Section */
+    .section {
+      padding: 50px 0;
+    }
+    .section-header {
+      margin-bottom: 30px;
+    }
+  </style>
+
+  <!-- Titre et fil d'ariane -->
+  <section class="page-title py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold">Offres d'emploi</h2>
+      <nav>
+        <ol class="breadcrumb justify-content-center mt-3">
+          <li class="breadcrumb-item"><a href="{{ path('app_front') }}">Accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Offres d'emploi</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Section principale -->
+  <section class="section">
+    <div class="container" data-aos="fade-up">
+      
+      <!-- En-tête et boutons -->
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 section-header">
+        <h3 class="fw-bold mb-3 mb-md-0">Liste des offres disponibles</h3>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="{{ path('app_chatbot') }}" class="btn btn-outline-warning transition-effect">
+            <i class="bi bi-chat-dots"></i> Questions
+          </a>
+          <a href="{{ path('app_calendarOffre') }}" class="btn btn-primary transition-effect">
+            <i class="bi bi-calendar-range"></i> Calendrier
+          </a>
+          <a href="{{ path('app_offreemploi_new') }}" class="btn btn-success transition-effect">
+            <i class="bi bi-plus-circle"></i> Nouvelle offre
+          </a>
+          <a href="{{ path('app_offreemploi_statistique') }}" class="btn btn-outline-light transition-effect">
+            <i class="bi bi-bar-chart"></i> Statistiques
+          </a>
+        </div>
+      </div>
+
+      <!-- Tri et filtrage -->
+      <div class="card mb-4 p-3 shadow-sm">
+        <!-- Tu peux ajouter un formulaire de filtrage ici si nécessaire -->
+      </div>
+
+      <!-- Tableau des offres -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle table-striped">
+          <thead class="table-light">
+            <tr>
+              <th>Titre</th>
+              <th>Description</th>
+              <th>Date de publication</th>
+              <th>Salaire</th>
+              <th>Statut</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for offreemploi in offreemplois %}
+              <tr>
+                <td>{{ offreemploi.titreOffre }}</td>
+                <td>{{ offreemploi.description ? offreemploi.description|slice(0, 60) ~ (offreemploi.description|length > 60 ? '...' : '') : '' }}</td>
+                <td>{{ offreemploi.datePublication ? offreemploi.datePublication|date('Y-m-d') : '—' }}</td>
+                <td>{{ offreemploi.salaire }} TND</td>
+                <td>
+                  {% set statut = offreemploi.statut|lower %}
+                  {% if statut == 'ouverte' %}
+                    <span class="badge bg-success text-white">OUVERTE</span>
+                  {% elseif statut == 'fermee' %}
+                    <span class="badge bg-danger text-white">FERMÉE</span>
+                  {% elseif statut == 'pourvue' %}
+                    <span class="badge bg-secondary text-white">POURVUE</span>
+                  {% elseif statut == 'encours' %}
+                    <span class="badge bg-info text-dark">EN COURS</span>
+                  {% else %}
+                    <span class="badge bg-dark text-white">ANNULEE</span>
+                  {% endif %}
+                </td>
+                <td class="text-center">
+                  <a href="{{ path('app_offreemploi_show_back', {'idOffre': offreemploi.idOffre}) }}" class="btn btn-sm btn-outline-info rounded-pill">
+                    <i class="bi bi-eye"></i> Voir
+                  </a>
+                </td>
+              </tr>
+            {% else %}
+              <tr>
+                <td colspan="6" class="text-center">Aucune offre d'emploi disponible.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </section>
+{% endblock %}

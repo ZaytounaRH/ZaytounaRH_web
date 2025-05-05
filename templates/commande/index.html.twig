@@ -1,0 +1,80 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Liste des Commandes{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Gestion des Commandes</h5>
+                    <p class="m-b-0">Consultez, modifiez ou téléchargez les détails des commandes</p>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active">Commandes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Liste des Commandes</h5>
+        <a href="{{ path('back_commande_new') }}" class="btn btn-success btn-sm">
+            <i class="fa fa-plus"></i> Nouvelle Commande
+        </a>
+    </div>
+
+    <div class="card-block table-responsive">
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Quantité</th>
+                    <th>Statut</th>
+                    <th>Fournisseur</th>
+                    <th>Description</th>
+                    <th>Prix (DT)</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commande in commandes %}
+                    <tr>
+                        <td>{{ commande.id }}</td>
+                        <td>{{ commande.dateCommande ? commande.dateCommande|date('Y-m-d') : '' }}</td>
+                        <td>{{ commande.quantite }}</td>
+                        <td>{{ commande.statutCommande }}</td>
+                        <td>{{ commande.fournisseur.nomFournisseur }}</td>
+                        <td>{{ commande.description }}</td>
+                        <td>{{ commande.prixCommande }}</td>
+                        <td class="text-center">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="{{ path('back_commande_show', {'id': commande.id}) }}" class="btn btn-outline-info" title="Voir">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a href="{{ path('back_commande_edit', {'id': commande.id}) }}" class="btn btn-outline-warning" title="Modifier">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="{{ path('back_commande_pdf', {'id': commande.id}) }}" class="btn btn-outline-primary" title="Télécharger PDF">
+                                    <i class="fa fa-file-pdf-o"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8" class="text-center text-muted">Aucune commande trouvée.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

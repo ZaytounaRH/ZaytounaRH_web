@@ -1,0 +1,119 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier Réponse{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #f7f8fa;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .form-container:hover {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #5f6368;
+            margin-bottom: 0.8rem;
+        }
+
+        .form-control {
+            border-radius: 15px;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            color: #333;
+            border: 2px solid #ddd;
+            width: 100%;
+            background-color: #f8f9fb;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #6c63ff;
+            background-color: #ffffff;
+            box-shadow: 0 0 8px rgba(108, 99, 255, 0.2);
+        }
+
+        .btn-custom {
+            width: 100%;
+            padding: 1.3rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            background-color: #6c63ff;
+            color: white;
+            font-weight: bold;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #5a52e6;
+            transform: translateY(-2px);
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: #e0e0e0;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            color: #333;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #d4d4d4;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="form-container">
+        <h2>Modifier la Réponse</h2>
+
+        {{ include('reponse/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+        <div class="d-flex justify-content-end">
+            <a href="{{ path('app_reponse_index') }}" class="back-btn">← Retour à la liste</a>
+        </div>
+
+        {{ include('reponse/_delete_form.html.twig') }}
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.js"></script>
+{% endblock %}

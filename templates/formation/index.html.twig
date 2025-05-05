@@ -1,0 +1,84 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Liste des Formations{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Gestion des Formations</h5>
+                </div>
+                <ul class="breadcrumb">
+                
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#!">Formations</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Table Card Start -->
+<div class="card">
+    <div class="card-header">
+        <h5>Liste des Formations</h5>
+        <div class="card-header-right">
+            <a href="{{ path('app_formation_new')}}" class="btn btn-sm btn-primary">+ Ajouter une formation </a>
+            <a href="{{ path('app_formation_stats_view') }}">📊 Statistiques</a>
+<a href="{{ path('app_formation_export_excel') }}" class="btn btn-sm btn-outline-success">
+    📥 Exporter Excel
+</a>
+
+             <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filtrer
+</button>
+<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="filterDropdown">
+    <li><a class="dropdown-item" href="{{ path('app_formation_index', {'order': 'asc'}) }}">
+        <i class="fa fa-arrow-up me-1"></i> Date ascendante
+    </a></li>
+    <li><a class="dropdown-item" href="{{ path('app_formation_index', {'order': 'desc'}) }}">
+        <i class="fa fa-arrow-down me-1"></i> Date descendante
+    </a></li>
+</ul>
+
+
+
+        </div>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for formation in formations %}
+                        <tr>
+                            <td>{{ formation.nomFormation }}</td>
+                            <td>{{ formation.descriptionFormation }}</td>
+                            <td>{{ formation.dateDebutFormation ? formation.dateDebutFormation|date('Y-m-d') : '—' }}</td>
+                            <td>
+                                <a href="{{ path('app_formation_show', {'idFormation': formation.idFormation}) }}" class="btn btn-sm btn-outline-info">Détails</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">Aucune formation trouvée.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Table Card End -->
+{% endblock %}

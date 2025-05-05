@@ -1,0 +1,100 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+
+
+<!-- Centered Card Form -->
+<div class="d-flex justify-content-center mt-5">
+  <div class="card shadow-sm w-100" style="max-width: 800px;">
+    <div class="card-header">
+      <h5 class="mb-0">Formulaire de création</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        {% for field in form %}
+  {% if field.vars.name not in ['_token'] %}
+    <div class="form-group col-md-12 mb-3">
+      {{ form_label(field) }}
+
+      {% if field.vars.name == 'employees' %}
+        {{ form_widget(field, {'attr': {'class': 'form-select-multi', 'multiple': 'multiple'}}) }}
+      {% else %}
+        {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+      {% endif %}
+
+      {% if field.vars.errors|length > 0 %}
+        <div class="text-danger mt-1" style="font-size: 0.875rem;">
+          {{ form_errors(field) }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+      </div>
+    </div>
+    <div class="card-footer text-end">
+      <button class="btn btn-success">
+        <i class="fa fa-save"></i> {{ button_label|default('Enregistrer') }}
+      </button>
+    </div>
+  </div>
+</div>
+
+{{ form_end(form) }}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const selectElement = document.querySelector('.form-select-multi');
+
+    if (selectElement) {
+      const choices = new Choices(selectElement, {
+        removeItemButton: true,
+        searchEnabled: true,
+        shouldSort: false,
+        placeholderValue: 'Sélectionner des employés',
+        maxItemCount: -1
+      });
+
+      // Affichage dynamique des boutons lors de l'ouverture
+      selectElement.addEventListener('showDropdown', () => {
+        const dropdown = document.querySelector('.choices__list--dropdown');
+
+        // Évite les doublons
+        if (!document.querySelector('#select-all-employees')) {
+          const selectAll = document.createElement('div');
+          selectAll.id = 'select-all-employees';
+          selectAll.className = 'choices__item choices__item--selectable bg-light text-primary fw-semibold px-3 py-2';
+          selectAll.style.cursor = 'pointer';
+          selectAll.textContent = '✅ Tout sélectionner';
+
+          selectAll.addEventListener('click', () => {
+            selectElement.querySelectorAll('option').forEach(option => {
+              option.selected = true;
+              choices.setChoiceByValue(option.value);
+            });
+          });
+
+          const deselectAll = document.createElement('div');
+          deselectAll.id = 'deselect-all-employees';
+          deselectAll.className = 'choices__item choices__item--selectable bg-light text-danger fw-semibold px-3 py-2';
+          deselectAll.style.cursor = 'pointer';
+          deselectAll.textContent = '❌ Tout désélectionner';
+
+          deselectAll.addEventListener('click', () => {
+            choices.removeActiveItems(); // Retire tout
+            selectElement.querySelectorAll('option').forEach(option => {
+              option.selected = false;
+            });
+          });
+
+          const controlWrapper = document.createElement('div');
+          controlWrapper.className = 'd-flex justify-content-around gap-2 mb-2';
+          controlWrapper.appendChild(selectAll);
+          controlWrapper.appendChild(deselectAll);
+
+          dropdown.prepend(controlWrapper);
+        }
+      });
+    }
+  });
+</script>

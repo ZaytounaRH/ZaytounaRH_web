@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de la Réclamation{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">📨 Détails de la Réclamation</h1>
+
+    <table class="table table-bordered shadow-sm">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ reclamation.idR }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ reclamation.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ reclamation.description }}</td>
+            </tr>
+            <tr>
+                <th>Type d'incident</th>
+                <td>{{ reclamation.incidentType }}</td>
+            </tr>
+            <tr>
+                <th>Date de soumission</th>
+                <td>{{ reclamation.dateSoumission ? reclamation.dateSoumission|date('Y-m-d') : 'Non spécifiée' }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>
+                    {{ reclamation.statut }}
+                    {% if reclamation.statut == 'EN_ATTENTE' %}
+                        <span class="badge bg-warning text-dark ms-2">⏳ En attente</span>
+                    {% elseif reclamation.statut == 'TRAITEE' %}
+                        <span class="badge bg-success ms-2">✔️ Traitée</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Priorité</th>
+                <td>{{ reclamation.priorite }}</td>
+            </tr>
+            <tr>
+                <th>Assurance liée</th>
+                <td>{{ reclamation.assurance ? reclamation.assurance.nom : 'Aucune' }}</td>
+            </tr>
+            <tr>
+            <th>Réponse(s)</th>
+            <td>
+                {% if reclamation.reponses|length > 0 %}
+                    <ul>
+                        {% for reponse in reclamation.reponses %}
+                            <li>{{ reponse.contenu }} <br><small class="text-muted">({{ reponse.dateRep|date('Y-m-d H:i') }})</small></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <em>Aucune réponse pour le moment.</em>
+                {% endif %}
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <div class="d-flex gap-2 my-4">
+        <a href="{{ path('app_reclamation_index') }}" class="btn btn-outline-secondary">
+            🔙 Retour à la liste
+        </a>
+        <a href="{{ path('app_reclamation_edit', {'idR': reclamation.idR}) }}" class="btn btn-primary">
+            ✏️ Modifier
+        </a>
+    </div>
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+</div>
+{% endblock %}

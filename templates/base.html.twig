@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>ZaytounaRH</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+<link href="{{ asset('assets/img/logo.png') ~ '?v=2' }}" rel="icon">
+<link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+
+<!-- Font Awesome pour les icônes -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<!-- Animate.css pour les animations -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+ <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+<link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+
+<link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+
+
+
+<!-- FORMATION-->
+
+<!-- favoris formation -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- calendrier formation -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- FORMATION-->
+
+
+
+  <!-- =======================================================
+  * Template Name: Company
+  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+<img src="{{ asset('assets/img/logo.png') ~ '?v=2' }}" alt="Logo">
+        <h1 class="sitename">ZaytounaRH</h1><span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+<li><a href="{{ path('app_front') }}" class="active">Accueil</a></li>
+<li><a href="{{ path('app_team') }}"><span>Equipe</span></a></li>
+<li><a href="presence">Presence</a></li>
+<li><a href="{{ path('app_formation_par_employe') }}">Formation</a></li>
+ <li><a href="conge">Congés</a></li>
+          <li><a class="nav-link" href="{{ path('app_offreemploi_index') }}">Offres d'emploi</a></li>
+          <li><a href="{{ path('app_reclamation_index') }}">Réclamations</a></li>
+          <li><a href="{{ path('app_contact') }}"><span>Contact</span></a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+{% block body %}
+ {% block homepage %}
+   
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <div class="carousel-item active">
+<img src="{{ asset('assets/img/hero-carousel/hero-carousel-1.png') }}" alt="">
+          <div class="container">
+            <h2>Bienvenue sur ZaytounaRH</h2>
+    <p>Optimisez la gestion de vos ressources humaines grâce à une plateforme intuitive et complète. Suivi des formations, des certificats, des présences et bien plus encore.</p>
+            <a href="about.html" class="btn-get-started">Read More</a>
+          </div>
+        </div><!-- End Carousel Item -->
+
+        <div class="carousel-item">
+<img src="{{ asset('assets/img/hero-carousel/hero-carousel-2.png') }}" alt="">
+          <div class="container">
+            <h2>Pilotage RH simplifié</h2>
+    <p>Grâce à ZaytounaRH, prenez des décisions éclairées grâce à une interface claire, des données centralisées et des outils puissants.</p>
+            <a href="about.html" class="btn-get-started">Read More</a>
+          </div>
+        </div><!-- End Carousel Item -->
+
+        <div class="carousel-item">
+<img src="{{ asset('assets/img/hero-carousel/hero-carousel-3.png') }}" alt="">
+          <div class="container">
+            <h2>ZaytounaRH, au cœur de votre gestion humaine</h2>
+<p>Optimisez la gestion de vos employés, formations et certifications avec une plateforme intuitive pensée pour les équipes modernes.</p>
+            <a href="about.html" class="btn-get-started">Read More</a>
+          </div>
+        </div><!-- End Carousel Item -->
+
+        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+        <ol class="carousel-indicators"></ol>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="row position-relative">
+
+          <div class="col-lg-7 about-img" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{{ asset('assets/img/about.jpg') }}" alt="À propos de ZaytounaRH">
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="inner-title">Notre engagement humain</h2>
+            <div class="our-story">
+              <h4>Depuis 2024</h4>
+              <h3>L’histoire de ZaytounaRH</h3>
+              <p>ZaytounaRH est née de la volonté de simplifier la gestion des ressources humaines en mettant l’humain au centre. Nous facilitons la gestion des assurances, des réclamations et des relations professionnelles grâce à des outils adaptés et intuitifs.</p>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> <span>Suivi transparent des réclamations d'assurance</span></li>
+                <li><i class="bi bi-check-circle"></i> <span>Gestion centralisée des employés et RH</span></li>
+                <li><i class="bi bi-check-circle"></i> <span>Interface intuitive pour chaque rôle (admin, RH, employé)</span></li>
+              </ul>
+              <p>Notre objectif est de créer un environnement de travail plus serein et plus efficace, où chaque employé est écouté et soutenu.</p>
+
+              <div class="watch-video d-flex align-items-center position-relative">
+                <i class="bi bi-play-circle"></i>
+                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox stretched-link">Voir notre vision</a>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- end row -->
+      </div> <!-- end container -->
+    </section>
+    <!-- /About Section -->
+
+
+    <!-- Services Section -->
+    <section id="services" class="services section light-background">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item item-cyan position-relative">
+              <div class="icon">
+                <i class="bi bi-person-check"></i> <!-- Changement d'icône -->
+              </div>
+              <h3>Gestion des Assurances</h3>
+              <p>Notre service de gestion des assurances vous aide à gérer efficacement toutes les informations liées à vos contrats et assurés.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item item-orange position-relative">
+              <div class="icon">
+                <i class="bi bi-clipboard-check"></i> <!-- Changement d'icône -->
+              </div>
+              <h3>Suivi des Réclamations</h3>
+              <p>Suivez facilement toutes les réclamations soumises par les employés et assurez une réponse rapide et claire pour chaque situation.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item item-teal position-relative">
+              <div class="icon">
+                <i class="bi bi-file-earmark-text"></i> <!-- Changement d'icône -->
+              </div>
+              <h3>Réponses aux Réclamations</h3>
+              <p>Notre équipe fournit des réponses détaillées et pertinentes aux réclamations soumises, garantissant ainsi la satisfaction des employés.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item item-red position-relative">
+              <div class="icon">
+                <i class="bi bi-people-fill"></i> <!-- Changement d'icône -->
+              </div>
+              <h3>Consultation RH</h3>
+              <p>Nos experts en ressources humaines sont là pour vous accompagner dans la gestion des ressources humaines au sein de votre organisation.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item item-indigo position-relative">
+              <div class="icon">
+                <i class="bi bi-gear"></i> <!-- Changement d'icône -->
+              </div>
+              <h3>Optimisation des Processus</h3>
+              <p>Nous vous aidons à optimiser les processus RH, des réclamations à la gestion des assurances, afin de rendre vos systèmes plus efficaces.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item item-pink position-relative">
+              <div class="icon">
+                <i class="bi bi-envelope-check"></i> <!-- Changement d'icône -->
+              </div>
+              <h3>Communication et Notifications</h3>
+              <p>Nous mettons en place des systèmes de notification pour garantir que toutes les parties prenantes sont informées en temps réel.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    {% endblock %}
+    {% endblock %}
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+  <div class="container footer-top">
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6 footer-about">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <img src="{{ asset('assets/img/logo.png') ~ '?v=2' }}" alt="Logo">
+          <h1 class="sitename">ZaytounaRH</h1><span>.</span>
+        </a>
+        <div class="footer-contact pt-3">
+          <p><strong>Localisation:</strong> Rue du Lac Malären, Les Berges du Lac 3, 1053 Tunis, Tunisie</p>
+          <p><strong>Email:</strong> <span>zaytounarh@gmail.com</span></p>
+          <p><strong>Mobile:</strong> <span>+216 55740899</span></p>
+        </div>
+        <div class="social-links d-flex mt-4">
+          <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Liens utiles</h4>
+        <ul>
+          <li><a href="{{ path('app_front') }}">Accueil</a></li>
+          <li><a href="{{ path('app_team') }}">Équipe</a></li>
+          <li><a href="presence">Présence</a></li>
+          <li><a href="{{ path('app_formation_par_employe') }}">Formation</a></li>
+          <li><a href="conge">Congés</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Nos services</h4>
+        <ul>
+          <li><a href="{{ path('app_offreemploi_index') }}">Offres d'emploi</a></li>
+          <li><a href="{{ path('app_reclamation_index') }}">Réclamations</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-12 footer-newsletter">
+        <h4>Notre newsletter</h4>
+        <p>Abonnez-vous à notre newsletter et recevez les dernières informations sur nos produits et services !</p>
+        <form action="forms/newsletter.php" method="post" class="php-email-form">
+          <div class="newsletter-form">
+            <input type="email" name="email" required>
+            <input type="submit" value="S'abonner">
+          </div>
+          <div class="loading">Chargement...</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Votre demande d'abonnement a été envoyée. Merci !</div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container copyright text-center mt-4">
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">ZaytounaRH</strong> <span>Tous droits réservés</span></p>
+    <div class="credits">
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+<script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+<script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+<script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+<!-- Main JS File -->
+<script src="{{ asset('assets/js/main.js') }}"></script>

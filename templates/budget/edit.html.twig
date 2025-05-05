@@ -1,0 +1,71 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier le Budget{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Modification du Budget</h5>
+                    <p class="m-b-0">Mettez à jour les informations du budget ci-dessous</p>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_back_budget_index') }}">Budgets</a>
+                    </li>
+                    <li class="breadcrumb-item active">Modifier le Budget</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Modifier les Détails du Budget</h5>
+    </div>
+    <div class="card-body">
+        {{ include('budget/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    </div>
+</div>
+
+<div class="mt-4 d-flex gap-2">
+    <a href="{{ path('app_back_budget_index') }}" class="btn btn-secondary">
+        <i class="fa fa-arrow-left"></i> Retour à la liste
+    </a>
+
+    <!-- Bouton pour supprimer le budget avec modal -->
+    <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+        <i class="fa fa-trash"></i> Supprimer
+    </a>
+
+    <!-- Modal de confirmation de suppression -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer ce budget ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <form method="post" action="{{ path('app_back_budget_delete', {'id': budget.id}) }}">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i> Supprimer
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

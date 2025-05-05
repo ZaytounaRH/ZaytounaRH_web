@@ -1,0 +1,54 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier Commande{% endblock %}
+
+{% block content %}
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Modifier une Commande</h5>
+                    <p class="m-b-0">Mettez à jour les informations de cette commande ci-dessous.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="{{ path('back_commande_index') }}">Commandes</a></li>
+                    <li class="breadcrumb-item active">Modifier</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Édition de la Commande #{{ commande.id }}</h5>
+    </div>
+
+    <div class="card-block">
+        <!-- Form Start -->
+        {{ include('commande/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+        <div class="text-end mt-4">
+            <a href="{{ path('back_commande_index') }}" class="btn btn-secondary btn-sm">
+                <i class="fa fa-arrow-left"></i> Retour à la liste
+            </a>
+            <a href="{{ path('back_commande_show', {'id': commande.id}) }}" class="btn btn-info btn-sm">
+                <i class="fa fa-eye"></i> Voir la commande
+            </a>
+        </div>
+
+        <!-- Delete Form -->
+        <div class="text-end mt-3">
+            {{ include('commande/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

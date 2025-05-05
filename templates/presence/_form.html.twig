@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+
+    {{ form_row(form.heureDepart) }}
+    {{ form_row(form.employee) }}
+
+    <button class="btn btn-primary">
+        {{ button_label|default('Enregistrer') }}
+    </button>
+
+{{ form_end(form) }}

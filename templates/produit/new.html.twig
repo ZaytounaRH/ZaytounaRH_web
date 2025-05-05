@@ -1,0 +1,33 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}
+    Créer un Nouveau Produit
+{% endblock %}
+
+{% block content %}
+    <h1>Créer un nouveau Produit</h1>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        <div class="form-group">
+            {{ form_label(form.produitName, 'Nom du Produit', {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.produitName, {'attr': {'class': 'form-control w-75'}}) }} <!-- w-75 pour largeur à 75% -->
+            {{ form_errors(form.produitName) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.prix, 'Prix', {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.prix, {'attr': {'class': 'form-control w-75'}}) }} <!-- w-75 pour largeur à 75% -->
+            {{ form_errors(form.prix) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.fournisseur, 'Fournisseur', {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.fournisseur, {'attr': {'class': 'form-control w-75'}}) }} <!-- w-75 pour largeur à 75% -->
+            {{ form_errors(form.fournisseur) }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Créer</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('back_produit_index') }}" class="btn btn-secondary mt-2">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Recherche Assurance{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/images/background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            filter: blur(0px) brightness(1); /* Garde normal ici pour lisibilité */
+        }
+
+        .assurance-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .assurance-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .assurance-header {
+            background: linear-gradient(135deg, #00b894, #55efc4);
+            color: white;
+            font-weight: bold;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .btn-custom {
+            border-radius: 30px;
+            padding: 0.6rem 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Style pour le formulaire */
+        .form-inline {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center text-dark fw-bold mb-5">🔍 Recherche d'Assurance</h1>
+
+    {# Formulaire de recherche avec le bouton à droite du sélecteur #}
+    <div class="form-inline">
+        {{ form_start(form) }}
+            {{ form_row(form.typeAssurance, {'attr': {'class': 'form-control'}}) }}
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        {{ form_end(form) }}
+    </div>
+
+    <!-- Card Wrapper Start -->
+<div class="card">
+    <div class="card-header">
+        <h5>Liste des Assurances</h5>
+        <div class="card-header-right">
+            <a href="{{ path('app_assurance_new') }}" class="btn btn-sm btn-success">
+                <i class="fa fa-plus"></i> Ajouter
+            </a>
+        </div>
+    </div>
+
+    <div class="card-block">
+        <div class="container py-4">
+            <div class="row g-4">
+                {% for assurance in assurances %}
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                        <div class="card assurance-card h-100">
+                            <div class="assurance-header">
+                                🛡️ {{ assurance.nom }}
+                            </div>
+                            <div class="card-body">
+                                <p><strong>📂 Type :</strong> {{ assurance.type }}</p>
+                                <p><strong>📅 Expiration :</strong> {{ assurance.dateExpiration ? assurance.dateExpiration|date('d/m/Y') : '-' }}</p>
+                                <p><strong>👤 Utilisateur :</strong> {{ assurance.user.nom }} {{ assurance.user.prenom }}</p>
+                            </div>
+                            <div class="card-footer text-center bg-transparent border-0 pb-3">
+                                <a href="{{ path('app_assurance_show', {'idA': assurance.idA}) }}" class="btn btn-outline-primary btn-sm rounded-pill me-2">🔍 Détails</a>
+                                <a href="{{ path('app_assurance_edit', {'idA': assurance.idA}) }}" class="btn btn-outline-success btn-sm rounded-pill">✏️ Modifier</a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-12 text-center text-muted mt-5">
+                        Aucune assurance trouvée.
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Card Wrapper End -->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+{% endblock %}

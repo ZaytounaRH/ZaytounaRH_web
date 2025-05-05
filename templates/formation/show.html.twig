@@ -1,0 +1,75 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Détail de la Formation{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Détail de la Formation</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('admin_dashboard') }}"><i class="fa fa-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="{{ path('app_formation_index') }}">Formations</a></li>
+                    <li class="breadcrumb-item active">Détail</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">{{ formation.nomFormation }}</h5>
+    </div>
+    <div class="card-block">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>🗒️Description :</strong><br>
+                <p>{{ formation.descriptionFormation }}</p>
+            </div>
+            <div class="col-md-4">
+                <strong>📆 Date de début :</strong><br>
+                <p>{{ formation.dateDebutFormation ? formation.dateDebutFormation|date('d/m/Y') : '—' }}</p>
+            </div>
+            <div class="col-md-4">
+                <strong>📆 Date de fin :</strong><br>
+                <p>{{ formation.dateFinFormation ? formation.dateFinFormation|date('d/m/Y') : '—' }}</p>
+            </div>
+            <div class="row">
+    <div class="col-md-12">
+        <h6 class="mt-4">👥 Employés inscrits :</h6>
+        {% if formation.employees|length > 0 %}
+            <ul class="list-group list-group-flush">
+                {% for employee in formation.employees %}
+                    <li class="list-group-item">
+                        {{ employee.user.nom }} {{ employee.user.prenom }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="alert alert-info mt-2">
+                Aucun employé n'est encore inscrit à cette formation.
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+        </div>
+
+        <div class="text-end">
+            <a href="{{ path('app_formation_index') }}" class="btn btn-secondary btn-sm">
+                <i class="fa fa-arrow-left"></i> Retour
+            </a>
+            <a href="{{ path('app_formation_edit', {'idFormation': formation.idFormation}) }}" class="btn btn-primary btn-sm">
+                <i class="fa fa-edit"></i> Modifier
+            </a>
+            {{ include('formation/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

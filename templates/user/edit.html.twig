@@ -1,0 +1,102 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block content %}
+<div class="pcoded-inner-content">
+    <div class="main-body">
+        <div class="page-wrapper">
+
+            <!-- Page body start -->
+            <div class="page-body">
+
+                <div class="card-header" style="background-color:rgb(46, 115, 205); color: white;">
+                    <h5>Edit User</h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        {{ form_start(form, {'attr': {'class': 'form-material'}}) }}
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.email) }}
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.password) }}
+                            {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.nom) }}
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.prenom) }}
+                            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.numTel) }}
+                            {{ form_widget(form.numTel, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.address) }}
+                            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.gender) }}
+                            {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.dateDeNaissance) }}
+                            {{ form_widget(form.dateDeNaissance, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.user_type) }}
+                            {{ form_widget(form.user_type, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-group form-default">
+                            {{ form_label(form.joursOuvrables) }}
+                            {{ form_widget(form.joursOuvrables, {'attr': {'class': 'form-control'}}) }}
+                            <span class="form-bar"></span>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+                            <a href="{{ path('admin_dashboard') }}" class="btn btn-secondary mt-2">Return to Admin</a>
+                        </div>
+
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- Page body end -->
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

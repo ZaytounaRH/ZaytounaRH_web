@@ -1,0 +1,56 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Détail de l'Assurance{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center text-primary mb-4">📄 Détails de l'Assurance</h1>
+
+    <table class="table table-bordered shadow-sm">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ assurance.idA }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ assurance.nom }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ assurance.type }}</td>
+            </tr>
+            <tr>
+                <th>Date d'expiration</th>
+                <td>
+                    {% if assurance.dateExpiration %}
+                        {{ assurance.dateExpiration|date('Y-m-d') }}
+                        {% if assurance.dateExpiration < "now"|date("Y-m-d") %}
+                            <span class="badge bg-danger ms-2">⛔ Expirée</span>
+                        {% else %}
+                            <span class="badge bg-success ms-2">✔️ Active</span>
+                        {% endif %}
+                    {% else %}
+                        <span class="text-muted">Non spécifiée</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Utilisateur</th>
+                <td>{{ assurance.user.nom }} {{ assurance.user.prenom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex gap-2 my-4">
+        <a href="{{ path('app_recherche_assurance') }}" class="btn btn-outline-secondary">
+            🔙 Retour à la liste
+        </a>
+        <a href="{{ path('app_assurance_edit', {'idA': assurance.idA}) }}" class="btn btn-primary">
+            ✏️ Modifier
+        </a>
+    </div>
+
+    {{ include('assurance/_delete_form.html.twig') }}
+</div>
+{% endblock %}
