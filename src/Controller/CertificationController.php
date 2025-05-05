@@ -83,27 +83,41 @@ final class CertificationController extends AbstractController
         return $this->redirectToRoute('app_certification_index', [], Response::HTTP_SEE_OTHER);
     }
     #[Route('/certification/{idCertif}/pdf', name: 'app_certification_download_pdf')]
-public function downloadPdf(Certification $certification): Response
-{
-    $options = new Options();
-    $options->set('defaultFont', 'Arial');
-    $dompdf = new Dompdf($options);
+    public function downloadPdf(Certification $certification): Response
+    {
+        $options = new Options();
+        $options->set('defaultFont', 'Arial');
+        $options->setIsRemoteEnabled(true); // Très important si un jour tu ajoutes d'autres images ou CSS externes
+        $dompdf = new Dompdf($options);
+    
+        // Lecture de l'image et encodage en Base64
+        $logoPath = $this->getParameter('kernel.project_dir') . '/public/assets/img/logo.png';
+        $logoBase64 = base64_encode(file_get_contents($logoPath));
 
-    $html = $this->renderView('certification/pdf.html.twig', [
-        'certification' => $certification,
-    ]);
+        $borderPath = $this->getParameter('kernel.project_dir') . '/public/assets/img/border.png';
+        $borderBase64 = base64_encode(file_get_contents($borderPath));
 
-    $dompdf->loadHtml($html);
-    $dompdf->setPaper('A4', 'portrait');
-    $dompdf->render();
-
-    return new Response(
-        $dompdf->output(),
-        200,
-        [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="certification_'. $certification->getIdCertif() .'.pdf"',
-        ]
-    );
-}
+       
+    
+        // Génération du HTML
+        $html = $this->renderView('certification/pdf.html.twig', [
+            'certification' => $certification,
+            'logoBase64' => $logoBase64, 
+            'borderBase64' => $borderBase64,
+            
+        ]);
+    
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+    
+        return new Response(
+            $dompdf->output(),
+            200,
+            [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="certification_'. $certification->getIdCertif() .'.pdf"',
+            ]
+        );
+    }
 }
