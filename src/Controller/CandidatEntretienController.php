@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+<<<<<<< HEAD
 use App\Entity\Candidat;
 use App\Entity\Entretien;
 use App\Entity\Offreemploi;
@@ -9,13 +10,22 @@ use App\Form\EntretienCandidatType;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+=======
+use App\Entity\Entretien;
+use App\Form\EntretienCandidatType;
+use Doctrine\ORM\EntityManagerInterface;
+>>>>>>> origin/asma_gestion_presence
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+=======
+use App\Entity\Offreemploi;
+>>>>>>> origin/asma_gestion_presence
 
 class CandidatEntretienController extends AbstractController
 {
@@ -38,7 +48,11 @@ class CandidatEntretienController extends AbstractController
 
         // Créer un nouvel objet Entretien
         $entretien = new Entretien();
+<<<<<<< HEAD
         $entretien->setOffreemploi($offreemploi); // Associer automatiquement l'offre d'emploi
+=======
+        $entretien->setOffreemploi($offreemploi);  // Associer automatiquement l'offre d'emploi
+>>>>>>> origin/asma_gestion_presence
 
         // Créer le formulaire pour l'entretien
         $form = $this->createForm(EntretienCandidatType::class, $entretien);
@@ -46,6 +60,7 @@ class CandidatEntretienController extends AbstractController
 
         // Si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
+<<<<<<< HEAD
             // Traiter le fichier CV
             
 
@@ -66,6 +81,20 @@ class CandidatEntretienController extends AbstractController
             // Envoi d'un email de confirmation au candidat
             $this->sendEmailConfirmation($entretien);
 
+=======
+            if (null === $entretien->getStatut()) {
+                $entretien->setStatut('EN_COURS'); // Mettre par défaut en cours si statut non défini
+            }
+
+            // Si la date n'est pas définie, on peut lui donner une valeur par défaut (par exemple la date d'aujourd'hui)
+            if (null === $entretien->getDateEntretien()) {
+                $entretien->setDateEntretien(new \DateTime()); // Valeur par défaut : aujourd'hui
+            }
+
+            $entityManager->persist($entretien);
+            $entityManager->flush();
+
+>>>>>>> origin/asma_gestion_presence
             // Redirection vers la page "merci"
             return $this->redirectToRoute('app_entretien_merci', [], Response::HTTP_SEE_OTHER);
         }
@@ -75,6 +104,7 @@ class CandidatEntretienController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+<<<<<<< HEAD
 
     private function sendEmailConfirmation(Entretien $entretien)
     {
@@ -225,3 +255,6 @@ public function mesEntretiens(int $candidatId, EntityManagerInterface $entityMan
 
 
 } 
+=======
+}
+>>>>>>> origin/asma_gestion_presence

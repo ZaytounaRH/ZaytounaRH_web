@@ -5,10 +5,14 @@ require_once 'vendor/autoload.php';
 // Database configuration - MODIFY THESE VALUES
 $dbHost = 'localhost';
 <<<<<<< HEAD
+<<<<<<< HEAD
 $dbName = 'rhzaytouna';
 =======
 $dbName = 'final';
 >>>>>>> origin/ons_gestion_recrutement
+=======
+$dbName = 'rhzaytouna';
+>>>>>>> origin/asma_gestion_presence
 $dbUser = 'root';
 $dbPass = '';
 $dbPort = 3306;

@@ -43,6 +43,7 @@ class Produit
         return $this;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     private ?string $nomFournisseur = null;
 
     public function getNomFournisseur(): ?string
@@ -57,6 +58,8 @@ class Produit
     }
 =======
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 
     #[ORM\Column(type: 'decimal', nullable: false)]
     private ?float $prix = null;
@@ -73,8 +76,11 @@ class Produit
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
+=======
+>>>>>>> origin/asma_gestion_presence
     #[ORM\Column(name:"produitName",type: 'string', nullable: false)]
     private ?string $nomFournisseur = null;
 
@@ -88,7 +94,10 @@ class Produit
         $this->nomFournisseur = $nomFournisseur;
         return $this;
     }
+<<<<<<< HEAD
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 
     #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'produits')]
     #[ORM\JoinColumn(name: 'idFournisseur', referencedColumnName: 'id')]

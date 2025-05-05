@@ -42,14 +42,29 @@
             </table>
 
             <div class="mt-4 d-flex justify-content-between">
+<<<<<<< HEAD
                 <a href="{{ path('app_conge_index') }}" class="btn btn-outline-secondary">
                     <i class="bi bi-arrow-left"></i> Retour à la liste
                 </a>
+=======
+                <a href="{{ path('app_conge_indexback') }}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Retour à la liste
+                </a>
+                <a href="{{ path('app_conge_edit', { id_conge: conge.idConge }) }}" class="btn btn-outline-primary me-2">
+                <i class="bi bi-pencil-square"></i> Modifier
+                </a>
+
+
+>>>>>>> origin/asma_gestion_presence
 
                 <div>
                     
                     {{ include('conge/_delete_form.html.twig') }}
                 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/asma_gestion_presence
             </div>
         </div>
     </div>

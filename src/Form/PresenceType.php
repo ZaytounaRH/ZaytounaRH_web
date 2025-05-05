@@ -3,6 +3,7 @@
 namespace App\Form;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Entity\Employee;
 use App\Entity\Presence;
 use App\Entity\Rh;
@@ -13,12 +14,20 @@ use App\Entity\Presence;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 >>>>>>> origin/ons_gestion_recrutement
+=======
+use App\Entity\Presence;
+use App\Entity\Employee;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+>>>>>>> origin/asma_gestion_presence
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PresenceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
+<<<<<<< HEAD
 <<<<<<< HEAD
     {
         $builder
@@ -40,12 +49,32 @@ class PresenceType extends AbstractType
                 'choice_label' => 'id',
             ])
         ;
+=======
+    {
+        $builder
+            ->add('employee', EntityType::class, [
+                'class' => Employee::class,
+                'choice_label' => function (Employee $employee) {
+                    $user = $employee->getUser(); // ⚠️ adapte ceci à ta relation réelle
+                    return $user ? $user->getPrenom() . ' ' . $user->getNom() : 'Employé inconnu';
+                },
+                'label' => 'Employé',
+            ]);
+
+        if ($options['is_edit']) {
+            $builder->add('heureDepart', DateTimeType::class, [
+                'widget' => 'single_text',
+                'required' => false,
+            ]);
+        }
+>>>>>>> origin/asma_gestion_presence
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Presence::class,
+<<<<<<< HEAD
         ]);
     }
 }
@@ -75,3 +104,9 @@ public function configureOptions(OptionsResolver $resolver): void
 
 }
 >>>>>>> origin/ons_gestion_recrutement
+=======
+            'is_edit' => false,
+        ]);
+    }
+}
+>>>>>>> origin/asma_gestion_presence

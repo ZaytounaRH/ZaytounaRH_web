@@ -10,14 +10,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Symfony\Component\Routing\Attribute\Route;
 =======
 use Symfony\Component\Routing\Annotation\Route;
 >>>>>>> origin/ons_gestion_recrutement
+=======
+use Symfony\Component\Routing\Annotation\Route;
+>>>>>>> origin/asma_gestion_presence
 
 #[Route('/offreemploi')]
 final class OffreemploiController extends AbstractController
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
     #[Route(name: 'app_offreemploi_index', methods: ['GET'])]
     public function index(OffreemploiRepository $offreemploiRepository): Response
@@ -36,10 +41,22 @@ final class OffreemploiController extends AbstractController
         $statutFilter = $request->query->get('statut', '');
         $search = $request->query->get('search', '');
 
+=======
+    #[Route(name: 'app_offreemploi_index', methods: ['GET', 'POST'])]
+    public function index(Request $request, OffreemploiRepository $offreemploiRepository): Response
+    {
+        // Récupérer les critères de tri et de direction
+        $sort = $request->query->get('sort', 'datePublication');
+        $direction = strtoupper($request->query->get('direction', 'DESC'));
+        $statutFilter = $request->query->get('statut', ''); // Récupérer le statut sélectionné
+    
+        // Liste des critères de tri autorisés
+>>>>>>> origin/asma_gestion_presence
         $allowedSortFields = ['salaire', 'datePublication'];
         if (!in_array($sort, $allowedSortFields)) {
             $sort = 'datePublication';
         }
+<<<<<<< HEAD
 
         if (!in_array($direction, ['ASC', 'DESC'])) {
             $direction = 'DESC';
@@ -47,10 +64,25 @@ final class OffreemploiController extends AbstractController
 
         $qb = $offreemploiRepository->createQueryBuilder('o')->addOrderBy('o.' . $sort, $direction);
 
+=======
+    
+        if (!in_array($direction, ['ASC', 'DESC'])) {
+            $direction = 'DESC';
+        }
+    
+        // Récupérer les offres d'emploi triées selon les critères
+        $qb = $offreemploiRepository->createQueryBuilder('o');
+    
+        // Appliquer le tri sélectionné
+        $qb->addOrderBy('o.' . $sort, $direction);
+    
+        // Appliquer le filtre sur le statut si un statut est sélectionné
+>>>>>>> origin/asma_gestion_presence
         if ($statutFilter) {
             $qb->andWhere('o.statut = :statut')
                 ->setParameter('statut', $statutFilter);
         }
+<<<<<<< HEAD
 
 
 
@@ -62,10 +94,17 @@ final class OffreemploiController extends AbstractController
 
         $offreemplois = $qb->getQuery()->getResult();
 
+=======
+    
+        // Exécuter la requête
+        $offreemplois = $qb->getQuery()->getResult();
+    
+>>>>>>> origin/asma_gestion_presence
         return $this->render('offreemploi/index.html.twig', [
             'offreemplois' => $offreemplois,
             'currentSort' => $sort,
             'currentDirection' => $direction,
+<<<<<<< HEAD
             'currentStatut' => $statutFilter,
             'currentSearch' => $search, // ➔ pour afficher la recherche dans l'input Twig
 
@@ -107,6 +146,13 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
 
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+            'currentStatut' => $statutFilter, // Passer le statut sélectionné à la vue
+        ]);
+    }
+    
+
+>>>>>>> origin/asma_gestion_presence
     #[Route('/new', name: 'app_offreemploi_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -119,10 +165,14 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
             $entityManager->flush();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
 =======
             return $this->redirectToRoute('app_offreemploi_back_index', [], Response::HTTP_SEE_OTHER);
 >>>>>>> origin/ons_gestion_recrutement
+=======
+            return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
+>>>>>>> origin/asma_gestion_presence
         }
 
         return $this->render('offreemploi/new.html.twig', [
@@ -149,10 +199,14 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
             $entityManager->flush();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
 =======
             return $this->redirectToRoute('app_offreemploi_back_index', [], Response::HTTP_SEE_OTHER);
 >>>>>>> origin/ons_gestion_recrutement
+=======
+            return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
+>>>>>>> origin/asma_gestion_presence
         }
 
         return $this->render('offreemploi/edit.html.twig', [
@@ -161,6 +215,7 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
         ]);
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     #[Route('/{idOffre}', name: 'app_offreemploi_delete', methods: ['POST'])]
     public function delete(Request $request, Offreemploi $offreemploi, EntityManagerInterface $entityManager): Response
@@ -194,15 +249,21 @@ public function indexBack(Request $request, OffreemploiRepository $offreemploiRe
 
 
 
+=======
+>>>>>>> origin/asma_gestion_presence
     #[Route('/{idOffre}', name: 'app_offreemploi_delete', methods: ['POST'])]
     public function delete(Request $request, Offreemploi $offreemploi, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$offreemploi->getIdOffre(), $request->request->get('_token'))) {
+<<<<<<< HEAD
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
             $entityManager->remove($offreemploi);
             $entityManager->flush();
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
     }
@@ -224,4 +285,8 @@ public function showBack(Offreemploi $offreemploi): Response
  
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+        return $this->redirectToRoute('app_offreemploi_index', [], Response::HTTP_SEE_OTHER);
+    }
+>>>>>>> origin/asma_gestion_presence
 }

@@ -13,8 +13,11 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\NotBlank;
+<<<<<<< HEAD
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
+=======
+>>>>>>> origin/asma_gestion_presence
 
 class EntretienCandidatType extends AbstractType
 {
@@ -64,8 +67,12 @@ class EntretienCandidatType extends AbstractType
             'placeholder' => 'Choisir un candidat',
             'label' => 'Candidat',
             'required' => true,
+<<<<<<< HEAD
         ])
        ;
+=======
+        ]);
+>>>>>>> origin/asma_gestion_presence
     }
 
     public function configureOptions(OptionsResolver $resolver): void

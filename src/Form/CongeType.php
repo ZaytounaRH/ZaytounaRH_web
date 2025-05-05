@@ -11,18 +11,26 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 <<<<<<< HEAD
+<<<<<<< HEAD
  
 =======
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+
+>>>>>>> origin/asma_gestion_presence
 class CongeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         // Champs de base
 >>>>>>> origin/ons_gestion_recrutement
+=======
+        // Champs de base
+>>>>>>> origin/asma_gestion_presence
         $builder
             ->add('dateDebut', null, [
                 'widget' => 'single_text',
@@ -30,6 +38,7 @@ class CongeType extends AbstractType
             ->add('dateFin', null, [
                 'widget' => 'single_text',
             ])
+<<<<<<< HEAD
 <<<<<<< HEAD
             ->add('motif')
             ->add('statut', ChoiceType::class,[
@@ -51,6 +60,8 @@ class CongeType extends AbstractType
             ])
         ;
 =======
+=======
+>>>>>>> origin/asma_gestion_presence
             ->add('motif');
 
         // ✅ Champ "statut" uniquement en mode édition
@@ -68,8 +79,18 @@ class CongeType extends AbstractType
         // ✅ Champ employé
         $builder->add('employee', EntityType::class, [
             'class' => Employee::class,
+<<<<<<< HEAD
             'choice_label' => 'id',
         ]);
+=======
+            'choice_label' => function (Employee $employee) {
+                $user = $employee->getUser(); // si Employee hérite de User
+                return $user ? $user->getPrenom() . ' ' . $user->getNom() : 'Inconnu';
+            },
+            'label' => 'Employé',
+        ]);
+        
+>>>>>>> origin/asma_gestion_presence
 
         // ✅ Champ RH (lié à l'entité Rh)
         $builder->add('rh', EntityType::class, [
@@ -80,13 +101,18 @@ class CongeType extends AbstractType
             },
             'label' => 'Responsable RH'
         ]);
+<<<<<<< HEAD
 >>>>>>> origin/ons_gestion_recrutement
+=======
+        
+>>>>>>> origin/asma_gestion_presence
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Conge::class,
+<<<<<<< HEAD
 <<<<<<< HEAD
         ]);
     }
@@ -97,3 +123,9 @@ class CongeType extends AbstractType
     }
 }
 >>>>>>> origin/ons_gestion_recrutement
+=======
+            'is_edit' => false,
+        ]);
+    }
+}
+>>>>>>> origin/asma_gestion_presence

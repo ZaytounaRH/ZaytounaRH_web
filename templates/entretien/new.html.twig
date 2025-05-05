@@ -1,9 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/asma_gestion_presence
 {% extends 'base.html.twig' %}
 
 {% block title %}New Entretien{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
     <h1>Create new Entretien</h1>
 
     {{ include('entretien/_form.html.twig') }}
@@ -97,6 +101,18 @@
             <a href="{{ path('app_front') }}">Accueil</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">Entretien</li>
+=======
+  <!-- Page Title Section -->
+  <section class="page-title" style="background: #007bff; padding: 60px 0;">
+    <div class="container">
+      <h2 class="text-white fw-bold">Ajouter ton Entretien</h2>
+      <nav>
+        <ol class="breadcrumb mt-3">
+          <li class="breadcrumb-item">
+            <a href="{{ path('app_front') }}" class="text-white text-decoration-none">Accueil</a>
+          </li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Entretien</li>
+>>>>>>> origin/asma_gestion_presence
         </ol>
       </nav>
     </div>
@@ -104,6 +120,7 @@
 
   <!-- Entretien Creation Section -->
   <div class="container mt-5">
+<<<<<<< HEAD
     <div class="card shadow-lg p-4">
       <div class="card-body">
         <!-- Form Start with Validation -->
@@ -127,4 +144,11 @@
   </div>
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+
+    {{ include('entretien/_form.html.twig') }}
+
+    <a href="{{ path('app_offreemploi_index') }}" class="btn btn-secondary">Back to list</a>
+  </div>
+>>>>>>> origin/asma_gestion_presence
 {% endblock %}

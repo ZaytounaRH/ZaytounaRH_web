@@ -10,11 +10,14 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 
 class OffreemploiType extends AbstractType
 {
@@ -23,6 +26,7 @@ class OffreemploiType extends AbstractType
         $builder
             ->add('titreOffre')
             ->add('description')
+<<<<<<< HEAD
 <<<<<<< HEAD
             ->add('datePublication', null, [
                 'widget' => 'single_text',
@@ -42,6 +46,11 @@ class OffreemploiType extends AbstractType
 
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+            ->add('datePublication', null, [
+                'widget' => 'single_text',
+            ])
+>>>>>>> origin/asma_gestion_presence
             ->add('salaire')
             ->add('statut', ChoiceType::class,[
                 'choices' =>[
@@ -57,10 +66,14 @@ class OffreemploiType extends AbstractType
                 'label' => 'Type'
             ])
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/asma_gestion_presence
             ->add('rh', EntityType::class, [
                 'class' => Rh::class,
                 'choice_label' => 'id',
             ])
+<<<<<<< HEAD
 =======
            
 
@@ -81,6 +94,8 @@ class OffreemploiType extends AbstractType
                  ]);
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
         ;
     }
 

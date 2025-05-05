@@ -16,6 +16,30 @@ class CongeRepository extends ServiceEntityRepository
         parent::__construct($registry, Conge::class);
     }
 
+<<<<<<< HEAD
+=======
+    // ✅ Nombre de jours de congés posés
+    public function countTotalConges(string $year): int
+{
+    $conn = $this->getEntityManager()->getConnection();
+
+    $sql = "
+        SELECT SUM(DATEDIFF(dateFin, dateDebut) + 1) AS total_conges
+        FROM conge
+        WHERE YEAR(dateDebut) = :year
+        AND statut != 'REFUSE'
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->executeQuery(['year' => $year])->fetchOne();
+
+    return $result ? (int) $result : 0;
+}
+
+    
+
+
+>>>>>>> origin/asma_gestion_presence
     //    /**
     //     * @return Conge[] Returns an array of Conge objects
     //     */

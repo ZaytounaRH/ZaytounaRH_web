@@ -84,6 +84,7 @@ final class CertificationController extends AbstractController
     }
     #[Route('/certification/{idCertif}/pdf', name: 'app_certification_download_pdf')]
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function downloadPdf(Certification $certification): Response
     {
         $options = new Options();
@@ -122,6 +123,8 @@ final class CertificationController extends AbstractController
         );
     }
 =======
+=======
+>>>>>>> origin/asma_gestion_presence
 public function downloadPdf(Certification $certification): Response
 {
     $options = new Options();
@@ -145,5 +148,8 @@ public function downloadPdf(Certification $certification): Response
         ]
     );
 }
+<<<<<<< HEAD
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 }

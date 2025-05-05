@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
@@ -9,21 +10,74 @@
 <div class="mb-3">
     {{ form_label(form.dateDebut, '📅 Date de début', {'label_attr': {'class': 'form-label fw-bold'}}) }}
     {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control rounded-pill shadow-sm'}}) }}
+=======
+{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.dateDebut, '📅 Date de début', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.dateDebut, {
+        'attr': {
+            'class': 'form-control rounded-pill shadow-sm' ~ (form_errors(form.dateDebut) ? ' is-invalid' : '')
+        }
+    }) }}
+>>>>>>> origin/asma_gestion_presence
     {{ form_errors(form.dateDebut) }}
 </div>
 
 <div class="mb-3">
     {{ form_label(form.dateFin, '📅 Date de fin', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+<<<<<<< HEAD
     {{ form_widget(form.dateFin, {'attr': {'class': 'form-control rounded-pill shadow-sm'}}) }}
+=======
+    {{ form_widget(form.dateFin, {
+        'attr': {
+            'class': 'form-control rounded-pill shadow-sm' ~ (form_errors(form.dateFin) ? ' is-invalid' : '')
+        }
+    }) }}
+>>>>>>> origin/asma_gestion_presence
     {{ form_errors(form.dateFin) }}
 </div>
 
 <div class="mb-3">
     {{ form_label(form.motif, '📝 Motif', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+<<<<<<< HEAD
     {{ form_widget(form.motif, {'attr': {'class': 'form-control rounded-pill shadow-sm'}}) }}
     {{ form_errors(form.motif) }}
 </div>
 
+=======
+    {{ form_widget(form.motif, {
+        'attr': {
+            'class': 'form-control rounded-pill shadow-sm' ~ (form_errors(form.motif) ? ' is-invalid' : '')
+        }
+    }) }}
+    {{ form_errors(form.motif) }}
+</div>
+
+{% if form.employee is defined %}
+<div class="mb-3">
+    {{ form_label(form.employee, '👤 Employé', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.employee, {
+        'attr': {
+            'class': 'form-select rounded-pill shadow-sm' ~ (form_errors(form.employee) ? ' is-invalid' : '')
+        }
+    }) }}
+    {{ form_errors(form.employee) }}
+</div>
+{% endif %}
+
+{% if form.rh is defined %}
+<div class="mb-3">
+    {{ form_label(form.rh, '👨‍💼 Responsable RH', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.rh, {
+        'attr': {
+            'class': 'form-select rounded-pill shadow-sm' ~ (form_errors(form.rh) ? ' is-invalid' : '')
+        }
+    }) }}
+    {{ form_errors(form.rh) }}
+</div>
+{% endif %}
+>>>>>>> origin/asma_gestion_presence
 
 <div class="text-center mt-4">
     <button class="btn btn-success rounded-pill px-4 py-2 shadow-sm">
@@ -32,4 +86,7 @@
 </div>
 
 {{ form_end(form) }}
+<<<<<<< HEAD
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence

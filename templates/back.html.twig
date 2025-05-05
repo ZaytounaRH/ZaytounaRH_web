@@ -3,6 +3,17 @@
 
 <head>
     <title>ZaytounaRH</title>
+<<<<<<< HEAD
+=======
+    
+
+
+
+
+
+
+
+>>>>>>> origin/asma_gestion_presence
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 10]>
@@ -18,6 +29,7 @@
     <meta name="author" content="Codedthemes" />
     <!-- Favicon icon -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 <link rel="icon" href="{{ asset('back/images/logo.png') }}" type="image/x-icon">
 =======
 <link rel="icon" href="{{ asset('back/images/favicon.ico') }}" type="image/x-icon">
@@ -28,6 +40,9 @@
 
 
 >>>>>>> origin/ons_gestion_recrutement
+=======
+<link rel="icon" href="{{ asset('back/images/favicon.ico') }}" type="image/x-icon">
+>>>>>>> origin/asma_gestion_presence
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <!-- Waves CSS -->
@@ -48,6 +63,11 @@
 
 <!-- Custom Style -->
 <link rel="stylesheet" type="text/css" href="{{ asset('back/css/style.css') }}">
+<<<<<<< HEAD
+=======
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+>>>>>>> origin/asma_gestion_presence
 </head>
 
 <body>
@@ -274,20 +294,26 @@
     <li class="{{ app.request.attributes.get('_route') starts with 'app_formation' ? 'active' : '' }}">
         <a href="{{ path('app_formation_index') }}" class="waves-effect waves-dark">
 <<<<<<< HEAD
+<<<<<<< HEAD
         
 =======
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
             <span class="pcoded-micon"><i class="ti-book"></i><b>F</b></span>
             <span class="pcoded-mtext">Formations</span>
             <span class="pcoded-mcaret"></span>
         </a>
     </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
          
            
            
 =======
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/asma_gestion_presence
 
     <li class="{{ app.request.attributes.get('_route') starts with 'app_certification' ? 'active' : '' }}">
         <a href="{{ path('app_certification_index') }}" class="waves-effect waves-dark">
@@ -295,6 +321,7 @@
             <span class="pcoded-mtext">Certifications</span>
             <span class="pcoded-mcaret"></span>
         </a>
+<<<<<<< HEAD
 <<<<<<< HEAD
     </li>
 =======
@@ -320,6 +347,8 @@
     </li>
 
 
+=======
+>>>>>>> origin/asma_gestion_presence
     </li>
     <li class="{{ app.request.attributes.get('_route') starts with 'app_presence_admin' ? 'active' : '' }}">
     <a href="{{ path('app_presence_admin_index') }}" class="waves-effect waves-dark">
@@ -336,7 +365,12 @@
         <span class="pcoded-mcaret"></span>
     </a>
 </li>
+<<<<<<< HEAD
 >>>>>>> origin/ons_gestion_recrutement
+=======
+
+
+>>>>>>> origin/asma_gestion_presence
 </ul>
 
                             <div class="pcoded-navigation-label">UI Element</div>
@@ -519,6 +553,7 @@
 <script type="text/javascript" src="{{ asset('back/js/script.js') }}"></script>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- Multi select employee formation  -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -526,6 +561,64 @@
 
 =======
 >>>>>>> origin/ons_gestion_recrutement
+=======
+
+
+
+
+<style>
+.toast-container {
+    position: fixed;
+    top: 0.7rem;
+    right: 1.5rem;
+    z-index: 1050;
+}
+
+.toast {
+    background-color: #0d6efd;
+    color: white;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 280px;
+    max-width: 350px;
+    animation: slideRightFade 0.5s ease forwards;
+    font-size: 0.95rem;
+}
+
+.toast.toast-danger {
+    background-color: #dc3545;
+}
+
+.toast.toast-success {
+    background-color: #198754;
+}
+
+.toast.toast-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+@keyframes slideRightFade {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+</style>
+
+
+
+
+
+
+
+>>>>>>> origin/asma_gestion_presence
 </body>
 
 </html>

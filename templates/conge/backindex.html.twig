@@ -7,6 +7,7 @@
     <h1 class="mb-4 text-center text-primary">Liste des Congés</h1>
 
     <div class="d-flex justify-content-end mb-3">
+<<<<<<< HEAD
         <a href="{{ path('app_conge_new') }}" class="btn btn-success">
             <i class="bi bi-plus-circle"></i> Nouveau congé
         </a>
@@ -16,6 +17,19 @@
         <thead class="table-dark">
             <tr class="text-center">
                 <th>ID</th>
+=======
+        
+    </div>
+<div class="d-flex justify-content-end mb-3">
+    
+    <a href="{{ path('app_conge_pdf') }}" class="btn btn-outline-danger">
+        📄 Télécharger PDF
+    </a>
+</div>
+    <table class="table table-hover table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr class="text-center">
+>>>>>>> origin/asma_gestion_presence
                 <th>Date début</th>
                 <th>Date fin</th>
                 <th>Motif</th>
@@ -26,7 +40,10 @@
         <tbody>
         {% for conge in conges %}
             <tr class="text-center align-middle">
+<<<<<<< HEAD
                 <td>{{ conge.idConge }}</td>
+=======
+>>>>>>> origin/asma_gestion_presence
                 <td>{{ conge.dateDebut ? conge.dateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ conge.dateFin ? conge.dateFin|date('Y-m-d') : '' }}</td>
                 <td>{{ conge.motif }}</td>
