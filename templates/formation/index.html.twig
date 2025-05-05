@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'back.html.twig' %}
 
 {% block title %}Liste des Formations{% endblock %}
@@ -89,4 +90,46 @@
     </div>
 </div>
 <!-- Table Card End -->
+=======
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation index{% endblock %}
+
+{% block content %}
+    <h1>Formation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdFormation</th>
+                <th>NomFormation</th>
+                <th>DescriptionFormation</th>
+                <th>DateDebutFormation</th>
+                <th>DateFinFormation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formation in formations %}
+            <tr>
+                <td>{{ formation.idFormation }}</td>
+                <td>{{ formation.nomFormation }}</td>
+                <td>{{ formation.descriptionFormation }}</td>
+                <td>{{ formation.dateDebutFormation ? formation.dateDebutFormation|date('Y-m-d') : '' }}</td>
+                <td>{{ formation.dateFinFormation ? formation.dateFinFormation|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_formation_show', {'idFormation': formation.idFormation}) }}">show</a>
+                    <a href="{{ path('app_formation_edit', {'idFormation': formation.idFormation}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_formation_new') }}">Create new</a>
+>>>>>>> origin/manel_gestion_financiere
 {% endblock %}

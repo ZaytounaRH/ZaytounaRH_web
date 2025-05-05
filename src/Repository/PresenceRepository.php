@@ -2,10 +2,14 @@
 
 namespace App\Repository;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 use App\Entity\Employee;
 >>>>>>> origin/asma_gestion_presence
+=======
+
+>>>>>>> origin/manel_gestion_financiere
 use App\Entity\Presence;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -44,6 +48,7 @@ class PresenceRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -176,4 +181,6 @@ public function averageWorkedHoursPerDay(): float
 
 
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 }

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Symfony\Component\Routing\Attribute\Route;
 =======
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +20,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 =======
 use Symfony\Component\Routing\Attribute\Route;
 >>>>>>> origin/asma_gestion_presence
+=======
+use Symfony\Component\Routing\Attribute\Route;
+>>>>>>> origin/manel_gestion_financiere
 
 #[Route('/entretien')]
 final class EntretienController extends AbstractController
@@ -28,13 +32,17 @@ final class EntretienController extends AbstractController
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
         return $this->render('entretien/index.html.twig', [
             'entretiens' => $entretienRepository->findAll(),
         ]);
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
        // Vous pouvez trier les entretiens par l'offre d'emploi
@@ -74,6 +82,8 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[Route('/new', name: 'app_entretien_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -82,6 +92,7 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -103,10 +114,13 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
 
             // Pas besoin de persister d'informations sur le fichier dans la base de données
 >>>>>>> origin/ons_gestion_recrutement
+=======
+>>>>>>> origin/manel_gestion_financiere
             $entityManager->persist($entretien);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_entretien_index', [], Response::HTTP_SEE_OTHER);
+<<<<<<< HEAD
 =======
             $entityManager->persist($entretien);
             $entityManager->flush();
@@ -114,6 +128,8 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
             // ✅ Redirige vers la page de remerciement après la soumission
             return $this->redirectToRoute('app_entretien_merci', [], Response::HTTP_SEE_OTHER);
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
         }
 
         return $this->render('entretien/new.html.twig', [
@@ -153,6 +169,7 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if ($this->isCsrfTokenValid('delete'.$entretien->getIdEntretien(), $request->getPayload()->getString('_token'))) {
 =======
         if ($this->isCsrfTokenValid('delete' . $entretien->getIdEntretien(), $request->get('_token'))) {
@@ -160,12 +177,16 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
 =======
         if ($this->isCsrfTokenValid('delete' . $entretien->getIdEntretien(), $request->getPayload()->getString('_token'))) {
 >>>>>>> origin/asma_gestion_presence
+=======
+        if ($this->isCsrfTokenValid('delete'.$entretien->getIdEntretien(), $request->getPayload()->getString('_token'))) {
+>>>>>>> origin/manel_gestion_financiere
             $entityManager->remove($entretien);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('app_entretien_index', [], Response::HTTP_SEE_OTHER);
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -193,4 +214,6 @@ public function trierParDate(EntretienRepository $entretienRepository, Request $
         return $this->render('entretien/merci.html.twig');
     }
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 }

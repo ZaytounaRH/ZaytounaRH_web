@@ -17,6 +17,7 @@ class CongeRepository extends ServiceEntityRepository
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     // ✅ Nombre de jours de congés posés
     public function countTotalConges(string $year): int
@@ -40,6 +41,8 @@ class CongeRepository extends ServiceEntityRepository
 
 
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     //    /**
     //     * @return Conge[] Returns an array of Conge objects
     //     */

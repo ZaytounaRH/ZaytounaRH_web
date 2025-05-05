@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Conge;
 use App\Form\CongeType;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Repository\CongeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,16 +34,27 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 >>>>>>> origin/asma_gestion_presence
+=======
+use App\Repository\CongeRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+>>>>>>> origin/manel_gestion_financiere
 
 #[Route('/conge')]
 final class CongeController extends AbstractController
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
     
 
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[Route(name: 'app_conge_index', methods: ['GET'])]
     public function index(CongeRepository $congeRepository): Response
     {
@@ -52,8 +64,12 @@ final class CongeController extends AbstractController
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     #[Route('/new', name: 'app_conge_new', methods: ['GET', 'POST'])]
 <<<<<<< HEAD
+=======
+    #[Route('/new', name: 'app_conge_new', methods: ['GET', 'POST'])]
+>>>>>>> origin/manel_gestion_financiere
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $conge = new Conge();
@@ -73,6 +89,7 @@ final class CongeController extends AbstractController
         ]);
     }
 
+<<<<<<< HEAD
 =======
 public function new(Request $request, EntityManagerInterface $entityManager): Response
 {
@@ -218,6 +235,8 @@ public function new(Request $request, EntityManagerInterface $entityManager): Re
 
 
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[Route('/{id_conge}', name: 'app_conge_show', methods: ['GET'])]
     public function show(Conge $conge): Response
     {
@@ -228,6 +247,7 @@ public function new(Request $request, EntityManagerInterface $entityManager): Re
 
     #[Route('/{id_conge}/edit', name: 'app_conge_edit', methods: ['GET', 'POST'])]
 <<<<<<< HEAD
+<<<<<<< HEAD
     public function edit(Request $request, Conge $conge, EntityManagerInterface $entityManager): Response
     {
 <<<<<<< HEAD
@@ -235,16 +255,25 @@ public function new(Request $request, EntityManagerInterface $entityManager): Re
 =======
         $form = $this->createForm(CongeType::class, $conge, ['is_edit' => true]);
 >>>>>>> origin/ons_gestion_recrutement
+=======
+    public function edit(Request $request, Conge $conge, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(CongeType::class, $conge);
+>>>>>>> origin/manel_gestion_financiere
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             return $this->redirectToRoute('app_conge_index', [], Response::HTTP_SEE_OTHER);
 =======
             return $this->redirectToRoute('app_conge_index');
 >>>>>>> origin/ons_gestion_recrutement
+=======
+            return $this->redirectToRoute('app_conge_index', [], Response::HTTP_SEE_OTHER);
+>>>>>>> origin/manel_gestion_financiere
         }
 
         return $this->render('conge/edit.html.twig', [
@@ -256,6 +285,7 @@ public function new(Request $request, EntityManagerInterface $entityManager): Re
     #[Route('/{id_conge}', name: 'app_conge_delete', methods: ['POST'])]
     public function delete(Request $request, Conge $conge, EntityManagerInterface $entityManager): Response
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         if ($this->isCsrfTokenValid('delete'.$conge->getId_conge(), $request->getPayload()->getString('_token'))) {
 =======
@@ -342,10 +372,14 @@ public function edit(Request $request, Conge $conge, EntityManagerInterface $ent
     {
         if ($this->isCsrfTokenValid('delete' . $conge->getId_conge(), $request->getPayload()->getString('_token'))) {
 >>>>>>> origin/asma_gestion_presence
+=======
+        if ($this->isCsrfTokenValid('delete'.$conge->getId_conge(), $request->getPayload()->getString('_token'))) {
+>>>>>>> origin/manel_gestion_financiere
             $entityManager->remove($conge);
             $entityManager->flush();
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         return $this->redirectToRoute('app_conge_index', [], Response::HTTP_SEE_OTHER);
@@ -372,3 +406,8 @@ public function edit(Request $request, Conge $conge, EntityManagerInterface $ent
     
 }
 >>>>>>> origin/asma_gestion_presence
+=======
+        return $this->redirectToRoute('app_conge_index', [], Response::HTTP_SEE_OTHER);
+    }
+}
+>>>>>>> origin/manel_gestion_financiere

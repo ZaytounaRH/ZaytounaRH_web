@@ -6,6 +6,7 @@ require_once 'vendor/autoload.php';
 $dbHost = 'localhost';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 $dbName = 'rhzaytouna';
 =======
 $dbName = 'final';
@@ -13,6 +14,9 @@ $dbName = 'final';
 =======
 $dbName = 'rhzaytouna';
 >>>>>>> origin/asma_gestion_presence
+=======
+$dbName = 'rhzaytounafinal';
+>>>>>>> origin/manel_gestion_financiere
 $dbUser = 'root';
 $dbPass = '';
 $dbPort = 3306;

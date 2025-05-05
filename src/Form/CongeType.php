@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  
 =======
 
@@ -19,10 +20,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 =======
 
 >>>>>>> origin/asma_gestion_presence
+=======
+ 
+>>>>>>> origin/manel_gestion_financiere
 class CongeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -31,6 +36,8 @@ class CongeType extends AbstractType
 =======
         // Champs de base
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
         $builder
             ->add('dateDebut', null, [
                 'widget' => 'single_text',
@@ -40,6 +47,9 @@ class CongeType extends AbstractType
             ])
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
             ->add('motif')
             ->add('statut', ChoiceType::class,[
                 'choices' =>[
@@ -59,6 +69,7 @@ class CongeType extends AbstractType
                 'choice_label' => 'id',
             ])
         ;
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -106,12 +117,15 @@ class CongeType extends AbstractType
 =======
         
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Conge::class,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         ]);
@@ -129,3 +143,8 @@ class CongeType extends AbstractType
     }
 }
 >>>>>>> origin/asma_gestion_presence
+=======
+        ]);
+    }
+}
+>>>>>>> origin/manel_gestion_financiere

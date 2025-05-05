@@ -3,10 +3,14 @@
 namespace App\Controller;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
 
 use App\Entity\Presence;
 use App\Form\PresenceType;
 use App\Repository\PresenceRepository;
+<<<<<<< HEAD
 =======
 use App\Repository\UserRepository;
 use App\Repository\RhRepository;
@@ -25,11 +29,14 @@ use App\Repository\EmployeeRepository;
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 use Endroid\QrCode\Builder\BuilderInterface;
@@ -37,10 +44,13 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 
 #[Route('/presence')]
 final class PresenceController extends AbstractController
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     #[Route(name: 'app_presence_index', methods: ['GET'])]
@@ -195,6 +205,9 @@ public function adminIndex(
 
     #[Route('/', name: 'app_presence_index', methods: ['GET'])]
 >>>>>>> origin/asma_gestion_presence
+=======
+    #[Route(name: 'app_presence_index', methods: ['GET'])]
+>>>>>>> origin/manel_gestion_financiere
     public function index(PresenceRepository $presenceRepository): Response
     {
         return $this->render('presence/index.html.twig', [
@@ -203,6 +216,9 @@ public function adminIndex(
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
 
     #[Route('/new', name: 'app_presence_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -232,6 +248,7 @@ public function adminIndex(
         ]);
     }
 
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/asma_gestion_presence
@@ -362,6 +379,8 @@ public function showBack(Presence $presence): Response
     
 
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     #[Route('/{id_presence}/edit', name: 'app_presence_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Presence $presence, EntityManagerInterface $entityManager): Response
     {
@@ -385,6 +404,7 @@ public function showBack(Presence $presence): Response
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if ($this->isCsrfTokenValid('delete'.$presence->getId_presence(), $request->getPayload()->getString('_token'))) {
 =======
         if ($this->isCsrfTokenValid('delete' . $presence->getId_presence(), $request->getPayload()->getString('_token'))) {
@@ -392,10 +412,14 @@ public function showBack(Presence $presence): Response
 =======
         if ($this->isCsrfTokenValid('delete' . $presence->getId_presence(), $request->getPayload()->getString('_token'))) {
 >>>>>>> origin/asma_gestion_presence
+=======
+        if ($this->isCsrfTokenValid('delete'.$presence->getId_presence(), $request->getPayload()->getString('_token'))) {
+>>>>>>> origin/manel_gestion_financiere
             $entityManager->remove($presence);
             $entityManager->flush();
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         return $this->redirectToRoute('app_presence_index', [], Response::HTTP_SEE_OTHER);
     }
@@ -601,3 +625,8 @@ public function today(PresenceRepository $presenceRepository): Response
     
 }
 >>>>>>> origin/asma_gestion_presence
+=======
+        return $this->redirectToRoute('app_presence_index', [], Response::HTTP_SEE_OTHER);
+    }
+}
+>>>>>>> origin/manel_gestion_financiere

@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+<<<<<<< HEAD
 {% block title %}Créer une nouvelle assurance{% endblock %}
 
 {% block body %}
@@ -25,4 +26,14 @@
     </div>
   </div>
 </section>
+=======
+{% block title %}New Assurance{% endblock %}
+
+{% block body %}
+    <h1>Create new Assurance</h1>
+
+    {{ include('assurance/_form.html.twig') }}
+
+    <a href="{{ path('app_assurance_index') }}">back to list</a>
+>>>>>>> origin/manel_gestion_financiere
 {% endblock %}

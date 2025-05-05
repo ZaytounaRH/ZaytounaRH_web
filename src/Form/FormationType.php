@@ -18,6 +18,7 @@ class FormationType extends AbstractType
             ->add('descriptionFormation')
             ->add('dateDebutFormation', null, [
                 'widget' => 'single_text',
+<<<<<<< HEAD
                 'empty_data' => null,
             ])
             ->add('dateFinFormation', null, [
@@ -49,6 +50,17 @@ class FormationType extends AbstractType
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+            ])
+            ->add('dateFinFormation', null, [
+                'widget' => 'single_text',
+            ])
+            ->add('employees', EntityType::class, [
+                'class' => Employee::class,
+                'choice_label' => 'id',
+                'multiple' => true,
+            ])
+>>>>>>> origin/manel_gestion_financiere
         ;
     }
 

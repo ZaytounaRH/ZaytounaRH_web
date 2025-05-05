@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
+<<<<<<< HEAD
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
+=======
+>>>>>>> origin/manel_gestion_financiere
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -33,8 +36,11 @@ class Formation
     }
 
     #[ORM\Column(name :"nomFormation",type: 'string', nullable: false)]
+<<<<<<< HEAD
     #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide.')]
 
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?string $nomFormation = null;
 
     public function getNomFormation(): ?string
@@ -49,8 +55,11 @@ class Formation
     }
 
     #[ORM\Column(name :"descriptionFormation",type: 'string', nullable: false)]
+<<<<<<< HEAD
     #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide.')]
 
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?string $descriptionFormation = null;
 
     public function getDescriptionFormation(): ?string
@@ -65,9 +74,12 @@ class Formation
     }
 
     #[ORM\Column(name :"dateDebutFormation",type: 'date', nullable: false)]
+<<<<<<< HEAD
     #[Assert\NotNull(message: 'Ce champ ne peut pas être vide.')]
 
 #[Assert\GreaterThanOrEqual("today", message: "La date de début ne peut pas être dans le passé.")]
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?\DateTimeInterface $dateDebutFormation = null;
 
     public function getDateDebutFormation(): ?\DateTimeInterface
@@ -82,8 +94,11 @@ class Formation
     }
 
     #[ORM\Column(name :"dateFinFormation",type: 'date', nullable: false)]
+<<<<<<< HEAD
     #[Assert\NotNull(message: 'Ce champ ne peut pas être vide.')]
 #[Assert\GreaterThanOrEqual("today", message: "La date de fin ne peut pas être dans le passé.")]
+=======
+>>>>>>> origin/manel_gestion_financiere
     private ?\DateTimeInterface $dateFinFormation = null;
 
     public function getDateFinFormation(): ?\DateTimeInterface
@@ -168,6 +183,7 @@ class Formation
         return $this;
     }
 
+<<<<<<< HEAD
     #[Assert\Callback]
 public function validateDates(ExecutionContextInterface $context, $payload)
 {
@@ -180,4 +196,6 @@ public function validateDates(ExecutionContextInterface $context, $payload)
     }
 }
 
+=======
+>>>>>>> origin/manel_gestion_financiere
 }

@@ -1,11 +1,15 @@
 <?php
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+
+>>>>>>> origin/manel_gestion_financiere
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -24,6 +28,7 @@ class Candidat
     private ?int $candidat_id = null;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
     // Utilise getId() pour récupérer l'ID
@@ -32,12 +37,17 @@ class Candidat
 
     // Utilise getId() pour récupérer l'ID
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
     public function getId(): ?int
     {
         return $this->candidat_id;
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
     public function getCandidat_id(): ?int
     {
         return $this->candidat_id;
@@ -48,10 +58,13 @@ class Candidat
         $this->candidat_id = $candidat_id;
         return $this;
     }
+<<<<<<< HEAD
 =======
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+>>>>>>> origin/manel_gestion_financiere
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'candidats')]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id')]
@@ -97,6 +110,7 @@ class Candidat
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (!$this->entretiens instanceof Collection) {
             $this->entretiens = new ArrayCollection();
         }
@@ -104,6 +118,11 @@ class Candidat
 >>>>>>> origin/ons_gestion_recrutement
 =======
 >>>>>>> origin/asma_gestion_presence
+=======
+        if (!$this->entretiens instanceof Collection) {
+            $this->entretiens = new ArrayCollection();
+        }
+>>>>>>> origin/manel_gestion_financiere
         return $this->entretiens;
     }
 
@@ -122,12 +141,16 @@ class Candidat
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/manel_gestion_financiere
 
     public function getCandidatId(): ?int
     {
         return $this->candidat_id;
     }
 
+<<<<<<< HEAD
 }
 =======
 }
@@ -135,3 +158,6 @@ class Candidat
 =======
 }
 >>>>>>> origin/asma_gestion_presence
+=======
+}
+>>>>>>> origin/manel_gestion_financiere

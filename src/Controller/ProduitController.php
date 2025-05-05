@@ -3,7 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+<<<<<<< HEAD
 use App\Form\ProduitType;
+=======
+use App\Form\ProduitType;  
+>>>>>>> origin/manel_gestion_financiere
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,11 +18,25 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/produit')]
 final class ProduitController extends AbstractController
 {
+<<<<<<< HEAD
     #[Route(name: 'app_produit_index', methods: ['GET'])]
     public function index(ProduitRepository $produitRepository): Response
     {
         return $this->render('produit/index.html.twig', [
             'produits' => $produitRepository->findAll(),
+=======
+    #[Route('/', name: 'app_produit_index', methods: ['GET'])] // Correction ici : ajout du path '/'
+    public function index(ProduitRepository $produitRepository): Response
+    {
+        $produits = $produitRepository->createQueryBuilder('p')
+            ->leftJoin('p.fournisseur', 'f')
+            ->addSelect('f')
+            ->getQuery()
+            ->getResult();
+
+        return $this->render('produit/index.html.twig', [
+            'produits' => $produits,
+>>>>>>> origin/manel_gestion_financiere
         ]);
     }
 
@@ -27,12 +45,23 @@ final class ProduitController extends AbstractController
     {
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
+<<<<<<< HEAD
+=======
+        dump($produit); 
+>>>>>>> origin/manel_gestion_financiere
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($produit);
             $entityManager->flush();
 
+<<<<<<< HEAD
+=======
+            $session = $request->getSession();
+            $currentNotif = $session->get('notif_count', 0);
+            $session->set('notif_count', $currentNotif + 1);
+
+>>>>>>> origin/manel_gestion_financiere
             return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -71,7 +100,11 @@ final class ProduitController extends AbstractController
     #[Route('/{id}', name: 'app_produit_delete', methods: ['POST'])]
     public function delete(Request $request, Produit $produit, EntityManagerInterface $entityManager): Response
     {
+<<<<<<< HEAD
         if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->getPayload()->getString('_token'))) {
+=======
+        if ($this->isCsrfTokenValid('delete' . $produit->getId(), $request->getPayload()->getString('_token'))) {
+>>>>>>> origin/manel_gestion_financiere
             $entityManager->remove($produit);
             $entityManager->flush();
         }
